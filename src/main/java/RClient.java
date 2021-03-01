@@ -4,6 +4,8 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.concurrent.ExecutionException;
@@ -18,24 +20,37 @@ public class RClient {
     private String chatId = "chat_id=917985571";
     private String text = new String();
     private String responseStr;
+    private int lastUpdate_id = 0;
     ArrayList<Message> messagesList;
 
     public void getUpdates(){
 
-        AsyncHttpClient asyncHttpClient = new DefaultAsyncHttpClient();
-
-            String request = new String(telegramBotUrl + token + methodGetUpdates);
+        try(AsyncHttpClient asyncHttpClient = new DefaultAsyncHttpClient()) {
+            StringBuilder requestBuilder = new StringBuilder();
+            requestBuilder.append(telegramBotUrl);
+            requestBuilder.append(token);
+            requestBuilder.append(methodGetUpdates);
+            if(lastUpdate_id != 0){
+                requestBuilder.append("?offset=");
+                requestBuilder.append(lastUpdate_id);
+            }
+            String request = requestBuilder.toString();
+            System.out.println(request);
             ListenableFuture<Response> futureResponse = asyncHttpClient.prepareGet(request).execute();
-        Response response = null;
-        try {
-            response = futureResponse.get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
+            Response response = null;
+            try {
+                response = futureResponse.get();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }responseStr = response.getResponseBody();
+            updateJsonParser(responseStr);
+
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        responseStr = response.getResponseBody();
-            updateJsonParser(responseStr);
+
         }
 
         public void updateJsonParser(String responseStr) {
@@ -51,6 +66,7 @@ public class RClient {
             Iterator i = results.iterator();
             while (i.hasNext()) {
                 JSONObject message = (JSONObject) i.next();
+                lastUpdate_id = Integer.parseInt(message.get("update_id").toString());
                 JSONObject messageContents = (JSONObject) message.get("message");
                 JSONObject chat = (JSONObject) messageContents.get("chat");
                 int chat_id = Integer.parseInt(chat.get("id").toString());
