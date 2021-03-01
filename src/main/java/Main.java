@@ -14,6 +14,8 @@ public class Main {
         RClient client = new RClient();
         client.getUpdates();
         client.printMessages();
+        client.getUpdates();
+        client.printMessages();
 
 
     }
