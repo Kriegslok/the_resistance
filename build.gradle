@@ -19,7 +19,10 @@ dependencies {
 //    implementation group: 'org.telegram', name: 'telegrambots', version: '5.0.1.1'
     // https://mvnrepository.com/artifact/org.telegram/telegramapi
 //    implementation group: 'org.telegram', name: 'telegramapi', version: '66.2'
-    implementation fileTree(dir: 'C:/Users/Moshkovskiy/td/example/java/build/tdjni.dir/Release', include: ['*.obj'])
+   // implementation fileTree(dir: 'C:/Users/Moshkovskiy/td/example/java/build/tdjni.dir/Release', include: ['*.obj'])
+    // https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple
+    implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+
 
 
 }
