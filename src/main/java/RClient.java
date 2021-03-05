@@ -1,34 +1,45 @@
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.asynchttpclient.*;
+import org.drinkless.tdlib.TdApi;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import java.io.DataInput;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 
 public class RClient {
-    private final String telegramBotUrl = "https://api.telegram.org/";
-    private final String token = "bot1535167887:AAHspHwJURI66rdMqxim_xYxjMGrKQWngKk/";
+
     private final String methodGetUpdates = "getUpdates";
     private final String methodSendMessage = "sendMessage";
     private final String methodEditMessageText = "editMessageText";
-    private String chatId = "chat_id=917985571";
+    private final String chatId = "chat_id=917985571";
     private String text = new String();
     private String responseStr;
     private int lastUpdate_id = 0;
     ArrayList<Message> messagesList;
+    AsyncHttpClient asyncHttpClient;
+    RClientConfig config;
+
+    public RClient(AsyncHttpClient asyncHttpClient, RClientConfig config) {
+        this.asyncHttpClient = asyncHttpClient;
+        this.config = config;
+    }
 
     public void getUpdates(){
-
-        try(AsyncHttpClient asyncHttpClient = new DefaultAsyncHttpClient()) {
             StringBuilder requestBuilder = new StringBuilder();
-            requestBuilder.append(telegramBotUrl);
-            requestBuilder.append(token);
+            requestBuilder.append(config.getTelegramBotUrl());
+            requestBuilder.append(config.getToken());
             requestBuilder.append(methodGetUpdates);
             if(lastUpdate_id != 0){
                 requestBuilder.append("?offset=");
@@ -40,17 +51,27 @@ public class RClient {
             Response response = null;
             try {
                 response = futureResponse.get();
-            } catch (InterruptedException e) {
+            } catch (InterruptedException | ExecutionException e) {
                 e.printStackTrace();
-            } catch (ExecutionException e) {
-                e.printStackTrace();
-            }responseStr = response.getResponseBody();
-            updateJsonParser(responseStr);
+            }
+            assert response != null;
+            responseStr = response.getResponseBody();
+            //updateJsonParser(responseStr);
+            updateJsonParserNew(responseStr);
 
-        } catch (IOException e) {
-            e.printStackTrace();
         }
 
+        public void updateJsonParserNew(String responseStr){
+            ObjectMapper mapper = new ObjectMapper();
+            JsonNode jsonNode = null;
+            try {
+                jsonNode = mapper.readValue(responseStr, JsonNode.class);
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
+            System.out.println(jsonNode.toString());
+            List<String> result = jsonNode.get("result").asText();
+            System.out.println(update);
         }
 
         public void updateJsonParser(String responseStr) {
@@ -62,6 +83,7 @@ public class RClient {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
+            assert jsonObject != null;
             JSONArray results = (JSONArray) jsonObject.get("result");
             Iterator i = results.iterator();
             while (i.hasNext()) {
