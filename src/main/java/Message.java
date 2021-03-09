@@ -1,12 +1,49 @@
 public class Message {
-    private String text;
-    private int chat_id;
-    private int message_id;
 
-    public Message (int chat_id, int message_id, String text){
-        this.chat_id = chat_id;
+    private String message_id;
+    private From from;
+    private Chat chat;
+    private String date;
+    private String text;
+
+    public Message(String message_id, From from, Chat chat, String date, String text) {
         this.message_id = message_id;
+        this.from = from;
+        this.chat = chat;
+        this.date = date;
         this.text = text;
+    }
+
+    public String getMessage_id() {
+        return message_id;
+    }
+
+    public void setMessage_id(String message_id) {
+        this.message_id = message_id;
+    }
+
+    public From getFrom() {
+        return from;
+    }
+
+    public void setFrom(From from) {
+        this.from = from;
+    }
+
+    public Chat getChat() {
+        return chat;
+    }
+
+    public void setChat(Chat chat) {
+        this.chat = chat;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getText() {
@@ -17,24 +54,8 @@ public class Message {
         this.text = text;
     }
 
-    public int getChat_id() {
-        return chat_id;
-    }
-
-    public void setChat_id(int chat_id) {
-        this.chat_id = chat_id;
-    }
-
-    public int getMessage_id() {
-        return message_id;
-    }
-
-    public void setMessage_id(int message_id) {
-        this.message_id = message_id;
-    }
-
-    @Override
-    public String toString() {
-        return (chat_id + " " + message_id + " " + text);
-    }
+//    @Override
+//    public String toString() {
+//        return (chat_id + " " + message_id + " " + text);
+//    }
 }

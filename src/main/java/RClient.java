@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.asynchttpclient.*;
+import org.asynchttpclient.Response;
 import org.drinkless.tdlib.TdApi;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -36,7 +37,7 @@ public class RClient {
         this.config = config;
     }
 
-    public void getUpdates(){
+    public void getUpdates() throws JsonProcessingException {
             StringBuilder requestBuilder = new StringBuilder();
             requestBuilder.append(config.getTelegramBotUrl());
             requestBuilder.append(config.getToken());
@@ -61,17 +62,21 @@ public class RClient {
 
         }
 
-        public void updateJsonParserNew(String responseStr){
+        public void updateJsonParserNew(String responseStr) throws JsonProcessingException {
+
+           //ObjectMapper objectMapper = new ObjectMapper();
+           //JsonNode jsonNode = objectMapper.readTree(responseStr);
+           //String updateId = jsonNode.get("result").asText();
+
             ObjectMapper mapper = new ObjectMapper();
-            JsonNode jsonNode = null;
-            try {
-                jsonNode = mapper.readValue(responseStr, JsonNode.class);
-            } catch (JsonProcessingException e) {
-                e.printStackTrace();
-            }
+            JsonNode jsonNode = mapper.readValue(responseStr, JsonNode.class);
+            TelegramResponse response = mapper.readValue(responseStr, TelegramResponse.class);
+            System.out.println(response.getResult().getUpdates());
+            //System.out.println(updateId);
             System.out.println(jsonNode.toString());
-            List<String> result = jsonNode.get("result").asText();
-            System.out.println(update);
+            //System.out.println(updateId);
+//            List<String> result = jsonNode.get("result").asText();
+//            System.out.println(update);
         }
 
         public void updateJsonParser(String responseStr) {
@@ -94,8 +99,8 @@ public class RClient {
                 int chat_id = Integer.parseInt(chat.get("id").toString());
                 int message_id = Integer.parseInt(messageContents.get("message_id").toString());
                 String text = messageContents.get("text").toString();
-                Message receivedMessage = new Message(chat_id, message_id, text);
-                messagesList.add(receivedMessage);
+                //Message receivedMessage = new Message(chat_id, message_id, text);
+                //messagesList.add(receivedMessage);
             }
             this.messagesList = messagesList;
         }
