@@ -1,6 +1,7 @@
 
 
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.asynchttpclient.AsyncHttpClient;
 import org.asynchttpclient.DefaultAsyncHttpClient;
 import org.slf4j.Logger;
@@ -14,7 +15,7 @@ public class Main {
     static String token = "bot1535167887:AAHspHwJURI66rdMqxim_xYxjMGrKQWngKk/";
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws JsonProcessingException {
         RClientConfig config = new RClientConfig(telegramBotUrl, token);
         AsyncHttpClient asyncHttpClient = new DefaultAsyncHttpClient();
         RClient client = new RClient(asyncHttpClient, config);
