@@ -3,3 +3,6 @@ bin/
 docs/
 org/drinkless/tdlib/TdApi.java
 td/
+_windows/
+_gradle/
+
