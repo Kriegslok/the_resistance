@@ -21,7 +21,7 @@ dependencies {
 //    implementation group: 'org.telegram', name: 'telegramapi', version: '66.2'
    // implementation fileTree(dir: 'C:/Users/Moshkovskiy/td/example/java/build/tdjni.dir/Release', include: ['*.obj'])
     // https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple
-    implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+    //implementation group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
     // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.12.1'
 
