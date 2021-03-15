@@ -1,24 +1,32 @@
+package telegramResponse;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import telegramResponse.Chat;
+import telegramResponse.From;
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Message {
 
-    private String message_id;
+
+    private int message_id;
     private From from;
     private Chat chat;
-    private String date;
+    private int date;
     private String text;
 
-    public Message(String message_id, From from, Chat chat, String date, String text) {
+    public Message() {
         this.message_id = message_id;
         this.from = from;
         this.chat = chat;
         this.date = date;
         this.text = text;
+//        String message_id, telegramResponse.From from, telegramResponse.Chat chat, String date, String text
     }
 
-    public String getMessage_id() {
+    public int getMessage_id() {
         return message_id;
     }
 
-    public void setMessage_id(String message_id) {
+    public void setMessage_id(int message_id) {
         this.message_id = message_id;
     }
 
@@ -38,11 +46,11 @@ public class Message {
         this.chat = chat;
     }
 
-    public String getDate() {
+    public int getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(int date) {
         this.date = date;
     }
 
@@ -54,8 +62,8 @@ public class Message {
         this.text = text;
     }
 
-//    @Override
-//    public String toString() {
-//        return (chat_id + " " + message_id + " " + text);
-//    }
+    @Override
+    public String toString() {
+        return (chat.getId() + " " + message_id + " " + text);
+    }
 }

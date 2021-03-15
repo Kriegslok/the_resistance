@@ -92,7 +92,7 @@ loadScripts(document, 'script');</script>
 extends <a href="TdApi.Function.html" title="class in org.drinkless.tdlib">TdApi.Function</a></pre>
 <div class="block">Creates a new supergroup or channel and sends a corresponding messageSupergroupChatCreate. Returns the newly created chat.
 
- <p> Returns <a href="TdApi.Chat.html" title="class in org.drinkless.tdlib"><code>Chat</code></a> </p></div>
+ <p> Returns <a href="TdApi.telegramUpdate.Chat.html" title="class in org.drinkless.tdlib"><code>telegramUpdate.Chat</code></a> </p></div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -122,7 +122,7 @@ extends <a href="TdApi.Function.html" title="class in org.drinkless.tdlib">TdApi
 <td class="col-first"><code>java.lang.String</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#description">description</a></span></code></th>
 <td class="col-last">
-<div class="block">Chat description; 0-255 characters.</div>
+<div class="block">telegramUpdate.Chat description; 0-255 characters.</div>
 </td>
 </tr>
 <tr class="alt-color">
@@ -143,7 +143,7 @@ extends <a href="TdApi.Function.html" title="class in org.drinkless.tdlib">TdApi
 <td class="col-first"><code><a href="TdApi.ChatLocation.html" title="class in org.drinkless.tdlib">TdApi.ChatLocation</a></code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#location">location</a></span></code></th>
 <td class="col-last">
-<div class="block">Chat location if a location-based supergroup is being created.</div>
+<div class="block">telegramUpdate.Chat location if a location-based supergroup is being created.</div>
 </td>
 </tr>
 <tr class="row-color">
@@ -253,14 +253,14 @@ boolean&nbsp;forImport)</code></th>
 <section class="detail" id="description">
 <h3>description</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">java.lang.String</span>&nbsp;<span class="member-name">description</span></div>
-<div class="block">Chat description; 0-255 characters.</div>
+<div class="block">telegramUpdate.Chat description; 0-255 characters.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="location">
 <h3>location</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="TdApi.ChatLocation.html" title="class in org.drinkless.tdlib">TdApi.ChatLocation</a></span>&nbsp;<span class="member-name">location</span></div>
-<div class="block">Chat location if a location-based supergroup is being created.</div>
+<div class="block">telegramUpdate.Chat location if a location-based supergroup is being created.</div>
 </section>
 </li>
 <li>
@@ -295,7 +295,7 @@ boolean&nbsp;forImport)</code></th>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="member-name">CreateNewSupergroupChat</span>()</div>
 <div class="block">Default constructor for a function, which creates a new supergroup or channel and sends a corresponding messageSupergroupChatCreate. Returns the newly created chat.
 
- <p> Returns <a href="TdApi.Chat.html" title="class in org.drinkless.tdlib"><code>Chat</code></a> </p></div>
+ <p> Returns <a href="TdApi.telegramUpdate.Chat.html" title="class in org.drinkless.tdlib"><code>telegramUpdate.Chat</code></a> </p></div>
 </section>
 </li>
 <li>
@@ -308,13 +308,13 @@ java.lang.String&nbsp;description,
 boolean&nbsp;forImport)</span></div>
 <div class="block">Creates a function, which creates a new supergroup or channel and sends a corresponding messageSupergroupChatCreate. Returns the newly created chat.
 
- <p> Returns <a href="TdApi.Chat.html" title="class in org.drinkless.tdlib"><code>Chat</code></a> </p></div>
+ <p> Returns <a href="TdApi.telegramUpdate.Chat.html" title="class in org.drinkless.tdlib"><code>telegramUpdate.Chat</code></a> </p></div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>title</code> - Title of the new chat; 1-128 characters.</dd>
 <dd><code>isChannel</code> - True, if a channel chat needs to be created.</dd>
-<dd><code>description</code> - Chat description; 0-255 characters.</dd>
-<dd><code>location</code> - Chat location if a location-based supergroup is being created.</dd>
+<dd><code>description</code> - telegramUpdate.Chat description; 0-255 characters.</dd>
+<dd><code>location</code> - telegramUpdate.Chat location if a location-based supergroup is being created.</dd>
 <dd><code>forImport</code> - True, if the supergroup is created for importing messages using importMessage.</dd>
 </dl>
 </section>

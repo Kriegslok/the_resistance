@@ -90,7 +90,7 @@ loadScripts(document, 'script');</script>
 <hr>
 <pre>public static class <span class="type-name-label">TdApi.DeleteChatHistory</span>
 extends <a href="TdApi.Function.html" title="class in org.drinkless.tdlib">TdApi.Function</a></pre>
-<div class="block">Deletes all messages in the chat. Use Chat.canBeDeletedOnlyForSelf and Chat.canBeDeletedForAllUsers fields to find whether and how the method can be applied to the chat.
+<div class="block">Deletes all messages in the chat. Use telegramUpdate.Chat.canBeDeletedOnlyForSelf and telegramUpdate.Chat.canBeDeletedForAllUsers fields to find whether and how the method can be applied to the chat.
 
  <p> Returns <a href="TdApi.Ok.html" title="class in org.drinkless.tdlib"><code>Ok</code></a> </p></div>
 </section>
@@ -115,7 +115,7 @@ extends <a href="TdApi.Function.html" title="class in org.drinkless.tdlib">TdApi
 <td class="col-first"><code>long</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#chatId">chatId</a></span></code></th>
 <td class="col-last">
-<div class="block">Chat identifier.</div>
+<div class="block">telegramUpdate.Chat identifier.</div>
 </td>
 </tr>
 <tr class="row-color">
@@ -223,7 +223,7 @@ boolean&nbsp;revoke)</code></th>
 <section class="detail" id="chatId">
 <h3>chatId</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="member-name">chatId</span></div>
-<div class="block">Chat identifier.</div>
+<div class="block">telegramUpdate.Chat identifier.</div>
 </section>
 </li>
 <li>
@@ -263,7 +263,7 @@ boolean&nbsp;revoke)</code></th>
 <section class="detail" id="&lt;init&gt;()">
 <h3>DeleteChatHistory</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="member-name">DeleteChatHistory</span>()</div>
-<div class="block">Default constructor for a function, which deletes all messages in the chat. Use Chat.canBeDeletedOnlyForSelf and Chat.canBeDeletedForAllUsers fields to find whether and how the method can be applied to the chat.
+<div class="block">Default constructor for a function, which deletes all messages in the chat. Use telegramUpdate.Chat.canBeDeletedOnlyForSelf and telegramUpdate.Chat.canBeDeletedForAllUsers fields to find whether and how the method can be applied to the chat.
 
  <p> Returns <a href="TdApi.Ok.html" title="class in org.drinkless.tdlib"><code>Ok</code></a> </p></div>
 </section>
@@ -274,12 +274,12 @@ boolean&nbsp;revoke)</code></th>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="member-name">DeleteChatHistory</span>&#8203;(<span class="parameters">long&nbsp;chatId,
 boolean&nbsp;removeFromChatList,
 boolean&nbsp;revoke)</span></div>
-<div class="block">Creates a function, which deletes all messages in the chat. Use Chat.canBeDeletedOnlyForSelf and Chat.canBeDeletedForAllUsers fields to find whether and how the method can be applied to the chat.
+<div class="block">Creates a function, which deletes all messages in the chat. Use telegramUpdate.Chat.canBeDeletedOnlyForSelf and telegramUpdate.Chat.canBeDeletedForAllUsers fields to find whether and how the method can be applied to the chat.
 
  <p> Returns <a href="TdApi.Ok.html" title="class in org.drinkless.tdlib"><code>Ok</code></a> </p></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>chatId</code> - Chat identifier.</dd>
+<dd><code>chatId</code> - telegramUpdate.Chat identifier.</dd>
 <dd><code>removeFromChatList</code> - Pass true if the chat should be removed from the chat list.</dd>
 <dd><code>revoke</code> - Pass true to try to delete chat history for all users.</dd>
 </dl>
