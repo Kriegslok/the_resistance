@@ -11,12 +11,11 @@ public class From {
     private String username;
 
     public From() {
-//        String id, String is_bot, String first_name, String language_code
-        this.id = id;
-        this.is_bot = is_bot;
-        this.first_name = first_name;
-        this.language_code = language_code;
-        this.username = username;
+        this.id = 0;
+        this.is_bot = false;
+        this.first_name = null;
+        this.language_code = null;
+        this.username = null;
     }
 
     public int getId() {

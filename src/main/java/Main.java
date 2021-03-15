@@ -22,11 +22,11 @@ public class Main {
     public static void main(String[] args) throws JsonProcessingException, InterruptedException {
         List<Update> listOfUpdates;
         Message responseMessage;
-        int lastUpdateId = 55813919;
+        int lastUpdateId = 0;
         RClientConfig config = new RClientConfig(telegramBotUrl, token);
         AsyncHttpClient asyncHttpClient = new DefaultAsyncHttpClient();
         RClient client = new RClient(asyncHttpClient, config, lastUpdateId);
-        //listOfUpdates = client.getUpdates();
+        listOfUpdates = client.getUpdates();
 
 
         while (true) {

@@ -10,11 +10,10 @@ public class Chat {
     private String username;
 
     public Chat() {
-//        String id, String first_name, String type
-        this.id = id;
-        this.first_name = first_name;
-        this.type = type;
-        this.username = username;
+        this.id = 0;
+        this.first_name = null;
+        this.type = null;
+        this.username = null;
     }
 
     public int getId() {

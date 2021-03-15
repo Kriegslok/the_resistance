@@ -8,9 +8,8 @@ public class Update {
     private Message message;
 
     public Update() {
-//        String update_id, telegramResponse.Message message
-        this.update_id = update_id;
-        this.message = message;
+        this.update_id = 0;
+        this.message = null;
     }
 
     public int getUpdate_id() {
