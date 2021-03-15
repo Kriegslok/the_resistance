@@ -1591,7 +1591,7 @@ public class TdApi {
      */
     public static class BasicGroupFullInfo extends Object {
         /**
-         * Chat photo; may be null.
+         * telegramResponse.Chat photo; may be null.
          */
         public ChatPhoto photo;
         /**
@@ -1620,7 +1620,7 @@ public class TdApi {
         /**
          * Contains full information about a basic group.
          *
-         * @param photo Chat photo; may be null.
+         * @param photo telegramResponse.Chat photo; may be null.
          * @param description Group description. Updated only after the basic group is opened.
          * @param creatorUserId User identifier of the creator of the group; 0 if unknown.
          * @param members Group members.
@@ -2997,7 +2997,7 @@ public class TdApi {
      */
     public static class Chat extends Object {
         /**
-         * Chat unique identifier.
+         * telegramResponse.Chat unique identifier.
          */
         public long id;
         /**
@@ -3005,11 +3005,11 @@ public class TdApi {
          */
         public ChatType type;
         /**
-         * Chat title.
+         * telegramResponse.Chat title.
          */
         public String title;
         /**
-         * Chat photo; may be null.
+         * telegramResponse.Chat photo; may be null.
          */
         public ChatPhotoInfo photo;
         /**
@@ -3106,10 +3106,10 @@ public class TdApi {
         /**
          * A chat. (Can be a private chat, basic group, supergroup, or secret chat.)
          *
-         * @param id Chat unique identifier.
+         * @param id telegramResponse.Chat unique identifier.
          * @param type Type of the chat.
-         * @param title Chat title.
-         * @param photo Chat photo; may be null.
+         * @param title telegramResponse.Chat title.
+         * @param photo telegramResponse.Chat photo; may be null.
          * @param permissions Actions that non-administrator chat members are allowed to take in the chat.
          * @param lastMessage Last message in the chat; may be null.
          * @param positions Positions of the chat in chat lists.
@@ -3853,7 +3853,7 @@ public class TdApi {
      */
     public static class ChatEvent extends Object {
         /**
-         * Chat event identifier.
+         * telegramResponse.Chat event identifier.
          */
         public long id;
         /**
@@ -3878,7 +3878,7 @@ public class TdApi {
         /**
          * Represents a chat event.
          *
-         * @param id Chat event identifier.
+         * @param id telegramResponse.Chat event identifier.
          * @param date Point in time (Unix timestamp) when the event happened.
          * @param userId Identifier of the user who performed the action that triggered the event.
          * @param action Action performed by the user.
@@ -4206,7 +4206,7 @@ public class TdApi {
      */
     public static class ChatEventMemberPromoted extends ChatEventAction {
         /**
-         * Chat member user identifier.
+         * telegramResponse.Chat member user identifier.
          */
         public int userId;
         /**
@@ -4227,7 +4227,7 @@ public class TdApi {
         /**
          * A chat member has gained/lost administrator status, or the list of their administrator privileges has changed.
          *
-         * @param userId Chat member user identifier.
+         * @param userId telegramResponse.Chat member user identifier.
          * @param oldStatus Previous status of the chat member.
          * @param newStatus New status of the chat member.
          */
@@ -4256,7 +4256,7 @@ public class TdApi {
      */
     public static class ChatEventMemberRestricted extends ChatEventAction {
         /**
-         * Chat member user identifier.
+         * telegramResponse.Chat member user identifier.
          */
         public int userId;
         /**
@@ -4277,7 +4277,7 @@ public class TdApi {
         /**
          * A chat member was restricted/unrestricted or banned/unbanned, or the list of their restrictions has changed.
          *
-         * @param userId Chat member user identifier.
+         * @param userId telegramResponse.Chat member user identifier.
          * @param oldStatus Previous status of the chat member.
          * @param newStatus New status of the chat member.
          */
@@ -5270,7 +5270,7 @@ public class TdApi {
      */
     public static class ChatInviteLink extends Object {
         /**
-         * Chat invite link.
+         * telegramResponse.Chat invite link.
          */
         public String inviteLink;
         /**
@@ -5319,7 +5319,7 @@ public class TdApi {
         /**
          * Contains a chat invite link.
          *
-         * @param inviteLink Chat invite link.
+         * @param inviteLink telegramResponse.Chat invite link.
          * @param administratorUserId User identifier of an administrator created the link.
          * @param date Point in time (Unix timestamp) when the link was created.
          * @param editDate Point in time (Unix timestamp) when the link was last edited; 0 if never or unknown.
@@ -5362,7 +5362,7 @@ public class TdApi {
      */
     public static class ChatInviteLinkInfo extends Object {
         /**
-         * Chat identifier of the invite link; 0 if the user has no access to the chat before joining.
+         * telegramResponse.Chat identifier of the invite link; 0 if the user has no access to the chat before joining.
          */
         public long chatId;
         /**
@@ -5378,7 +5378,7 @@ public class TdApi {
          */
         public String title;
         /**
-         * Chat photo; may be null.
+         * telegramResponse.Chat photo; may be null.
          */
         public ChatPhotoInfo photo;
         /**
@@ -5403,11 +5403,11 @@ public class TdApi {
         /**
          * Contains information about a chat invite link.
          *
-         * @param chatId Chat identifier of the invite link; 0 if the user has no access to the chat before joining.
+         * @param chatId telegramResponse.Chat identifier of the invite link; 0 if the user has no access to the chat before joining.
          * @param accessibleFor If non-zero, the amount of time for which read access to the chat will remain available, in seconds.
          * @param type Contains information about the type of the chat.
          * @param title Title of the chat.
-         * @param photo Chat photo; may be null.
+         * @param photo telegramResponse.Chat photo; may be null.
          * @param memberCount Number of members in the chat.
          * @param memberUserIds User identifiers of some chat members that may be known to the current user.
          * @param isPublic True, if the chat is a public supergroup or channel, i.e. it has a username or it is a location-based supergroup.
@@ -5631,7 +5631,7 @@ public class TdApi {
      */
     public static class ChatListFilter extends ChatList {
         /**
-         * Chat filter identifier.
+         * telegramResponse.Chat filter identifier.
          */
         public int chatFilterId;
 
@@ -5644,7 +5644,7 @@ public class TdApi {
         /**
          * A list of chats belonging to a chat filter.
          *
-         * @param chatFilterId Chat filter identifier.
+         * @param chatFilterId telegramResponse.Chat filter identifier.
          */
         public ChatListFilter(int chatFilterId) {
             this.chatFilterId = chatFilterId;
@@ -6351,7 +6351,7 @@ public class TdApi {
      */
     public static class ChatNearby extends Object {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -6368,7 +6368,7 @@ public class TdApi {
         /**
          * Describes a chat located nearby.
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param distance Distance to the chat location, in meters.
          */
         public ChatNearby(long chatId, int distance) {
@@ -7432,7 +7432,7 @@ public class TdApi {
      */
     public static class ChatStatisticsMessageInteractionInfo extends Object {
         /**
-         * Message identifier.
+         * telegramResponse.Message identifier.
          */
         public long messageId;
         /**
@@ -7453,7 +7453,7 @@ public class TdApi {
         /**
          * Contains statistics about interactions with a message.
          *
-         * @param messageId Message identifier.
+         * @param messageId telegramResponse.Message identifier.
          * @param viewCount Number of times the message was viewed.
          * @param forwardCount Number of times the message was forwarded.
          */
@@ -13173,7 +13173,7 @@ public class TdApi {
          */
         public String gameShortName;
         /**
-         * Message reply markup. Must be of type replyMarkupInlineKeyboard or null.
+         * telegramResponse.Message reply markup. Must be of type replyMarkupInlineKeyboard or null.
          */
         public ReplyMarkup replyMarkup;
 
@@ -13188,7 +13188,7 @@ public class TdApi {
          *
          * @param id Unique identifier of the query result.
          * @param gameShortName Short name of the game.
-         * @param replyMarkup Message reply markup. Must be of type replyMarkupInlineKeyboard or null.
+         * @param replyMarkup telegramResponse.Message reply markup. Must be of type replyMarkupInlineKeyboard or null.
          */
         public InputInlineQueryResultGame(String id, String gameShortName, ReplyMarkup replyMarkup) {
             this.id = id;
@@ -17362,7 +17362,7 @@ public class TdApi {
      */
     public static class Message extends Object {
         /**
-         * Message identifier; unique for the chat to which the message belongs.
+         * telegramResponse.Message identifier; unique for the chat to which the message belongs.
          */
         public long id;
         /**
@@ -17370,7 +17370,7 @@ public class TdApi {
          */
         public MessageSender sender;
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -17491,9 +17491,9 @@ public class TdApi {
         /**
          * Describes a message.
          *
-         * @param id Message identifier; unique for the chat to which the message belongs.
+         * @param id telegramResponse.Message identifier; unique for the chat to which the message belongs.
          * @param sender The sender of the message.
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param sendingState Information about the sending state of the message; may be null.
          * @param schedulingState Information about the scheduling state of the message; may be null.
          * @param isOutgoing True, if the message is outgoing.
@@ -19050,7 +19050,7 @@ public class TdApi {
      */
     public static class MessageCustomServiceAction extends MessageContent {
         /**
-         * Message text to be shown in the chat.
+         * telegramResponse.Message text to be shown in the chat.
          */
         public String text;
 
@@ -19063,7 +19063,7 @@ public class TdApi {
         /**
          * A non-standard action has happened in the chat.
          *
-         * @param text Message text to be shown in the chat.
+         * @param text telegramResponse.Message text to be shown in the chat.
          */
         public MessageCustomServiceAction(String text) {
             this.text = text;
@@ -19459,12 +19459,12 @@ public class TdApi {
     }
 
     /**
-     * Message content that is not supported in the current TDLib version.
+     * telegramResponse.Message content that is not supported in the current TDLib version.
      */
     public static class MessageUnsupported extends MessageContent {
 
         /**
-         * Message content that is not supported in the current TDLib version.
+         * telegramResponse.Message content that is not supported in the current TDLib version.
          */
         public MessageUnsupported() {
         }
@@ -19839,7 +19839,7 @@ public class TdApi {
          */
         public long chatId;
         /**
-         * Message identifier of the original message.
+         * telegramResponse.Message identifier of the original message.
          */
         public long messageId;
         /**
@@ -19857,7 +19857,7 @@ public class TdApi {
          * The message was originally a post in a channel.
          *
          * @param chatId Identifier of the chat from which the message was originally forwarded.
-         * @param messageId Message identifier of the original message.
+         * @param messageId telegramResponse.Message identifier of the original message.
          * @param authorSignature Original post author signature.
          */
         public MessageForwardOriginChannel(long chatId, long messageId, String authorSignature) {
@@ -19973,7 +19973,7 @@ public class TdApi {
      */
     public static class MessageLink extends Object {
         /**
-         * Message link.
+         * telegramResponse.Message link.
          */
         public String link;
         /**
@@ -19990,7 +19990,7 @@ public class TdApi {
         /**
          * Contains an HTTPS link to a message in a supergroup or channel.
          *
-         * @param link Message link.
+         * @param link telegramResponse.Message link.
          * @param isPublic True, if the link will work for non-members of the chat.
          */
         public MessageLink(String link, boolean isPublic) {
@@ -20219,7 +20219,7 @@ public class TdApi {
          */
         public boolean fromBackground;
         /**
-         * Message scheduling state. Messages sent to a secret chat, live location messages and self-destructing messages can't be scheduled.
+         * telegramResponse.Message scheduling state. Messages sent to a secret chat, live location messages and self-destructing messages can't be scheduled.
          */
         public MessageSchedulingState schedulingState;
 
@@ -20234,7 +20234,7 @@ public class TdApi {
          *
          * @param disableNotification Pass true to disable notification for the message.
          * @param fromBackground Pass true if the message is sent from the background.
-         * @param schedulingState Message scheduling state. Messages sent to a secret chat, live location messages and self-destructing messages can't be scheduled.
+         * @param schedulingState telegramResponse.Message scheduling state. Messages sent to a secret chat, live location messages and self-destructing messages can't be scheduled.
          */
         public MessageSendOptions(boolean disableNotification, boolean fromBackground, MessageSchedulingState schedulingState) {
             this.disableNotification = disableNotification;
@@ -20518,7 +20518,7 @@ public class TdApi {
          */
         public long chatId;
         /**
-         * Message thread identifier, unique within the chat.
+         * telegramResponse.Message thread identifier, unique within the chat.
          */
         public long messageThreadId;
         /**
@@ -20544,7 +20544,7 @@ public class TdApi {
          * Contains information about a message thread.
          *
          * @param chatId Identifier of the chat to which the message thread belongs.
-         * @param messageThreadId Message thread identifier, unique within the chat.
+         * @param messageThreadId telegramResponse.Message thread identifier, unique within the chat.
          * @param replyInfo Contains information about the message thread.
          * @param messages The messages from which the thread starts. The messages are returned in a reverse chronological order (i.e., in order of decreasing messageId).
          * @param draftMessage A draft of a message in the message thread; may be null.
@@ -22737,15 +22737,15 @@ public class TdApi {
      */
     public static class PageBlockChatLink extends PageBlock {
         /**
-         * Chat title.
+         * telegramResponse.Chat title.
          */
         public String title;
         /**
-         * Chat photo; may be null.
+         * telegramResponse.Chat photo; may be null.
          */
         public ChatPhotoInfo photo;
         /**
-         * Chat username, by which all other information about the chat should be resolved.
+         * telegramResponse.Chat username, by which all other information about the chat should be resolved.
          */
         public String username;
 
@@ -22758,9 +22758,9 @@ public class TdApi {
         /**
          * A link to a chat.
          *
-         * @param title Chat title.
-         * @param photo Chat photo; may be null.
-         * @param username Chat username, by which all other information about the chat should be resolved.
+         * @param title telegramResponse.Chat title.
+         * @param photo telegramResponse.Chat photo; may be null.
+         * @param username telegramResponse.Chat username, by which all other information about the chat should be resolved.
          */
         public PageBlockChatLink(String title, ChatPhotoInfo photo, String username) {
             this.title = title;
@@ -26109,7 +26109,7 @@ public class TdApi {
      */
     public static class PushMessageContentAnimation extends PushMessageContent {
         /**
-         * Message content; may be null.
+         * telegramResponse.Message content; may be null.
          */
         public Animation animation;
         /**
@@ -26130,7 +26130,7 @@ public class TdApi {
         /**
          * An animation message (GIF-style).
          *
-         * @param animation Message content; may be null.
+         * @param animation telegramResponse.Message content; may be null.
          * @param caption Animation caption.
          * @param isPinned True, if the message is a pinned message with the specified content.
          */
@@ -26159,7 +26159,7 @@ public class TdApi {
      */
     public static class PushMessageContentAudio extends PushMessageContent {
         /**
-         * Message content; may be null.
+         * telegramResponse.Message content; may be null.
          */
         public Audio audio;
         /**
@@ -26176,7 +26176,7 @@ public class TdApi {
         /**
          * An audio message.
          *
-         * @param audio Message content; may be null.
+         * @param audio telegramResponse.Message content; may be null.
          * @param isPinned True, if the message is a pinned message with the specified content.
          */
         public PushMessageContentAudio(Audio audio, boolean isPinned) {
@@ -26272,7 +26272,7 @@ public class TdApi {
      */
     public static class PushMessageContentDocument extends PushMessageContent {
         /**
-         * Message content; may be null.
+         * telegramResponse.Message content; may be null.
          */
         public Document document;
         /**
@@ -26289,7 +26289,7 @@ public class TdApi {
         /**
          * A document message (a general file).
          *
-         * @param document Message content; may be null.
+         * @param document telegramResponse.Message content; may be null.
          * @param isPinned True, if the message is a pinned message with the specified content.
          */
         public PushMessageContentDocument(Document document, boolean isPinned) {
@@ -26498,7 +26498,7 @@ public class TdApi {
      */
     public static class PushMessageContentPhoto extends PushMessageContent {
         /**
-         * Message content; may be null.
+         * telegramResponse.Message content; may be null.
          */
         public Photo photo;
         /**
@@ -26523,7 +26523,7 @@ public class TdApi {
         /**
          * A photo message.
          *
-         * @param photo Message content; may be null.
+         * @param photo telegramResponse.Message content; may be null.
          * @param caption Photo caption.
          * @param isSecret True, if the photo is secret.
          * @param isPinned True, if the message is a pinned message with the specified content.
@@ -26629,7 +26629,7 @@ public class TdApi {
      */
     public static class PushMessageContentSticker extends PushMessageContent {
         /**
-         * Message content; may be null.
+         * telegramResponse.Message content; may be null.
          */
         public Sticker sticker;
         /**
@@ -26650,7 +26650,7 @@ public class TdApi {
         /**
          * A message with a sticker.
          *
-         * @param sticker Message content; may be null.
+         * @param sticker telegramResponse.Message content; may be null.
          * @param emoji Emoji corresponding to the sticker; may be empty.
          * @param isPinned True, if the message is a pinned message with the specified content.
          */
@@ -26679,7 +26679,7 @@ public class TdApi {
      */
     public static class PushMessageContentText extends PushMessageContent {
         /**
-         * Message text.
+         * telegramResponse.Message text.
          */
         public String text;
         /**
@@ -26696,7 +26696,7 @@ public class TdApi {
         /**
          * A text message.
          *
-         * @param text Message text.
+         * @param text telegramResponse.Message text.
          * @param isPinned True, if the message is a pinned message with the specified content.
          */
         public PushMessageContentText(String text, boolean isPinned) {
@@ -26723,7 +26723,7 @@ public class TdApi {
      */
     public static class PushMessageContentVideo extends PushMessageContent {
         /**
-         * Message content; may be null.
+         * telegramResponse.Message content; may be null.
          */
         public Video video;
         /**
@@ -26748,7 +26748,7 @@ public class TdApi {
         /**
          * A video message.
          *
-         * @param video Message content; may be null.
+         * @param video telegramResponse.Message content; may be null.
          * @param caption Video caption.
          * @param isSecret True, if the video is secret.
          * @param isPinned True, if the message is a pinned message with the specified content.
@@ -26779,7 +26779,7 @@ public class TdApi {
      */
     public static class PushMessageContentVideoNote extends PushMessageContent {
         /**
-         * Message content; may be null.
+         * telegramResponse.Message content; may be null.
          */
         public VideoNote videoNote;
         /**
@@ -26796,7 +26796,7 @@ public class TdApi {
         /**
          * A video note message.
          *
-         * @param videoNote Message content; may be null.
+         * @param videoNote telegramResponse.Message content; may be null.
          * @param isPinned True, if the message is a pinned message with the specified content.
          */
         public PushMessageContentVideoNote(VideoNote videoNote, boolean isPinned) {
@@ -26823,7 +26823,7 @@ public class TdApi {
      */
     public static class PushMessageContentVoiceNote extends PushMessageContent {
         /**
-         * Message content; may be null.
+         * telegramResponse.Message content; may be null.
          */
         public VoiceNote voiceNote;
         /**
@@ -26840,7 +26840,7 @@ public class TdApi {
         /**
          * A voice note message.
          *
-         * @param voiceNote Message content; may be null.
+         * @param voiceNote telegramResponse.Message content; may be null.
          * @param isPinned True, if the message is a pinned message with the specified content.
          */
         public PushMessageContentVoiceNote(VoiceNote voiceNote, boolean isPinned) {
@@ -27222,7 +27222,7 @@ public class TdApi {
          */
         public ChatFilter filter;
         /**
-         * Chat filter description.
+         * telegramResponse.Chat filter description.
          */
         public String description;
 
@@ -27236,7 +27236,7 @@ public class TdApi {
          * Describes a recommended chat filter.
          *
          * @param filter The chat filter.
-         * @param description Chat filter description.
+         * @param description telegramResponse.Chat filter description.
          */
         public RecommendedChatFilter(ChatFilter filter, String description) {
             this.filter = filter;
@@ -29878,7 +29878,7 @@ public class TdApi {
      */
     public static class StorageStatisticsByChat extends Object {
         /**
-         * Chat identifier; 0 if none.
+         * telegramResponse.Chat identifier; 0 if none.
          */
         public long chatId;
         /**
@@ -29903,7 +29903,7 @@ public class TdApi {
         /**
          * Contains the storage usage statistics for a specific chat.
          *
-         * @param chatId Chat identifier; 0 if none.
+         * @param chatId telegramResponse.Chat identifier; 0 if none.
          * @param size Total size of the files in the chat.
          * @param count Total number of files in the chat.
          * @param byFileType Statistics split by file types.
@@ -30124,7 +30124,7 @@ public class TdApi {
     }
 
     /**
-     * Represents a supergroup or channel with zero or more members (subscribers in the case of channels). From the point of view of the system, a channel is a special kind of a supergroup: only administrators can post and see the list of members, and posts from all administrators use the name and photo of the channel instead of individual names and profile photos. Unlike supergroups, channels can have an unlimited number of subscribers.
+     * Represents a supergroup or channel with zero or more members (subscribers in the case of channels). telegramResponse.From the point of view of the system, a channel is a special kind of a supergroup: only administrators can post and see the list of members, and posts from all administrators use the name and photo of the channel instead of individual names and profile photos. Unlike supergroups, channels can have an unlimited number of subscribers.
      */
     public static class Supergroup extends Object {
         /**
@@ -30185,13 +30185,13 @@ public class TdApi {
         public boolean isFake;
 
         /**
-         * Represents a supergroup or channel with zero or more members (subscribers in the case of channels). From the point of view of the system, a channel is a special kind of a supergroup: only administrators can post and see the list of members, and posts from all administrators use the name and photo of the channel instead of individual names and profile photos. Unlike supergroups, channels can have an unlimited number of subscribers.
+         * Represents a supergroup or channel with zero or more members (subscribers in the case of channels). telegramResponse.From the point of view of the system, a channel is a special kind of a supergroup: only administrators can post and see the list of members, and posts from all administrators use the name and photo of the channel instead of individual names and profile photos. Unlike supergroups, channels can have an unlimited number of subscribers.
          */
         public Supergroup() {
         }
 
         /**
-         * Represents a supergroup or channel with zero or more members (subscribers in the case of channels). From the point of view of the system, a channel is a special kind of a supergroup: only administrators can post and see the list of members, and posts from all administrators use the name and photo of the channel instead of individual names and profile photos. Unlike supergroups, channels can have an unlimited number of subscribers.
+         * Represents a supergroup or channel with zero or more members (subscribers in the case of channels). telegramResponse.From the point of view of the system, a channel is a special kind of a supergroup: only administrators can post and see the list of members, and posts from all administrators use the name and photo of the channel instead of individual names and profile photos. Unlike supergroups, channels can have an unlimited number of subscribers.
          *
          * @param id Supergroup or channel identifier.
          * @param username Username of the supergroup or channel; empty for private supergroups or channels.
@@ -30244,7 +30244,7 @@ public class TdApi {
      */
     public static class SupergroupFullInfo extends Object {
         /**
-         * Chat photo; may be null.
+         * telegramResponse.Chat photo; may be null.
          */
         public ChatPhoto photo;
         /**
@@ -30268,7 +30268,7 @@ public class TdApi {
          */
         public int bannedCount;
         /**
-         * Chat identifier of a discussion group for the channel, or a channel, for which the supergroup is the designated discussion group; 0 if none or unknown.
+         * telegramResponse.Chat identifier of a discussion group for the channel, or a channel, for which the supergroup is the designated discussion group; 0 if none or unknown.
          */
         public long linkedChatId;
         /**
@@ -30333,13 +30333,13 @@ public class TdApi {
         /**
          * Contains full information about a supergroup or channel.
          *
-         * @param photo Chat photo; may be null.
+         * @param photo telegramResponse.Chat photo; may be null.
          * @param description Supergroup or channel description.
          * @param memberCount Number of members in the supergroup or channel; 0 if unknown.
          * @param administratorCount Number of privileged users in the supergroup or channel; 0 if unknown.
          * @param restrictedCount Number of restricted users in the supergroup; 0 if unknown.
          * @param bannedCount Number of users banned from chat; 0 if unknown.
-         * @param linkedChatId Chat identifier of a discussion group for the channel, or a channel, for which the supergroup is the designated discussion group; 0 if none or unknown.
+         * @param linkedChatId telegramResponse.Chat identifier of a discussion group for the channel, or a channel, for which the supergroup is the designated discussion group; 0 if none or unknown.
          * @param slowModeDelay Delay between consecutive sent messages for non-administrator supergroup members, in seconds.
          * @param slowModeDelayExpiresIn Time left before next message can be sent in the supergroup, in seconds. An updateSupergroupFullInfo update is not triggered when value of this field changes, but both new and old values are non-zero.
          * @param canGetMembers True, if members of the chat can be retrieved.
@@ -30801,7 +30801,7 @@ public class TdApi {
      */
     public static class TMeUrlTypeChatInvite extends TMeUrlType {
         /**
-         * Chat invite link info.
+         * telegramResponse.Chat invite link info.
          */
         public ChatInviteLinkInfo info;
 
@@ -30814,7 +30814,7 @@ public class TdApi {
         /**
          * A chat invite link.
          *
-         * @param info Chat invite link info.
+         * @param info telegramResponse.Chat invite link info.
          */
         public TMeUrlTypeChatInvite(ChatInviteLinkInfo info) {
             this.info = info;
@@ -32686,11 +32686,11 @@ public class TdApi {
      */
     public static class UpdateMessageContent extends Update {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
-         * Message identifier.
+         * telegramResponse.Message identifier.
          */
         public long messageId;
         /**
@@ -32707,8 +32707,8 @@ public class TdApi {
         /**
          * The message content has changed.
          *
-         * @param chatId Chat identifier.
-         * @param messageId Message identifier.
+         * @param chatId telegramResponse.Chat identifier.
+         * @param messageId telegramResponse.Message identifier.
          * @param newContent New message content.
          */
         public UpdateMessageContent(long chatId, long messageId, MessageContent newContent) {
@@ -32736,11 +32736,11 @@ public class TdApi {
      */
     public static class UpdateMessageEdited extends Update {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
-         * Message identifier.
+         * telegramResponse.Message identifier.
          */
         public long messageId;
         /**
@@ -32761,8 +32761,8 @@ public class TdApi {
         /**
          * A message was edited. Changes in the message content will come in a separate updateMessageContent.
          *
-         * @param chatId Chat identifier.
-         * @param messageId Message identifier.
+         * @param chatId telegramResponse.Chat identifier.
+         * @param messageId telegramResponse.Message identifier.
          * @param editDate Point in time (Unix timestamp) when the message was edited.
          * @param replyMarkup New message reply markup; may be null.
          */
@@ -32792,7 +32792,7 @@ public class TdApi {
      */
     public static class UpdateMessageIsPinned extends Update {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -32813,7 +32813,7 @@ public class TdApi {
         /**
          * The message pinned state was changed.
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param messageId The message identifier.
          * @param isPinned True, if the message is pinned.
          */
@@ -32842,11 +32842,11 @@ public class TdApi {
      */
     public static class UpdateMessageInteractionInfo extends Update {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
-         * Message identifier.
+         * telegramResponse.Message identifier.
          */
         public long messageId;
         /**
@@ -32863,8 +32863,8 @@ public class TdApi {
         /**
          * The information about interactions with a message has changed.
          *
-         * @param chatId Chat identifier.
-         * @param messageId Message identifier.
+         * @param chatId telegramResponse.Chat identifier.
+         * @param messageId telegramResponse.Message identifier.
          * @param interactionInfo New information about interactions with the message; may be null.
          */
         public UpdateMessageInteractionInfo(long chatId, long messageId, MessageInteractionInfo interactionInfo) {
@@ -32892,11 +32892,11 @@ public class TdApi {
      */
     public static class UpdateMessageContentOpened extends Update {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
-         * Message identifier.
+         * telegramResponse.Message identifier.
          */
         public long messageId;
 
@@ -32909,8 +32909,8 @@ public class TdApi {
         /**
          * The message content was opened. Updates voice note messages to &quot;listened&quot;, video note messages to &quot;viewed&quot; and starts the TTL timer for self-destructing messages.
          *
-         * @param chatId Chat identifier.
-         * @param messageId Message identifier.
+         * @param chatId telegramResponse.Chat identifier.
+         * @param messageId telegramResponse.Message identifier.
          */
         public UpdateMessageContentOpened(long chatId, long messageId) {
             this.chatId = chatId;
@@ -32936,11 +32936,11 @@ public class TdApi {
      */
     public static class UpdateMessageMentionRead extends Update {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
-         * Message identifier.
+         * telegramResponse.Message identifier.
          */
         public long messageId;
         /**
@@ -32957,8 +32957,8 @@ public class TdApi {
         /**
          * A message with an unread mention was read.
          *
-         * @param chatId Chat identifier.
-         * @param messageId Message identifier.
+         * @param chatId telegramResponse.Chat identifier.
+         * @param messageId telegramResponse.Message identifier.
          * @param unreadMentionCount The new number of unread mention messages left in the chat.
          */
         public UpdateMessageMentionRead(long chatId, long messageId, int unreadMentionCount) {
@@ -33068,7 +33068,7 @@ public class TdApi {
      */
     public static class UpdateChatTitle extends Update {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -33085,7 +33085,7 @@ public class TdApi {
         /**
          * The title of a chat was changed.
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param title The new chat title.
          */
         public UpdateChatTitle(long chatId, String title) {
@@ -33112,7 +33112,7 @@ public class TdApi {
      */
     public static class UpdateChatPhoto extends Update {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -33129,7 +33129,7 @@ public class TdApi {
         /**
          * A chat photo was changed.
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param photo The new chat photo; may be null.
          */
         public UpdateChatPhoto(long chatId, ChatPhotoInfo photo) {
@@ -33152,11 +33152,11 @@ public class TdApi {
     }
 
     /**
-     * Chat permissions was changed.
+     * telegramResponse.Chat permissions was changed.
      */
     public static class UpdateChatPermissions extends Update {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -33165,15 +33165,15 @@ public class TdApi {
         public ChatPermissions permissions;
 
         /**
-         * Chat permissions was changed.
+         * telegramResponse.Chat permissions was changed.
          */
         public UpdateChatPermissions() {
         }
 
         /**
-         * Chat permissions was changed.
+         * telegramResponse.Chat permissions was changed.
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param permissions The new chat permissions.
          */
         public UpdateChatPermissions(long chatId, ChatPermissions permissions) {
@@ -33200,7 +33200,7 @@ public class TdApi {
      */
     public static class UpdateChatLastMessage extends Update {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -33221,7 +33221,7 @@ public class TdApi {
         /**
          * The last message of a chat was changed. If lastMessage is null, then the last message in the chat became unknown. Some new unknown messages might be added to the chat in this case.
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param lastMessage The new last message in the chat; may be null.
          * @param positions The new chat positions in the chat lists.
          */
@@ -33250,7 +33250,7 @@ public class TdApi {
      */
     public static class UpdateChatPosition extends Update {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -33267,7 +33267,7 @@ public class TdApi {
         /**
          * The position of a chat in a chat list has changed. Instead of this update updateChatLastMessage or updateChatDraftMessage might be sent.
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param position New chat position. If new order is 0, then the chat needs to be removed from the list.
          */
         public UpdateChatPosition(long chatId, ChatPosition position) {
@@ -33294,7 +33294,7 @@ public class TdApi {
      */
     public static class UpdateChatIsMarkedAsUnread extends Update {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -33311,7 +33311,7 @@ public class TdApi {
         /**
          * A chat was marked as unread or was read.
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param isMarkedAsUnread New value of isMarkedAsUnread.
          */
         public UpdateChatIsMarkedAsUnread(long chatId, boolean isMarkedAsUnread) {
@@ -33338,7 +33338,7 @@ public class TdApi {
      */
     public static class UpdateChatIsBlocked extends Update {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -33355,7 +33355,7 @@ public class TdApi {
         /**
          * A chat was blocked or unblocked.
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param isBlocked New value of isBlocked.
          */
         public UpdateChatIsBlocked(long chatId, boolean isBlocked) {
@@ -33382,7 +33382,7 @@ public class TdApi {
      */
     public static class UpdateChatHasScheduledMessages extends Update {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -33399,7 +33399,7 @@ public class TdApi {
         /**
          * A chat's hasScheduledMessages field has changed.
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param hasScheduledMessages New value of hasScheduledMessages.
          */
         public UpdateChatHasScheduledMessages(long chatId, boolean hasScheduledMessages) {
@@ -33426,7 +33426,7 @@ public class TdApi {
      */
     public static class UpdateChatVoiceChat extends Update {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -33447,7 +33447,7 @@ public class TdApi {
         /**
          * A chat voice chat state has changed.
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param voiceChatGroupCallId New value of voiceChatGroupCallId.
          * @param isVoiceChatEmpty New value of isVoiceChatEmpty.
          */
@@ -33476,7 +33476,7 @@ public class TdApi {
      */
     public static class UpdateChatDefaultDisableNotification extends Update {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -33493,7 +33493,7 @@ public class TdApi {
         /**
          * The value of the default disableNotification parameter, used when a message is sent to the chat, was changed.
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param defaultDisableNotification The new defaultDisableNotification value.
          */
         public UpdateChatDefaultDisableNotification(long chatId, boolean defaultDisableNotification) {
@@ -33520,7 +33520,7 @@ public class TdApi {
      */
     public static class UpdateChatReadInbox extends Update {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -33541,7 +33541,7 @@ public class TdApi {
         /**
          * Incoming messages were read or number of unread messages has been changed.
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param lastReadInboxMessageId Identifier of the last read incoming message.
          * @param unreadCount The number of unread messages left in the chat.
          */
@@ -33570,7 +33570,7 @@ public class TdApi {
      */
     public static class UpdateChatReadOutbox extends Update {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -33587,7 +33587,7 @@ public class TdApi {
         /**
          * Outgoing messages were read.
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param lastReadOutboxMessageId Identifier of last read outgoing message.
          */
         public UpdateChatReadOutbox(long chatId, long lastReadOutboxMessageId) {
@@ -33614,7 +33614,7 @@ public class TdApi {
      */
     public static class UpdateChatUnreadMentionCount extends Update {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -33631,7 +33631,7 @@ public class TdApi {
         /**
          * The chat unreadMentionCount has changed.
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param unreadMentionCount The number of unread mention messages left in the chat.
          */
         public UpdateChatUnreadMentionCount(long chatId, int unreadMentionCount) {
@@ -33658,7 +33658,7 @@ public class TdApi {
      */
     public static class UpdateChatNotificationSettings extends Update {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -33675,7 +33675,7 @@ public class TdApi {
         /**
          * Notification settings for a chat were changed.
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param notificationSettings The new notification settings.
          */
         public UpdateChatNotificationSettings(long chatId, ChatNotificationSettings notificationSettings) {
@@ -33746,7 +33746,7 @@ public class TdApi {
      */
     public static class UpdateChatActionBar extends Update {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -33763,7 +33763,7 @@ public class TdApi {
         /**
          * The chat action bar was changed.
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param actionBar The new value of the action bar; may be null.
          */
         public UpdateChatActionBar(long chatId, ChatActionBar actionBar) {
@@ -33790,7 +33790,7 @@ public class TdApi {
      */
     public static class UpdateChatReplyMarkup extends Update {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -33807,7 +33807,7 @@ public class TdApi {
         /**
          * The default chat reply markup was changed. Can occur because new messages with reply markup were received or because an old reply markup was hidden by the user.
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param replyMarkupMessageId Identifier of the message from which reply markup needs to be used; 0 if there is no default custom reply markup in the chat.
          */
         public UpdateChatReplyMarkup(long chatId, long replyMarkupMessageId) {
@@ -33834,7 +33834,7 @@ public class TdApi {
      */
     public static class UpdateChatDraftMessage extends Update {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -33855,7 +33855,7 @@ public class TdApi {
         /**
          * A chat draft has changed. Be aware that the update may come in the currently opened chat but with old content of the draft. If the user has changed the content of the draft, this update shouldn't be applied.
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param draftMessage The new draft message; may be null.
          * @param positions The new chat positions in the chat lists.
          */
@@ -34022,7 +34022,7 @@ public class TdApi {
          */
         public long chatId;
         /**
-         * Chat identifier, which notification settings must be applied to the added notifications.
+         * telegramResponse.Chat identifier, which notification settings must be applied to the added notifications.
          */
         public long notificationSettingsChatId;
         /**
@@ -34054,7 +34054,7 @@ public class TdApi {
          * @param notificationGroupId Unique notification group identifier.
          * @param type New type of the notification group.
          * @param chatId Identifier of a chat to which all notifications in the group belong.
-         * @param notificationSettingsChatId Chat identifier, which notification settings must be applied to the added notifications.
+         * @param notificationSettingsChatId telegramResponse.Chat identifier, which notification settings must be applied to the added notifications.
          * @param isSilent True, if the notifications should be shown without sound.
          * @param totalCount Total number of unread notifications in the group, can be bigger than number of active notifications.
          * @param addedNotifications List of added group notifications, sorted by notification ID.
@@ -34172,7 +34172,7 @@ public class TdApi {
      */
     public static class UpdateDeleteMessages extends Update {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -34197,7 +34197,7 @@ public class TdApi {
         /**
          * Some messages were deleted.
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param messageIds Identifiers of the deleted messages.
          * @param isPermanent True, if the messages are permanently deleted by a user (as opposed to just becoming inaccessible).
          * @param fromCache True, if the messages are deleted only from the cache and can possibly be retrieved again in the future.
@@ -34228,7 +34228,7 @@ public class TdApi {
      */
     public static class UpdateUserChatAction extends Update {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -34253,7 +34253,7 @@ public class TdApi {
         /**
          * User activity in the chat has changed.
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param messageThreadId If not 0, a message thread identifier in which the action was performed.
          * @param userId Identifier of a user performing an action.
          * @param action The action description.
@@ -38176,7 +38176,7 @@ public class TdApi {
      */
     public static class AddChatMember extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -38201,7 +38201,7 @@ public class TdApi {
          *
          * <p> Returns {@link Ok Ok} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param userId Identifier of the user.
          * @param forwardLimit The number of earlier messages from the chat to be forwarded to the new member; up to 100. Ignored for supergroups and channels.
          */
@@ -38232,7 +38232,7 @@ public class TdApi {
      */
     public static class AddChatMembers extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -38253,7 +38253,7 @@ public class TdApi {
          *
          * <p> Returns {@link Ok Ok} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param userIds Identifiers of the users to be added to the chat. The maximum number of added users is 20 for supergroups and 100 for channels.
          */
         public AddChatMembers(long chatId, int[] userIds) {
@@ -38282,7 +38282,7 @@ public class TdApi {
      */
     public static class AddChatToList extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -38303,7 +38303,7 @@ public class TdApi {
          *
          * <p> Returns {@link Ok Ok} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param chatList The chat list. Use getChatListsToAddChat to get suitable chat lists.
          */
         public AddChatToList(long chatId, ChatList chatList) {
@@ -38466,7 +38466,7 @@ public class TdApi {
     /**
      * Adds a local message to a chat. The message is persistent across application restarts only if the message database is used. Returns the added message.
      *
-     * <p> Returns {@link Message Message} </p>
+     * <p> Returns {@link Message telegramResponse.Message} </p>
      */
     public static class AddLocalMessage extends Function {
         /**
@@ -38493,7 +38493,7 @@ public class TdApi {
         /**
          * Default constructor for a function, which adds a local message to a chat. The message is persistent across application restarts only if the message database is used. Returns the added message.
          *
-         * <p> Returns {@link Message Message} </p>
+         * <p> Returns {@link Message telegramResponse.Message} </p>
          */
         public AddLocalMessage() {
         }
@@ -38501,7 +38501,7 @@ public class TdApi {
         /**
          * Creates a function, which adds a local message to a chat. The message is persistent across application restarts only if the message database is used. Returns the added message.
          *
-         * <p> Returns {@link Message Message} </p>
+         * <p> Returns {@link Message telegramResponse.Message} </p>
          *
          * @param chatId Target chat.
          * @param sender The sender sender of the message.
@@ -39192,7 +39192,7 @@ public class TdApi {
      */
     public static class BanChatMember extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -39221,7 +39221,7 @@ public class TdApi {
          *
          * <p> Returns {@link Ok Ok} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param userId Identifier of the user.
          * @param bannedUntilDate Point in time (Unix timestamp) when the user will be unbanned; 0 if never. If the user is banned for more than 366 days or for less than 30 seconds from the current time, the user is considered to be banned forever. Ignored in basic groups.
          * @param revokeMessages Pass true to delete all messages in the chat for the user. Always true for supergroups and channels.
@@ -39809,7 +39809,7 @@ public class TdApi {
      */
     public static class CheckChatUsername extends Function {
         /**
-         * Chat identifier; should be identifier of a supergroup chat, or a channel chat, or a private chat with self, or zero if chat is being created.
+         * telegramResponse.Chat identifier; should be identifier of a supergroup chat, or a channel chat, or a private chat with self, or zero if chat is being created.
          */
         public long chatId;
         /**
@@ -39830,7 +39830,7 @@ public class TdApi {
          *
          * <p> Returns {@link CheckChatUsernameResult CheckChatUsernameResult} </p>
          *
-         * @param chatId Chat identifier; should be identifier of a supergroup chat, or a channel chat, or a private chat with self, or zero if chat is being created.
+         * @param chatId telegramResponse.Chat identifier; should be identifier of a supergroup chat, or a channel chat, or a private chat with self, or zero if chat is being created.
          * @param username Username to be checked.
          */
         public CheckChatUsername(long chatId, String username) {
@@ -40342,7 +40342,7 @@ public class TdApi {
      */
     public static class CloseChat extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
 
@@ -40359,7 +40359,7 @@ public class TdApi {
          *
          * <p> Returns {@link Ok Ok} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          */
         public CloseChat(long chatId) {
             this.chatId = chatId;
@@ -40470,7 +40470,7 @@ public class TdApi {
     /**
      * Returns an existing chat corresponding to a known basic group.
      *
-     * <p> Returns {@link Chat Chat} </p>
+     * <p> Returns {@link Chat telegramResponse.Chat} </p>
      */
     public static class CreateBasicGroupChat extends Function {
         /**
@@ -40485,7 +40485,7 @@ public class TdApi {
         /**
          * Default constructor for a function, which returns an existing chat corresponding to a known basic group.
          *
-         * <p> Returns {@link Chat Chat} </p>
+         * <p> Returns {@link Chat telegramResponse.Chat} </p>
          */
         public CreateBasicGroupChat() {
         }
@@ -40493,7 +40493,7 @@ public class TdApi {
         /**
          * Creates a function, which returns an existing chat corresponding to a known basic group.
          *
-         * <p> Returns {@link Chat Chat} </p>
+         * <p> Returns {@link Chat telegramResponse.Chat} </p>
          *
          * @param basicGroupId Basic group identifier.
          * @param force If true, the chat will be created without network request. In this case all information about the chat except its type, title and photo can be incorrect.
@@ -40580,7 +40580,7 @@ public class TdApi {
      */
     public static class CreateChatFilter extends Function {
         /**
-         * Chat filter.
+         * telegramResponse.Chat filter.
          */
         public ChatFilter filter;
 
@@ -40597,7 +40597,7 @@ public class TdApi {
          *
          * <p> Returns {@link ChatFilterInfo ChatFilterInfo} </p>
          *
-         * @param filter Chat filter.
+         * @param filter telegramResponse.Chat filter.
          */
         public CreateChatFilter(ChatFilter filter) {
             this.filter = filter;
@@ -40620,7 +40620,7 @@ public class TdApi {
     /**
      * Creates a new basic group and sends a corresponding messageBasicGroupChatCreate. Returns the newly created chat.
      *
-     * <p> Returns {@link Chat Chat} </p>
+     * <p> Returns {@link Chat telegramResponse.Chat} </p>
      */
     public static class CreateNewBasicGroupChat extends Function {
         /**
@@ -40635,7 +40635,7 @@ public class TdApi {
         /**
          * Default constructor for a function, which creates a new basic group and sends a corresponding messageBasicGroupChatCreate. Returns the newly created chat.
          *
-         * <p> Returns {@link Chat Chat} </p>
+         * <p> Returns {@link Chat telegramResponse.Chat} </p>
          */
         public CreateNewBasicGroupChat() {
         }
@@ -40643,7 +40643,7 @@ public class TdApi {
         /**
          * Creates a function, which creates a new basic group and sends a corresponding messageBasicGroupChatCreate. Returns the newly created chat.
          *
-         * <p> Returns {@link Chat Chat} </p>
+         * <p> Returns {@link Chat telegramResponse.Chat} </p>
          *
          * @param userIds Identifiers of users to be added to the basic group.
          * @param title Title of the new basic group; 1-128 characters.
@@ -40670,7 +40670,7 @@ public class TdApi {
     /**
      * Creates a new secret chat. Returns the newly created chat.
      *
-     * <p> Returns {@link Chat Chat} </p>
+     * <p> Returns {@link Chat telegramResponse.Chat} </p>
      */
     public static class CreateNewSecretChat extends Function {
         /**
@@ -40681,7 +40681,7 @@ public class TdApi {
         /**
          * Default constructor for a function, which creates a new secret chat. Returns the newly created chat.
          *
-         * <p> Returns {@link Chat Chat} </p>
+         * <p> Returns {@link Chat telegramResponse.Chat} </p>
          */
         public CreateNewSecretChat() {
         }
@@ -40689,7 +40689,7 @@ public class TdApi {
         /**
          * Creates a function, which creates a new secret chat. Returns the newly created chat.
          *
-         * <p> Returns {@link Chat Chat} </p>
+         * <p> Returns {@link Chat telegramResponse.Chat} </p>
          *
          * @param userId Identifier of the target user.
          */
@@ -40782,7 +40782,7 @@ public class TdApi {
     /**
      * Creates a new supergroup or channel and sends a corresponding messageSupergroupChatCreate. Returns the newly created chat.
      *
-     * <p> Returns {@link Chat Chat} </p>
+     * <p> Returns {@link Chat telegramResponse.Chat} </p>
      */
     public static class CreateNewSupergroupChat extends Function {
         /**
@@ -40794,11 +40794,11 @@ public class TdApi {
          */
         public boolean isChannel;
         /**
-         * Chat description; 0-255 characters.
+         * telegramResponse.Chat description; 0-255 characters.
          */
         public String description;
         /**
-         * Chat location if a location-based supergroup is being created.
+         * telegramResponse.Chat location if a location-based supergroup is being created.
          */
         public ChatLocation location;
         /**
@@ -40809,7 +40809,7 @@ public class TdApi {
         /**
          * Default constructor for a function, which creates a new supergroup or channel and sends a corresponding messageSupergroupChatCreate. Returns the newly created chat.
          *
-         * <p> Returns {@link Chat Chat} </p>
+         * <p> Returns {@link Chat telegramResponse.Chat} </p>
          */
         public CreateNewSupergroupChat() {
         }
@@ -40817,12 +40817,12 @@ public class TdApi {
         /**
          * Creates a function, which creates a new supergroup or channel and sends a corresponding messageSupergroupChatCreate. Returns the newly created chat.
          *
-         * <p> Returns {@link Chat Chat} </p>
+         * <p> Returns {@link Chat telegramResponse.Chat} </p>
          *
          * @param title Title of the new chat; 1-128 characters.
          * @param isChannel True, if a channel chat needs to be created.
-         * @param description Chat description; 0-255 characters.
-         * @param location Chat location if a location-based supergroup is being created.
+         * @param description telegramResponse.Chat description; 0-255 characters.
+         * @param location telegramResponse.Chat location if a location-based supergroup is being created.
          * @param forImport True, if the supergroup is created for importing messages using importMessage.
          */
         public CreateNewSupergroupChat(String title, boolean isChannel, String description, ChatLocation location, boolean forImport) {
@@ -40850,7 +40850,7 @@ public class TdApi {
     /**
      * Returns an existing chat corresponding to a given user.
      *
-     * <p> Returns {@link Chat Chat} </p>
+     * <p> Returns {@link Chat telegramResponse.Chat} </p>
      */
     public static class CreatePrivateChat extends Function {
         /**
@@ -40865,7 +40865,7 @@ public class TdApi {
         /**
          * Default constructor for a function, which returns an existing chat corresponding to a given user.
          *
-         * <p> Returns {@link Chat Chat} </p>
+         * <p> Returns {@link Chat telegramResponse.Chat} </p>
          */
         public CreatePrivateChat() {
         }
@@ -40873,7 +40873,7 @@ public class TdApi {
         /**
          * Creates a function, which returns an existing chat corresponding to a given user.
          *
-         * <p> Returns {@link Chat Chat} </p>
+         * <p> Returns {@link Chat telegramResponse.Chat} </p>
          *
          * @param userId User identifier.
          * @param force If true, the chat will be created without network request. In this case all information about the chat except its type, title and photo can be incorrect.
@@ -40900,7 +40900,7 @@ public class TdApi {
     /**
      * Returns an existing chat corresponding to a known secret chat.
      *
-     * <p> Returns {@link Chat Chat} </p>
+     * <p> Returns {@link Chat telegramResponse.Chat} </p>
      */
     public static class CreateSecretChat extends Function {
         /**
@@ -40911,7 +40911,7 @@ public class TdApi {
         /**
          * Default constructor for a function, which returns an existing chat corresponding to a known secret chat.
          *
-         * <p> Returns {@link Chat Chat} </p>
+         * <p> Returns {@link Chat telegramResponse.Chat} </p>
          */
         public CreateSecretChat() {
         }
@@ -40919,7 +40919,7 @@ public class TdApi {
         /**
          * Creates a function, which returns an existing chat corresponding to a known secret chat.
          *
-         * <p> Returns {@link Chat Chat} </p>
+         * <p> Returns {@link Chat telegramResponse.Chat} </p>
          *
          * @param secretChatId Secret chat identifier.
          */
@@ -40944,7 +40944,7 @@ public class TdApi {
     /**
      * Returns an existing chat corresponding to a known supergroup or channel.
      *
-     * <p> Returns {@link Chat Chat} </p>
+     * <p> Returns {@link Chat telegramResponse.Chat} </p>
      */
     public static class CreateSupergroupChat extends Function {
         /**
@@ -40959,7 +40959,7 @@ public class TdApi {
         /**
          * Default constructor for a function, which returns an existing chat corresponding to a known supergroup or channel.
          *
-         * <p> Returns {@link Chat Chat} </p>
+         * <p> Returns {@link Chat telegramResponse.Chat} </p>
          */
         public CreateSupergroupChat() {
         }
@@ -40967,7 +40967,7 @@ public class TdApi {
         /**
          * Creates a function, which returns an existing chat corresponding to a known supergroup or channel.
          *
-         * <p> Returns {@link Chat Chat} </p>
+         * <p> Returns {@link Chat telegramResponse.Chat} </p>
          *
          * @param supergroupId Supergroup or channel identifier.
          * @param force If true, the chat will be created without network request. In this case all information about the chat except its type, title and photo can be incorrect.
@@ -41048,7 +41048,7 @@ public class TdApi {
      */
     public static class CreateVoiceChat extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
 
@@ -41065,7 +41065,7 @@ public class TdApi {
          *
          * <p> Returns {@link GroupCallId GroupCallId} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          */
         public CreateVoiceChat(long chatId) {
             this.chatId = chatId;
@@ -41180,7 +41180,7 @@ public class TdApi {
      */
     public static class DeleteChat extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
 
@@ -41197,7 +41197,7 @@ public class TdApi {
          *
          * <p> Returns {@link Ok Ok} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          */
         public DeleteChat(long chatId) {
             this.chatId = chatId;
@@ -41224,7 +41224,7 @@ public class TdApi {
      */
     public static class DeleteChatFilter extends Function {
         /**
-         * Chat filter identifier.
+         * telegramResponse.Chat filter identifier.
          */
         public int chatFilterId;
 
@@ -41241,7 +41241,7 @@ public class TdApi {
          *
          * <p> Returns {@link Ok Ok} </p>
          *
-         * @param chatFilterId Chat filter identifier.
+         * @param chatFilterId telegramResponse.Chat filter identifier.
          */
         public DeleteChatFilter(int chatFilterId) {
             this.chatFilterId = chatFilterId;
@@ -41262,13 +41262,13 @@ public class TdApi {
     }
 
     /**
-     * Deletes all messages in the chat. Use Chat.canBeDeletedOnlyForSelf and Chat.canBeDeletedForAllUsers fields to find whether and how the method can be applied to the chat.
+     * Deletes all messages in the chat. Use telegramResponse.Chat.canBeDeletedOnlyForSelf and telegramResponse.Chat.canBeDeletedForAllUsers fields to find whether and how the method can be applied to the chat.
      *
      * <p> Returns {@link Ok Ok} </p>
      */
     public static class DeleteChatHistory extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -41281,7 +41281,7 @@ public class TdApi {
         public boolean revoke;
 
         /**
-         * Default constructor for a function, which deletes all messages in the chat. Use Chat.canBeDeletedOnlyForSelf and Chat.canBeDeletedForAllUsers fields to find whether and how the method can be applied to the chat.
+         * Default constructor for a function, which deletes all messages in the chat. Use telegramResponse.Chat.canBeDeletedOnlyForSelf and telegramResponse.Chat.canBeDeletedForAllUsers fields to find whether and how the method can be applied to the chat.
          *
          * <p> Returns {@link Ok Ok} </p>
          */
@@ -41289,11 +41289,11 @@ public class TdApi {
         }
 
         /**
-         * Creates a function, which deletes all messages in the chat. Use Chat.canBeDeletedOnlyForSelf and Chat.canBeDeletedForAllUsers fields to find whether and how the method can be applied to the chat.
+         * Creates a function, which deletes all messages in the chat. Use telegramResponse.Chat.canBeDeletedOnlyForSelf and telegramResponse.Chat.canBeDeletedForAllUsers fields to find whether and how the method can be applied to the chat.
          *
          * <p> Returns {@link Ok Ok} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param removeFromChatList Pass true if the chat should be removed from the chat list.
          * @param revoke Pass true to try to delete chat history for all users.
          */
@@ -41324,7 +41324,7 @@ public class TdApi {
      */
     public static class DeleteChatMessagesFromUser extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -41345,7 +41345,7 @@ public class TdApi {
          *
          * <p> Returns {@link Ok Ok} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param userId User identifier.
          */
         public DeleteChatMessagesFromUser(long chatId, int userId) {
@@ -41374,7 +41374,7 @@ public class TdApi {
      */
     public static class DeleteChatReplyMarkup extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -41395,7 +41395,7 @@ public class TdApi {
          *
          * <p> Returns {@link Ok Ok} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param messageId The message identifier of the used keyboard.
          */
         public DeleteChatReplyMarkup(long chatId, long messageId) {
@@ -41512,7 +41512,7 @@ public class TdApi {
      */
     public static class DeleteMessages extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -41537,7 +41537,7 @@ public class TdApi {
          *
          * <p> Returns {@link Ok Ok} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param messageIds Identifiers of the messages to be deleted.
          * @param revoke Pass true to try to delete messages for all chat members. Always true for supergroups, channels and secret chats.
          */
@@ -42025,7 +42025,7 @@ public class TdApi {
      */
     public static class EditChatFilter extends Function {
         /**
-         * Chat filter identifier.
+         * telegramResponse.Chat filter identifier.
          */
         public int chatFilterId;
         /**
@@ -42046,7 +42046,7 @@ public class TdApi {
          *
          * <p> Returns {@link ChatFilterInfo ChatFilterInfo} </p>
          *
-         * @param chatFilterId Chat filter identifier.
+         * @param chatFilterId telegramResponse.Chat filter identifier.
          * @param filter The edited chat filter.
          */
         public EditChatFilter(int chatFilterId, ChatFilter filter) {
@@ -42401,7 +42401,7 @@ public class TdApi {
     /**
      * Edits the message content caption. Returns the edited message after the edit is completed on the server side.
      *
-     * <p> Returns {@link Message Message} </p>
+     * <p> Returns {@link Message telegramResponse.Message} </p>
      */
     public static class EditMessageCaption extends Function {
         /**
@@ -42424,7 +42424,7 @@ public class TdApi {
         /**
          * Default constructor for a function, which edits the message content caption. Returns the edited message after the edit is completed on the server side.
          *
-         * <p> Returns {@link Message Message} </p>
+         * <p> Returns {@link Message telegramResponse.Message} </p>
          */
         public EditMessageCaption() {
         }
@@ -42432,7 +42432,7 @@ public class TdApi {
         /**
          * Creates a function, which edits the message content caption. Returns the edited message after the edit is completed on the server side.
          *
-         * <p> Returns {@link Message Message} </p>
+         * <p> Returns {@link Message telegramResponse.Message} </p>
          *
          * @param chatId The chat the message belongs to.
          * @param messageId Identifier of the message.
@@ -42463,7 +42463,7 @@ public class TdApi {
     /**
      * Edits the message content of a live location. Messages can be edited for a limited period of time specified in the live location. Returns the edited message after the edit is completed on the server side.
      *
-     * <p> Returns {@link Message Message} </p>
+     * <p> Returns {@link Message telegramResponse.Message} </p>
      */
     public static class EditMessageLiveLocation extends Function {
         /**
@@ -42494,7 +42494,7 @@ public class TdApi {
         /**
          * Default constructor for a function, which edits the message content of a live location. Messages can be edited for a limited period of time specified in the live location. Returns the edited message after the edit is completed on the server side.
          *
-         * <p> Returns {@link Message Message} </p>
+         * <p> Returns {@link Message telegramResponse.Message} </p>
          */
         public EditMessageLiveLocation() {
         }
@@ -42502,7 +42502,7 @@ public class TdApi {
         /**
          * Creates a function, which edits the message content of a live location. Messages can be edited for a limited period of time specified in the live location. Returns the edited message after the edit is completed on the server side.
          *
-         * <p> Returns {@link Message Message} </p>
+         * <p> Returns {@link Message telegramResponse.Message} </p>
          *
          * @param chatId The chat the message belongs to.
          * @param messageId Identifier of the message.
@@ -42537,7 +42537,7 @@ public class TdApi {
     /**
      * Edits the content of a message with an animation, an audio, a document, a photo or a video. The media in the message can't be replaced if the message was set to self-destruct. Media can't be replaced by self-destructing media. Media in an album can be edited only to contain a photo or a video. Returns the edited message after the edit is completed on the server side.
      *
-     * <p> Returns {@link Message Message} </p>
+     * <p> Returns {@link Message telegramResponse.Message} </p>
      */
     public static class EditMessageMedia extends Function {
         /**
@@ -42560,7 +42560,7 @@ public class TdApi {
         /**
          * Default constructor for a function, which edits the content of a message with an animation, an audio, a document, a photo or a video. The media in the message can't be replaced if the message was set to self-destruct. Media can't be replaced by self-destructing media. Media in an album can be edited only to contain a photo or a video. Returns the edited message after the edit is completed on the server side.
          *
-         * <p> Returns {@link Message Message} </p>
+         * <p> Returns {@link Message telegramResponse.Message} </p>
          */
         public EditMessageMedia() {
         }
@@ -42568,7 +42568,7 @@ public class TdApi {
         /**
          * Creates a function, which edits the content of a message with an animation, an audio, a document, a photo or a video. The media in the message can't be replaced if the message was set to self-destruct. Media can't be replaced by self-destructing media. Media in an album can be edited only to contain a photo or a video. Returns the edited message after the edit is completed on the server side.
          *
-         * <p> Returns {@link Message Message} </p>
+         * <p> Returns {@link Message telegramResponse.Message} </p>
          *
          * @param chatId The chat the message belongs to.
          * @param messageId Identifier of the message.
@@ -42599,7 +42599,7 @@ public class TdApi {
     /**
      * Edits the message reply markup; for bots only. Returns the edited message after the edit is completed on the server side.
      *
-     * <p> Returns {@link Message Message} </p>
+     * <p> Returns {@link Message telegramResponse.Message} </p>
      */
     public static class EditMessageReplyMarkup extends Function {
         /**
@@ -42618,7 +42618,7 @@ public class TdApi {
         /**
          * Default constructor for a function, which edits the message reply markup; for bots only. Returns the edited message after the edit is completed on the server side.
          *
-         * <p> Returns {@link Message Message} </p>
+         * <p> Returns {@link Message telegramResponse.Message} </p>
          */
         public EditMessageReplyMarkup() {
         }
@@ -42626,7 +42626,7 @@ public class TdApi {
         /**
          * Creates a function, which edits the message reply markup; for bots only. Returns the edited message after the edit is completed on the server side.
          *
-         * <p> Returns {@link Message Message} </p>
+         * <p> Returns {@link Message telegramResponse.Message} </p>
          *
          * @param chatId The chat the message belongs to.
          * @param messageId Identifier of the message.
@@ -42711,7 +42711,7 @@ public class TdApi {
     /**
      * Edits the text of a message (or a text of a game message). Returns the edited message after the edit is completed on the server side.
      *
-     * <p> Returns {@link Message Message} </p>
+     * <p> Returns {@link Message telegramResponse.Message} </p>
      */
     public static class EditMessageText extends Function {
         /**
@@ -42734,7 +42734,7 @@ public class TdApi {
         /**
          * Default constructor for a function, which edits the text of a message (or a text of a game message). Returns the edited message after the edit is completed on the server side.
          *
-         * <p> Returns {@link Message Message} </p>
+         * <p> Returns {@link Message telegramResponse.Message} </p>
          */
         public EditMessageText() {
         }
@@ -42742,7 +42742,7 @@ public class TdApi {
         /**
          * Creates a function, which edits the text of a message (or a text of a game message). Returns the edited message after the edit is completed on the server side.
          *
-         * <p> Returns {@link Message Message} </p>
+         * <p> Returns {@link Message telegramResponse.Message} </p>
          *
          * @param chatId The chat the message belongs to.
          * @param messageId Identifier of the message.
@@ -42947,7 +42947,7 @@ public class TdApi {
          */
         public long fromChatId;
         /**
-         * Identifiers of the messages to forward. Message identifiers must be in a strictly increasing order. At most 100 messages can be forwarded simultaneously.
+         * Identifiers of the messages to forward. telegramResponse.Message identifiers must be in a strictly increasing order. At most 100 messages can be forwarded simultaneously.
          */
         public long[] messageIds;
         /**
@@ -42978,7 +42978,7 @@ public class TdApi {
          *
          * @param chatId Identifier of the chat to which to forward messages.
          * @param fromChatId Identifier of the chat from which to forward messages.
-         * @param messageIds Identifiers of the messages to forward. Message identifiers must be in a strictly increasing order. At most 100 messages can be forwarded simultaneously.
+         * @param messageIds Identifiers of the messages to forward. telegramResponse.Message identifiers must be in a strictly increasing order. At most 100 messages can be forwarded simultaneously.
          * @param options Options to be used to send the messages.
          * @param sendCopy True, if content of the messages needs to be copied without links to the original messages. Always true if the messages are forwarded to a secret chat.
          * @param removeCaption True, if media caption of message copies needs to be removed. Ignored if sendCopy is false.
@@ -43659,7 +43659,7 @@ public class TdApi {
     /**
      * Returns information about a message with the callback button that originated a callback query; for bots only.
      *
-     * <p> Returns {@link Message Message} </p>
+     * <p> Returns {@link Message telegramResponse.Message} </p>
      */
     public static class GetCallbackQueryMessage extends Function {
         /**
@@ -43667,7 +43667,7 @@ public class TdApi {
          */
         public long chatId;
         /**
-         * Message identifier.
+         * telegramResponse.Message identifier.
          */
         public long messageId;
         /**
@@ -43678,7 +43678,7 @@ public class TdApi {
         /**
          * Default constructor for a function, which returns information about a message with the callback button that originated a callback query; for bots only.
          *
-         * <p> Returns {@link Message Message} </p>
+         * <p> Returns {@link Message telegramResponse.Message} </p>
          */
         public GetCallbackQueryMessage() {
         }
@@ -43686,10 +43686,10 @@ public class TdApi {
         /**
          * Creates a function, which returns information about a message with the callback button that originated a callback query; for bots only.
          *
-         * <p> Returns {@link Message Message} </p>
+         * <p> Returns {@link Message telegramResponse.Message} </p>
          *
          * @param chatId Identifier of the chat the message belongs to.
-         * @param messageId Message identifier.
+         * @param messageId telegramResponse.Message identifier.
          * @param callbackQueryId Identifier of the callback query.
          */
         public GetCallbackQueryMessage(long chatId, long messageId, long callbackQueryId) {
@@ -43715,18 +43715,18 @@ public class TdApi {
     /**
      * Returns information about a chat by its identifier, this is an offline request if the current user is not a bot.
      *
-     * <p> Returns {@link Chat Chat} </p>
+     * <p> Returns {@link Chat telegramResponse.Chat} </p>
      */
     public static class GetChat extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
 
         /**
          * Default constructor for a function, which returns information about a chat by its identifier, this is an offline request if the current user is not a bot.
          *
-         * <p> Returns {@link Chat Chat} </p>
+         * <p> Returns {@link Chat telegramResponse.Chat} </p>
          */
         public GetChat() {
         }
@@ -43734,9 +43734,9 @@ public class TdApi {
         /**
          * Creates a function, which returns information about a chat by its identifier, this is an offline request if the current user is not a bot.
          *
-         * <p> Returns {@link Chat Chat} </p>
+         * <p> Returns {@link Chat telegramResponse.Chat} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          */
         public GetChat(long chatId) {
             this.chatId = chatId;
@@ -43763,7 +43763,7 @@ public class TdApi {
      */
     public static class GetChatAdministrators extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
 
@@ -43780,7 +43780,7 @@ public class TdApi {
          *
          * <p> Returns {@link ChatAdministrators ChatAdministrators} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          */
         public GetChatAdministrators(long chatId) {
             this.chatId = chatId;
@@ -43807,7 +43807,7 @@ public class TdApi {
      */
     public static class GetChatEventLog extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -43844,7 +43844,7 @@ public class TdApi {
          *
          * <p> Returns {@link ChatEvents ChatEvents} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param query Search query by which to filter events.
          * @param fromEventId Identifier of an event from which to return results. Use 0 to get results from the latest events.
          * @param limit The maximum number of events to return; up to 100.
@@ -43881,7 +43881,7 @@ public class TdApi {
      */
     public static class GetChatFilter extends Function {
         /**
-         * Chat filter identifier.
+         * telegramResponse.Chat filter identifier.
          */
         public int chatFilterId;
 
@@ -43898,7 +43898,7 @@ public class TdApi {
          *
          * <p> Returns {@link ChatFilter ChatFilter} </p>
          *
-         * @param chatFilterId Chat filter identifier.
+         * @param chatFilterId telegramResponse.Chat filter identifier.
          */
         public GetChatFilter(int chatFilterId) {
             this.chatFilterId = chatFilterId;
@@ -43925,7 +43925,7 @@ public class TdApi {
      */
     public static class GetChatFilterDefaultIconName extends Function {
         /**
-         * Chat filter.
+         * telegramResponse.Chat filter.
          */
         public ChatFilter filter;
 
@@ -43942,7 +43942,7 @@ public class TdApi {
          *
          * <p> Returns {@link Text Text} </p>
          *
-         * @param filter Chat filter.
+         * @param filter telegramResponse.Chat filter.
          */
         public GetChatFilterDefaultIconName(ChatFilter filter) {
             this.filter = filter;
@@ -43969,7 +43969,7 @@ public class TdApi {
      */
     public static class GetChatHistory extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -44002,7 +44002,7 @@ public class TdApi {
          *
          * <p> Returns {@link Messages Messages} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param fromMessageId Identifier of the message starting from which history must be fetched; use 0 to get results from the last message.
          * @param offset Specify 0 to get results from exactly the fromMessageId or a negative offset up to 99 to get additionally some newer messages.
          * @param limit The maximum number of messages to be returned; must be positive and can't be greater than 100. If the offset is negative, the limit must be greater than or equal to -offset. Fewer messages may be returned than specified by the limit, even if the end of the message history has not been reached.
@@ -44037,7 +44037,7 @@ public class TdApi {
      */
     public static class GetChatListsToAddChat extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
 
@@ -44054,7 +44054,7 @@ public class TdApi {
          *
          * <p> Returns {@link ChatLists ChatLists} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          */
         public GetChatListsToAddChat(long chatId) {
             this.chatId = chatId;
@@ -44081,7 +44081,7 @@ public class TdApi {
      */
     public static class GetChatMember extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -44102,7 +44102,7 @@ public class TdApi {
          *
          * <p> Returns {@link ChatMember ChatMember} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param userId User identifier.
          */
         public GetChatMember(long chatId, int userId) {
@@ -44127,11 +44127,11 @@ public class TdApi {
     /**
      * Returns the last message sent in a chat no later than the specified date.
      *
-     * <p> Returns {@link Message Message} </p>
+     * <p> Returns {@link Message telegramResponse.Message} </p>
      */
     public static class GetChatMessageByDate extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -44142,7 +44142,7 @@ public class TdApi {
         /**
          * Default constructor for a function, which returns the last message sent in a chat no later than the specified date.
          *
-         * <p> Returns {@link Message Message} </p>
+         * <p> Returns {@link Message telegramResponse.Message} </p>
          */
         public GetChatMessageByDate() {
         }
@@ -44150,9 +44150,9 @@ public class TdApi {
         /**
          * Creates a function, which returns the last message sent in a chat no later than the specified date.
          *
-         * <p> Returns {@link Message Message} </p>
+         * <p> Returns {@link Message telegramResponse.Message} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param date Point in time (Unix timestamp) relative to which to search for messages.
          */
         public GetChatMessageByDate(long chatId, int date) {
@@ -44283,7 +44283,7 @@ public class TdApi {
     /**
      * Returns information about a newest pinned message in the chat.
      *
-     * <p> Returns {@link Message Message} </p>
+     * <p> Returns {@link Message telegramResponse.Message} </p>
      */
     public static class GetChatPinnedMessage extends Function {
         /**
@@ -44294,7 +44294,7 @@ public class TdApi {
         /**
          * Default constructor for a function, which returns information about a newest pinned message in the chat.
          *
-         * <p> Returns {@link Message Message} </p>
+         * <p> Returns {@link Message telegramResponse.Message} </p>
          */
         public GetChatPinnedMessage() {
         }
@@ -44302,7 +44302,7 @@ public class TdApi {
         /**
          * Creates a function, which returns information about a newest pinned message in the chat.
          *
-         * <p> Returns {@link Message Message} </p>
+         * <p> Returns {@link Message telegramResponse.Message} </p>
          *
          * @param chatId Identifier of the chat the message belongs to.
          */
@@ -44331,7 +44331,7 @@ public class TdApi {
      */
     public static class GetChatScheduledMessages extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
 
@@ -44348,7 +44348,7 @@ public class TdApi {
          *
          * <p> Returns {@link Messages Messages} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          */
         public GetChatScheduledMessages(long chatId) {
             this.chatId = chatId;
@@ -44375,7 +44375,7 @@ public class TdApi {
      */
     public static class GetChatStatistics extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -44396,7 +44396,7 @@ public class TdApi {
          *
          * <p> Returns {@link ChatStatistics ChatStatistics} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param isDark Pass true if a dark theme is used by the application.
          */
         public GetChatStatistics(long chatId, boolean isDark) {
@@ -44425,7 +44425,7 @@ public class TdApi {
      */
     public static class GetChatStatisticsUrl extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -44450,7 +44450,7 @@ public class TdApi {
          *
          * <p> Returns {@link HttpUrl HttpUrl} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param parameters Parameters from &quot;tg://statsrefresh?params=******&quot; link.
          * @param isDark Pass true if a URL with the dark theme must be returned.
          */
@@ -44485,11 +44485,11 @@ public class TdApi {
          */
         public ChatList chatList;
         /**
-         * Chat order to return chats from.
+         * telegramResponse.Chat order to return chats from.
          */
         public long offsetOrder;
         /**
-         * Chat identifier to return chats from.
+         * telegramResponse.Chat identifier to return chats from.
          */
         public long offsetChatId;
         /**
@@ -44511,8 +44511,8 @@ public class TdApi {
          * <p> Returns {@link Chats Chats} </p>
          *
          * @param chatList The chat list in which to return chats.
-         * @param offsetOrder Chat order to return chats from.
-         * @param offsetChatId Chat identifier to return chats from.
+         * @param offsetOrder telegramResponse.Chat order to return chats from.
+         * @param offsetChatId telegramResponse.Chat identifier to return chats from.
          * @param limit The maximum number of chats to be returned. It is possible that fewer chats than the limit are returned even if the end of the list is not reached.
          */
         public GetChats(ChatList chatList, long offsetOrder, long offsetChatId, int limit) {
@@ -45164,7 +45164,7 @@ public class TdApi {
          */
         public int userId;
         /**
-         * Chat identifier starting from which to return chats; use 0 for the first request.
+         * telegramResponse.Chat identifier starting from which to return chats; use 0 for the first request.
          */
         public long offsetChatId;
         /**
@@ -45186,7 +45186,7 @@ public class TdApi {
          * <p> Returns {@link Chats Chats} </p>
          *
          * @param userId User identifier.
-         * @param offsetChatId Chat identifier starting from which to return chats; use 0 for the first request.
+         * @param offsetChatId telegramResponse.Chat identifier starting from which to return chats; use 0 for the first request.
          * @param limit The maximum number of chats to be returned; up to 100.
          */
         public GetGroupsInCommon(int userId, long offsetChatId, int limit) {
@@ -45884,11 +45884,11 @@ public class TdApi {
      */
     public static class GetLoginUrl extends Function {
         /**
-         * Chat identifier of the message with the button.
+         * telegramResponse.Chat identifier of the message with the button.
          */
         public long chatId;
         /**
-         * Message identifier of the message with the button.
+         * telegramResponse.Message identifier of the message with the button.
          */
         public long messageId;
         /**
@@ -45913,8 +45913,8 @@ public class TdApi {
          *
          * <p> Returns {@link HttpUrl HttpUrl} </p>
          *
-         * @param chatId Chat identifier of the message with the button.
-         * @param messageId Message identifier of the message with the button.
+         * @param chatId telegramResponse.Chat identifier of the message with the button.
+         * @param messageId telegramResponse.Message identifier of the message with the button.
          * @param buttonId Button identifier.
          * @param allowWriteAccess True, if the user allowed the bot to send them messages.
          */
@@ -45946,11 +45946,11 @@ public class TdApi {
      */
     public static class GetLoginUrlInfo extends Function {
         /**
-         * Chat identifier of the message with the button.
+         * telegramResponse.Chat identifier of the message with the button.
          */
         public long chatId;
         /**
-         * Message identifier of the message with the button.
+         * telegramResponse.Message identifier of the message with the button.
          */
         public long messageId;
         /**
@@ -45971,8 +45971,8 @@ public class TdApi {
          *
          * <p> Returns {@link LoginUrlInfo LoginUrlInfo} </p>
          *
-         * @param chatId Chat identifier of the message with the button.
-         * @param messageId Message identifier of the message with the button.
+         * @param chatId telegramResponse.Chat identifier of the message with the button.
+         * @param messageId telegramResponse.Message identifier of the message with the button.
          * @param buttonId Button identifier.
          */
         public GetLoginUrlInfo(long chatId, long messageId, int buttonId) {
@@ -46145,7 +46145,7 @@ public class TdApi {
     /**
      * Returns information about a message.
      *
-     * <p> Returns {@link Message Message} </p>
+     * <p> Returns {@link Message telegramResponse.Message} </p>
      */
     public static class GetMessage extends Function {
         /**
@@ -46160,7 +46160,7 @@ public class TdApi {
         /**
          * Default constructor for a function, which returns information about a message.
          *
-         * <p> Returns {@link Message Message} </p>
+         * <p> Returns {@link Message telegramResponse.Message} </p>
          */
         public GetMessage() {
         }
@@ -46168,7 +46168,7 @@ public class TdApi {
         /**
          * Creates a function, which returns information about a message.
          *
-         * <p> Returns {@link Message Message} </p>
+         * <p> Returns {@link Message telegramResponse.Message} </p>
          *
          * @param chatId Identifier of the chat the message belongs to.
          * @param messageId Identifier of the message to get.
@@ -46401,7 +46401,7 @@ public class TdApi {
     /**
      * Returns information about a message, if it is available locally without sending network request. This is an offline request.
      *
-     * <p> Returns {@link Message Message} </p>
+     * <p> Returns {@link Message telegramResponse.Message} </p>
      */
     public static class GetMessageLocally extends Function {
         /**
@@ -46416,7 +46416,7 @@ public class TdApi {
         /**
          * Default constructor for a function, which returns information about a message, if it is available locally without sending network request. This is an offline request.
          *
-         * <p> Returns {@link Message Message} </p>
+         * <p> Returns {@link Message telegramResponse.Message} </p>
          */
         public GetMessageLocally() {
         }
@@ -46424,7 +46424,7 @@ public class TdApi {
         /**
          * Creates a function, which returns information about a message, if it is available locally without sending network request. This is an offline request.
          *
-         * <p> Returns {@link Message Message} </p>
+         * <p> Returns {@link Message telegramResponse.Message} </p>
          *
          * @param chatId Identifier of the chat the message belongs to.
          * @param messageId Identifier of the message to get.
@@ -46455,11 +46455,11 @@ public class TdApi {
      */
     public static class GetMessagePublicForwards extends Function {
         /**
-         * Chat identifier of the message.
+         * telegramResponse.Chat identifier of the message.
          */
         public long chatId;
         /**
-         * Message identifier.
+         * telegramResponse.Message identifier.
          */
         public long messageId;
         /**
@@ -46484,8 +46484,8 @@ public class TdApi {
          *
          * <p> Returns {@link FoundMessages FoundMessages} </p>
          *
-         * @param chatId Chat identifier of the message.
-         * @param messageId Message identifier.
+         * @param chatId telegramResponse.Chat identifier of the message.
+         * @param messageId telegramResponse.Message identifier.
          * @param offset Offset of the first entry to return as received from the previous request; use empty string to get first chunk of results.
          * @param limit The maximum number of messages to be returned; must be positive and can't be greater than 100. Fewer messages may be returned than specified by the limit, even if the end of the list has not been reached.
          */
@@ -46511,17 +46511,17 @@ public class TdApi {
     }
 
     /**
-     * Returns detailed statistics about a message. Can be used only if Message.canGetStatistics == true.
+     * Returns detailed statistics about a message. Can be used only if telegramResponse.Message.canGetStatistics == true.
      *
      * <p> Returns {@link MessageStatistics MessageStatistics} </p>
      */
     public static class GetMessageStatistics extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
-         * Message identifier.
+         * telegramResponse.Message identifier.
          */
         public long messageId;
         /**
@@ -46530,7 +46530,7 @@ public class TdApi {
         public boolean isDark;
 
         /**
-         * Default constructor for a function, which returns detailed statistics about a message. Can be used only if Message.canGetStatistics == true.
+         * Default constructor for a function, which returns detailed statistics about a message. Can be used only if telegramResponse.Message.canGetStatistics == true.
          *
          * <p> Returns {@link MessageStatistics MessageStatistics} </p>
          */
@@ -46538,12 +46538,12 @@ public class TdApi {
         }
 
         /**
-         * Creates a function, which returns detailed statistics about a message. Can be used only if Message.canGetStatistics == true.
+         * Creates a function, which returns detailed statistics about a message. Can be used only if telegramResponse.Message.canGetStatistics == true.
          *
          * <p> Returns {@link MessageStatistics MessageStatistics} </p>
          *
-         * @param chatId Chat identifier.
-         * @param messageId Message identifier.
+         * @param chatId telegramResponse.Chat identifier.
+         * @param messageId telegramResponse.Message identifier.
          * @param isDark Pass true if a dark theme is used by the application.
          */
         public GetMessageStatistics(long chatId, long messageId, boolean isDark) {
@@ -46573,7 +46573,7 @@ public class TdApi {
      */
     public static class GetMessageThread extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -46594,7 +46594,7 @@ public class TdApi {
          *
          * <p> Returns {@link MessageThreadInfo MessageThreadInfo} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param messageId Identifier of the message.
          */
         public GetMessageThread(long chatId, long messageId) {
@@ -46617,17 +46617,17 @@ public class TdApi {
     }
 
     /**
-     * Returns messages in a message thread of a message. Can be used only if message.canGetMessageThread == true. Message thread of a channel message is in the channel's linked supergroup. The messages are returned in a reverse chronological order (i.e., in order of decreasing messageId). For optimal performance the number of returned messages is chosen by the library.
+     * Returns messages in a message thread of a message. Can be used only if message.canGetMessageThread == true. telegramResponse.Message thread of a channel message is in the channel's linked supergroup. The messages are returned in a reverse chronological order (i.e., in order of decreasing messageId). For optimal performance the number of returned messages is chosen by the library.
      *
      * <p> Returns {@link Messages Messages} </p>
      */
     public static class GetMessageThreadHistory extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
-         * Message identifier, which thread history needs to be returned.
+         * telegramResponse.Message identifier, which thread history needs to be returned.
          */
         public long messageId;
         /**
@@ -46644,7 +46644,7 @@ public class TdApi {
         public int limit;
 
         /**
-         * Default constructor for a function, which returns messages in a message thread of a message. Can be used only if message.canGetMessageThread == true. Message thread of a channel message is in the channel's linked supergroup. The messages are returned in a reverse chronological order (i.e., in order of decreasing messageId). For optimal performance the number of returned messages is chosen by the library.
+         * Default constructor for a function, which returns messages in a message thread of a message. Can be used only if message.canGetMessageThread == true. telegramResponse.Message thread of a channel message is in the channel's linked supergroup. The messages are returned in a reverse chronological order (i.e., in order of decreasing messageId). For optimal performance the number of returned messages is chosen by the library.
          *
          * <p> Returns {@link Messages Messages} </p>
          */
@@ -46652,12 +46652,12 @@ public class TdApi {
         }
 
         /**
-         * Creates a function, which returns messages in a message thread of a message. Can be used only if message.canGetMessageThread == true. Message thread of a channel message is in the channel's linked supergroup. The messages are returned in a reverse chronological order (i.e., in order of decreasing messageId). For optimal performance the number of returned messages is chosen by the library.
+         * Creates a function, which returns messages in a message thread of a message. Can be used only if message.canGetMessageThread == true. telegramResponse.Message thread of a channel message is in the channel's linked supergroup. The messages are returned in a reverse chronological order (i.e., in order of decreasing messageId). For optimal performance the number of returned messages is chosen by the library.
          *
          * <p> Returns {@link Messages Messages} </p>
          *
-         * @param chatId Chat identifier.
-         * @param messageId Message identifier, which thread history needs to be returned.
+         * @param chatId telegramResponse.Chat identifier.
+         * @param messageId telegramResponse.Message identifier, which thread history needs to be returned.
          * @param fromMessageId Identifier of the message starting from which history must be fetched; use 0 to get results from the last message.
          * @param offset Specify 0 to get results from exactly the fromMessageId or a negative offset up to 99 to get additionally some newer messages.
          * @param limit The maximum number of messages to be returned; must be positive and can't be greater than 100. If the offset is negative, the limit must be greater than or equal to -offset. Fewer messages may be returned than specified by the limit, even if the end of the message thread history has not been reached.
@@ -47020,11 +47020,11 @@ public class TdApi {
      */
     public static class GetPaymentForm extends Function {
         /**
-         * Chat identifier of the Invoice message.
+         * telegramResponse.Chat identifier of the Invoice message.
          */
         public long chatId;
         /**
-         * Message identifier.
+         * telegramResponse.Message identifier.
          */
         public long messageId;
 
@@ -47041,8 +47041,8 @@ public class TdApi {
          *
          * <p> Returns {@link PaymentForm PaymentForm} </p>
          *
-         * @param chatId Chat identifier of the Invoice message.
-         * @param messageId Message identifier.
+         * @param chatId telegramResponse.Chat identifier of the Invoice message.
+         * @param messageId telegramResponse.Message identifier.
          */
         public GetPaymentForm(long chatId, long messageId) {
             this.chatId = chatId;
@@ -47070,11 +47070,11 @@ public class TdApi {
      */
     public static class GetPaymentReceipt extends Function {
         /**
-         * Chat identifier of the PaymentSuccessful message.
+         * telegramResponse.Chat identifier of the PaymentSuccessful message.
          */
         public long chatId;
         /**
-         * Message identifier.
+         * telegramResponse.Message identifier.
          */
         public long messageId;
 
@@ -47091,8 +47091,8 @@ public class TdApi {
          *
          * <p> Returns {@link PaymentReceipt PaymentReceipt} </p>
          *
-         * @param chatId Chat identifier of the PaymentSuccessful message.
-         * @param messageId Message identifier.
+         * @param chatId telegramResponse.Chat identifier of the PaymentSuccessful message.
+         * @param messageId telegramResponse.Message identifier.
          */
         public GetPaymentReceipt(long chatId, long messageId) {
             this.chatId = chatId;
@@ -47629,7 +47629,7 @@ public class TdApi {
     /**
      * Returns information about a message that is replied by a given message. Also returns the pinned message, the game message, and the invoice message for messages of the types messagePinMessage, messageGameScore, and messagePaymentSuccessful respectively.
      *
-     * <p> Returns {@link Message Message} </p>
+     * <p> Returns {@link Message telegramResponse.Message} </p>
      */
     public static class GetRepliedMessage extends Function {
         /**
@@ -47644,7 +47644,7 @@ public class TdApi {
         /**
          * Default constructor for a function, which returns information about a message that is replied by a given message. Also returns the pinned message, the game message, and the invoice message for messages of the types messagePinMessage, messageGameScore, and messagePaymentSuccessful respectively.
          *
-         * <p> Returns {@link Message Message} </p>
+         * <p> Returns {@link Message telegramResponse.Message} </p>
          */
         public GetRepliedMessage() {
         }
@@ -47652,7 +47652,7 @@ public class TdApi {
         /**
          * Creates a function, which returns information about a message that is replied by a given message. Also returns the pinned message, the game message, and the invoice message for messages of the types messagePinMessage, messageGameScore, and messagePaymentSuccessful respectively.
          *
-         * <p> Returns {@link Message Message} </p>
+         * <p> Returns {@link Message telegramResponse.Message} </p>
          *
          * @param chatId Identifier of the chat the message belongs to.
          * @param messageId Identifier of the message reply to which to get.
@@ -47829,7 +47829,7 @@ public class TdApi {
      */
     public static class GetStatisticalGraph extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -47854,7 +47854,7 @@ public class TdApi {
          *
          * <p> Returns {@link StatisticalGraph StatisticalGraph} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param token The token for graph loading.
          * @param x X-value for zoomed in graph or 0 otherwise.
          */
@@ -48715,7 +48715,7 @@ public class TdApi {
      */
     public static class GetWebPagePreview extends Function {
         /**
-         * Message text with formatting.
+         * telegramResponse.Message text with formatting.
          */
         public FormattedText text;
 
@@ -48732,7 +48732,7 @@ public class TdApi {
          *
          * <p> Returns {@link WebPage WebPage} </p>
          *
-         * @param text Message text with formatting.
+         * @param text telegramResponse.Message text with formatting.
          */
         public GetWebPagePreview(FormattedText text) {
             this.text = text;
@@ -48953,7 +48953,7 @@ public class TdApi {
      */
     public static class JoinChat extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
 
@@ -48970,7 +48970,7 @@ public class TdApi {
          *
          * <p> Returns {@link Ok Ok} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          */
         public JoinChat(long chatId) {
             this.chatId = chatId;
@@ -48993,7 +48993,7 @@ public class TdApi {
     /**
      * Uses an invite link to add the current user to the chat if possible.
      *
-     * <p> Returns {@link Chat Chat} </p>
+     * <p> Returns {@link Chat telegramResponse.Chat} </p>
      */
     public static class JoinChatByInviteLink extends Function {
         /**
@@ -49004,7 +49004,7 @@ public class TdApi {
         /**
          * Default constructor for a function, which uses an invite link to add the current user to the chat if possible.
          *
-         * <p> Returns {@link Chat Chat} </p>
+         * <p> Returns {@link Chat telegramResponse.Chat} </p>
          */
         public JoinChatByInviteLink() {
         }
@@ -49012,7 +49012,7 @@ public class TdApi {
         /**
          * Creates a function, which uses an invite link to add the current user to the chat if possible.
          *
-         * <p> Returns {@link Chat Chat} </p>
+         * <p> Returns {@link Chat telegramResponse.Chat} </p>
          *
          * @param inviteLink Invite link to import; must begin with &quot;https://t.me/joinchat/&quot;, &quot;https://telegram.me/joinchat/&quot;, or &quot;https://telegram.dog/joinchat/&quot;.
          */
@@ -49103,7 +49103,7 @@ public class TdApi {
      */
     public static class LeaveChat extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
 
@@ -49120,7 +49120,7 @@ public class TdApi {
          *
          * <p> Returns {@link Ok Ok} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          */
         public LeaveChat(long chatId) {
             this.chatId = chatId;
@@ -49270,7 +49270,7 @@ public class TdApi {
      */
     public static class OpenChat extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
 
@@ -49287,7 +49287,7 @@ public class TdApi {
          *
          * <p> Returns {@link Ok Ok} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          */
         public OpenChat(long chatId) {
             this.chatId = chatId;
@@ -49314,7 +49314,7 @@ public class TdApi {
      */
     public static class OpenMessageContent extends Function {
         /**
-         * Chat identifier of the message.
+         * telegramResponse.Chat identifier of the message.
          */
         public long chatId;
         /**
@@ -49335,7 +49335,7 @@ public class TdApi {
          *
          * <p> Returns {@link Ok Ok} </p>
          *
-         * @param chatId Chat identifier of the message.
+         * @param chatId telegramResponse.Chat identifier of the message.
          * @param messageId Identifier of the message with the opened content.
          */
         public OpenMessageContent(long chatId, long messageId) {
@@ -49700,7 +49700,7 @@ public class TdApi {
      */
     public static class ReadAllChatMentions extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
 
@@ -49717,7 +49717,7 @@ public class TdApi {
          *
          * <p> Returns {@link Ok Ok} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          */
         public ReadAllChatMentions(long chatId) {
             this.chatId = chatId;
@@ -50032,7 +50032,7 @@ public class TdApi {
      */
     public static class RemoveChatActionBar extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
 
@@ -50049,7 +50049,7 @@ public class TdApi {
          *
          * <p> Returns {@link Ok Ok} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          */
         public RemoveChatActionBar(long chatId) {
             this.chatId = chatId;
@@ -50538,7 +50538,7 @@ public class TdApi {
          */
         public TopChatCategory category;
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
 
@@ -50556,7 +50556,7 @@ public class TdApi {
          * <p> Returns {@link Ok Ok} </p>
          *
          * @param category Category of frequently used chats.
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          */
         public RemoveTopChat(TopChatCategory category, long chatId) {
             this.category = category;
@@ -50678,7 +50678,7 @@ public class TdApi {
      */
     public static class ReplacePermanentChatInviteLink extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
 
@@ -50695,7 +50695,7 @@ public class TdApi {
          *
          * <p> Returns {@link ChatInviteLink ChatInviteLink} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          */
         public ReplacePermanentChatInviteLink(long chatId) {
             this.chatId = chatId;
@@ -50722,7 +50722,7 @@ public class TdApi {
      */
     public static class ReportChat extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -50747,7 +50747,7 @@ public class TdApi {
          *
          * <p> Returns {@link Ok Ok} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param reason The reason for reporting the chat.
          * @param messageIds Identifiers of reported messages, if any.
          */
@@ -51027,7 +51027,7 @@ public class TdApi {
          */
         public long chatId;
         /**
-         * Identifiers of the messages to resend. Message identifiers must be in a strictly increasing order.
+         * Identifiers of the messages to resend. telegramResponse.Message identifiers must be in a strictly increasing order.
          */
         public long[] messageIds;
 
@@ -51045,7 +51045,7 @@ public class TdApi {
          * <p> Returns {@link Messages Messages} </p>
          *
          * @param chatId Identifier of the chat to send messages.
-         * @param messageIds Identifiers of the messages to resend. Message identifiers must be in a strictly increasing order.
+         * @param messageIds Identifiers of the messages to resend. telegramResponse.Message identifiers must be in a strictly increasing order.
          */
         public ResendMessages(long chatId, long[] messageIds) {
             this.chatId = chatId;
@@ -51403,7 +51403,7 @@ public class TdApi {
      */
     public static class SearchChatMembers extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -51432,7 +51432,7 @@ public class TdApi {
          *
          * <p> Returns {@link ChatMembers ChatMembers} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param query Query to search for.
          * @param limit The maximum number of users to be returned.
          * @param filter The type of users to return. By default, chatMembersFilterMembers.
@@ -51551,7 +51551,7 @@ public class TdApi {
      */
     public static class SearchChatRecentLocationMessages extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -51572,7 +51572,7 @@ public class TdApi {
          *
          * <p> Returns {@link Messages Messages} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param limit The maximum number of messages to be returned.
          */
         public SearchChatRecentLocationMessages(long chatId, int limit) {
@@ -51957,7 +51957,7 @@ public class TdApi {
      */
     public static class SearchMessages extends Function {
         /**
-         * Chat list in which to search messages; pass null to search in all chats regardless of their chat list.
+         * telegramResponse.Chat list in which to search messages; pass null to search in all chats regardless of their chat list.
          */
         public ChatList chatList;
         /**
@@ -52006,7 +52006,7 @@ public class TdApi {
          *
          * <p> Returns {@link Messages Messages} </p>
          *
-         * @param chatList Chat list in which to search messages; pass null to search in all chats regardless of their chat list.
+         * @param chatList telegramResponse.Chat list in which to search messages; pass null to search in all chats regardless of their chat list.
          * @param query Query to search for.
          * @param offsetDate The date of the message starting from which the results should be fetched. Use 0 or any date in the future to get results from the last message.
          * @param offsetChatId The chat identifier of the last found message, or 0 for the first request.
@@ -52045,7 +52045,7 @@ public class TdApi {
     /**
      * Searches a public chat by its username. Currently only private chats, supergroups and channels can be public. Returns the chat if found; otherwise an error is returned.
      *
-     * <p> Returns {@link Chat Chat} </p>
+     * <p> Returns {@link Chat telegramResponse.Chat} </p>
      */
     public static class SearchPublicChat extends Function {
         /**
@@ -52056,7 +52056,7 @@ public class TdApi {
         /**
          * Default constructor for a function, which searches a public chat by its username. Currently only private chats, supergroups and channels can be public. Returns the chat if found; otherwise an error is returned.
          *
-         * <p> Returns {@link Chat Chat} </p>
+         * <p> Returns {@link Chat telegramResponse.Chat} </p>
          */
         public SearchPublicChat() {
         }
@@ -52064,7 +52064,7 @@ public class TdApi {
         /**
          * Creates a function, which searches a public chat by its username. Currently only private chats, supergroups and channels can be public. Returns the chat if found; otherwise an error is returned.
          *
-         * <p> Returns {@link Chat Chat} </p>
+         * <p> Returns {@link Chat telegramResponse.Chat} </p>
          *
          * @param username Username to be resolved.
          */
@@ -52339,7 +52339,7 @@ public class TdApi {
     /**
      * Invites a bot to a chat (if it is not yet a member) and sends it the /start command. Bots can't be invited to a private chat other than the chat with the bot. Bots can't be invited to channels (although they can be added as admins) and secret chats. Returns the sent message.
      *
-     * <p> Returns {@link Message Message} </p>
+     * <p> Returns {@link Message telegramResponse.Message} </p>
      */
     public static class SendBotStartMessage extends Function {
         /**
@@ -52358,7 +52358,7 @@ public class TdApi {
         /**
          * Default constructor for a function, which invites a bot to a chat (if it is not yet a member) and sends it the /start command. Bots can't be invited to a private chat other than the chat with the bot. Bots can't be invited to channels (although they can be added as admins) and secret chats. Returns the sent message.
          *
-         * <p> Returns {@link Message Message} </p>
+         * <p> Returns {@link Message telegramResponse.Message} </p>
          */
         public SendBotStartMessage() {
         }
@@ -52366,7 +52366,7 @@ public class TdApi {
         /**
          * Creates a function, which invites a bot to a chat (if it is not yet a member) and sends it the /start command. Bots can't be invited to a private chat other than the chat with the bot. Bots can't be invited to channels (although they can be added as admins) and secret chats. Returns the sent message.
          *
-         * <p> Returns {@link Message Message} </p>
+         * <p> Returns {@link Message telegramResponse.Message} </p>
          *
          * @param botUserId Identifier of the bot.
          * @param chatId Identifier of the target chat.
@@ -52561,7 +52561,7 @@ public class TdApi {
      */
     public static class SendChatAction extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -52586,7 +52586,7 @@ public class TdApi {
          *
          * <p> Returns {@link Ok Ok} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param messageThreadId If not 0, a message thread identifier in which the action was performed.
          * @param action The action description.
          */
@@ -52617,7 +52617,7 @@ public class TdApi {
      */
     public static class SendChatScreenshotTakenNotification extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
 
@@ -52634,7 +52634,7 @@ public class TdApi {
          *
          * <p> Returns {@link Ok Ok} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          */
         public SendChatScreenshotTakenNotification(long chatId) {
             this.chatId = chatId;
@@ -52657,11 +52657,11 @@ public class TdApi {
     /**
      * Changes the current TTL setting (sets a new self-destruct timer) in a secret chat and sends the corresponding message.
      *
-     * <p> Returns {@link Message Message} </p>
+     * <p> Returns {@link Message telegramResponse.Message} </p>
      */
     public static class SendChatSetTtlMessage extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -52672,7 +52672,7 @@ public class TdApi {
         /**
          * Default constructor for a function, which changes the current TTL setting (sets a new self-destruct timer) in a secret chat and sends the corresponding message.
          *
-         * <p> Returns {@link Message Message} </p>
+         * <p> Returns {@link Message telegramResponse.Message} </p>
          */
         public SendChatSetTtlMessage() {
         }
@@ -52680,9 +52680,9 @@ public class TdApi {
         /**
          * Creates a function, which changes the current TTL setting (sets a new self-destruct timer) in a secret chat and sends the corresponding message.
          *
-         * <p> Returns {@link Message Message} </p>
+         * <p> Returns {@link Message telegramResponse.Message} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param ttl New TTL value, in seconds.
          */
         public SendChatSetTtlMessage(long chatId, int ttl) {
@@ -52801,7 +52801,7 @@ public class TdApi {
     /**
      * Sends the result of an inline query as a message. Returns the sent message. Always clears a chat draft message.
      *
-     * <p> Returns {@link Message Message} </p>
+     * <p> Returns {@link Message telegramResponse.Message} </p>
      */
     public static class SendInlineQueryResultMessage extends Function {
         /**
@@ -52836,7 +52836,7 @@ public class TdApi {
         /**
          * Default constructor for a function, which sends the result of an inline query as a message. Returns the sent message. Always clears a chat draft message.
          *
-         * <p> Returns {@link Message Message} </p>
+         * <p> Returns {@link Message telegramResponse.Message} </p>
          */
         public SendInlineQueryResultMessage() {
         }
@@ -52844,7 +52844,7 @@ public class TdApi {
         /**
          * Creates a function, which sends the result of an inline query as a message. Returns the sent message. Always clears a chat draft message.
          *
-         * <p> Returns {@link Message Message} </p>
+         * <p> Returns {@link Message telegramResponse.Message} </p>
          *
          * @param chatId Target chat.
          * @param messageThreadId If not 0, a message thread identifier in which the message will be sent.
@@ -52881,7 +52881,7 @@ public class TdApi {
     /**
      * Sends a message. Returns the sent message.
      *
-     * <p> Returns {@link Message Message} </p>
+     * <p> Returns {@link Message telegramResponse.Message} </p>
      */
     public static class SendMessage extends Function {
         /**
@@ -52912,7 +52912,7 @@ public class TdApi {
         /**
          * Default constructor for a function, which sends a message. Returns the sent message.
          *
-         * <p> Returns {@link Message Message} </p>
+         * <p> Returns {@link Message telegramResponse.Message} </p>
          */
         public SendMessage() {
         }
@@ -52920,7 +52920,7 @@ public class TdApi {
         /**
          * Creates a function, which sends a message. Returns the sent message.
          *
-         * <p> Returns {@link Message Message} </p>
+         * <p> Returns {@link Message telegramResponse.Message} </p>
          *
          * @param chatId Target chat.
          * @param messageThreadId If not 0, a message thread identifier in which the message will be sent.
@@ -53077,11 +53077,11 @@ public class TdApi {
      */
     public static class SendPaymentForm extends Function {
         /**
-         * Chat identifier of the Invoice message.
+         * telegramResponse.Chat identifier of the Invoice message.
          */
         public long chatId;
         /**
-         * Message identifier.
+         * telegramResponse.Message identifier.
          */
         public long messageId;
         /**
@@ -53110,8 +53110,8 @@ public class TdApi {
          *
          * <p> Returns {@link PaymentResult PaymentResult} </p>
          *
-         * @param chatId Chat identifier of the Invoice message.
-         * @param messageId Message identifier.
+         * @param chatId telegramResponse.Chat identifier of the Invoice message.
+         * @param messageId telegramResponse.Message identifier.
          * @param orderInfoId Identifier returned by ValidateOrderInfo, or an empty string.
          * @param shippingOptionId Identifier of a chosen shipping option, if applicable.
          * @param credentials The credentials chosen by user for payment.
@@ -53589,7 +53589,7 @@ public class TdApi {
      */
     public static class SetChatClientData extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -53610,7 +53610,7 @@ public class TdApi {
          *
          * <p> Returns {@link Ok Ok} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param clientData New value of clientData.
          */
         public SetChatClientData(long chatId, String clientData) {
@@ -53739,7 +53739,7 @@ public class TdApi {
      */
     public static class SetChatDraftMessage extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -53764,7 +53764,7 @@ public class TdApi {
          *
          * <p> Returns {@link Ok Ok} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param messageThreadId If not 0, a message thread identifier in which the draft was changed.
          * @param draftMessage New draft message; may be null.
          */
@@ -53795,7 +53795,7 @@ public class TdApi {
      */
     public static class SetChatLocation extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -53816,7 +53816,7 @@ public class TdApi {
          *
          * <p> Returns {@link Ok Ok} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param location New location for the chat; must be valid and not null.
          */
         public SetChatLocation(long chatId, ChatLocation location) {
@@ -53845,7 +53845,7 @@ public class TdApi {
      */
     public static class SetChatMemberStatus extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -53870,7 +53870,7 @@ public class TdApi {
          *
          * <p> Returns {@link Ok Ok} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param userId User identifier.
          * @param status The new status of the member in the chat.
          */
@@ -53901,7 +53901,7 @@ public class TdApi {
      */
     public static class SetChatNotificationSettings extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -53922,7 +53922,7 @@ public class TdApi {
          *
          * <p> Returns {@link Ok Ok} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param notificationSettings New notification settings for the chat. If the chat is muted for more than 1 week, it is considered to be muted forever.
          */
         public SetChatNotificationSettings(long chatId, ChatNotificationSettings notificationSettings) {
@@ -53951,7 +53951,7 @@ public class TdApi {
      */
     public static class SetChatPermissions extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -53972,7 +53972,7 @@ public class TdApi {
          *
          * <p> Returns {@link Ok Ok} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param permissions New non-administrator members permissions in the chat.
          */
         public SetChatPermissions(long chatId, ChatPermissions permissions) {
@@ -54001,7 +54001,7 @@ public class TdApi {
      */
     public static class SetChatPhoto extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -54022,7 +54022,7 @@ public class TdApi {
          *
          * <p> Returns {@link Ok Ok} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param photo New chat photo. Pass null to delete the chat photo.
          */
         public SetChatPhoto(long chatId, InputChatPhoto photo) {
@@ -54051,7 +54051,7 @@ public class TdApi {
      */
     public static class SetChatSlowModeDelay extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -54072,7 +54072,7 @@ public class TdApi {
          *
          * <p> Returns {@link Ok Ok} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param slowModeDelay New slow mode delay for the chat; must be one of 0, 10, 30, 60, 300, 900, 3600.
          */
         public SetChatSlowModeDelay(long chatId, int slowModeDelay) {
@@ -54101,7 +54101,7 @@ public class TdApi {
      */
     public static class SetChatTitle extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -54122,7 +54122,7 @@ public class TdApi {
          *
          * <p> Returns {@link Ok Ok} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param title New title of the chat; 1-128 characters.
          */
         public SetChatTitle(long chatId, String title) {
@@ -54391,7 +54391,7 @@ public class TdApi {
     /**
      * Updates the game score of the specified user in the game; for bots only.
      *
-     * <p> Returns {@link Message Message} </p>
+     * <p> Returns {@link Message telegramResponse.Message} </p>
      */
     public static class SetGameScore extends Function {
         /**
@@ -54422,7 +54422,7 @@ public class TdApi {
         /**
          * Default constructor for a function, which updates the game score of the specified user in the game; for bots only.
          *
-         * <p> Returns {@link Message Message} </p>
+         * <p> Returns {@link Message telegramResponse.Message} </p>
          */
         public SetGameScore() {
         }
@@ -54430,7 +54430,7 @@ public class TdApi {
         /**
          * Creates a function, which updates the game score of the specified user in the game; for bots only.
          *
-         * <p> Returns {@link Message Message} </p>
+         * <p> Returns {@link Message telegramResponse.Message} </p>
          *
          * @param chatId The chat to which the message with the game belongs.
          * @param messageId Identifier of the message.
@@ -55143,7 +55143,7 @@ public class TdApi {
      */
     public static class SetPinnedChats extends Function {
         /**
-         * Chat list in which to change the order of pinned chats.
+         * telegramResponse.Chat list in which to change the order of pinned chats.
          */
         public ChatList chatList;
         /**
@@ -55164,7 +55164,7 @@ public class TdApi {
          *
          * <p> Returns {@link Ok Ok} </p>
          *
-         * @param chatList Chat list in which to change the order of pinned chats.
+         * @param chatList telegramResponse.Chat list in which to change the order of pinned chats.
          * @param chatIds The new list of pinned chats.
          */
         public SetPinnedChats(ChatList chatList, long[] chatIds) {
@@ -56455,16 +56455,16 @@ public class TdApi {
     }
 
     /**
-     * Does nothing and ensures that the Update object is used; for testing only. This is an offline method. Can be called before authorization.
+     * Does nothing and ensures that the telegramResponse.Update object is used; for testing only. This is an offline method. Can be called before authorization.
      *
-     * <p> Returns {@link Update Update} </p>
+     * <p> Returns {@link Update telegramResponse.Update} </p>
      */
     public static class TestUseUpdate extends Function {
 
         /**
-         * Default constructor for a function, which does nothing and ensures that the Update object is used; for testing only. This is an offline method. Can be called before authorization.
+         * Default constructor for a function, which does nothing and ensures that the telegramResponse.Update object is used; for testing only. This is an offline method. Can be called before authorization.
          *
-         * <p> Returns {@link Update Update} </p>
+         * <p> Returns {@link Update telegramResponse.Update} </p>
          */
         public TestUseUpdate() {
         }
@@ -56490,7 +56490,7 @@ public class TdApi {
      */
     public static class ToggleChatDefaultDisableNotification extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -56511,7 +56511,7 @@ public class TdApi {
          *
          * <p> Returns {@link Ok Ok} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param defaultDisableNotification New value of defaultDisableNotification.
          */
         public ToggleChatDefaultDisableNotification(long chatId, boolean defaultDisableNotification) {
@@ -56540,7 +56540,7 @@ public class TdApi {
      */
     public static class ToggleChatIsMarkedAsUnread extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -56561,7 +56561,7 @@ public class TdApi {
          *
          * <p> Returns {@link Ok Ok} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param isMarkedAsUnread New value of isMarkedAsUnread.
          */
         public ToggleChatIsMarkedAsUnread(long chatId, boolean isMarkedAsUnread) {
@@ -56590,11 +56590,11 @@ public class TdApi {
      */
     public static class ToggleChatIsPinned extends Function {
         /**
-         * Chat list in which to change the pinned state of the chat.
+         * telegramResponse.Chat list in which to change the pinned state of the chat.
          */
         public ChatList chatList;
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -56615,8 +56615,8 @@ public class TdApi {
          *
          * <p> Returns {@link Ok Ok} </p>
          *
-         * @param chatList Chat list in which to change the pinned state of the chat.
-         * @param chatId Chat identifier.
+         * @param chatList telegramResponse.Chat list in which to change the pinned state of the chat.
+         * @param chatId telegramResponse.Chat identifier.
          * @param isPinned True, if the chat is pinned.
          */
         public ToggleChatIsPinned(ChatList chatList, long chatId, boolean isPinned) {
@@ -56752,7 +56752,7 @@ public class TdApi {
      */
     public static class ToggleMessageSenderIsBlocked extends Function {
         /**
-         * Message Sender.
+         * telegramResponse.Message Sender.
          */
         public MessageSender sender;
         /**
@@ -56773,7 +56773,7 @@ public class TdApi {
          *
          * <p> Returns {@link Ok Ok} </p>
          *
-         * @param sender Message Sender.
+         * @param sender telegramResponse.Message Sender.
          * @param isBlocked New value of isBlocked.
          */
         public ToggleMessageSenderIsBlocked(MessageSender sender, boolean isBlocked) {
@@ -56902,7 +56902,7 @@ public class TdApi {
      */
     public static class TransferChatOwnership extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -56927,7 +56927,7 @@ public class TdApi {
          *
          * <p> Returns {@link Ok Ok} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param userId Identifier of the user to which transfer the ownership. The ownership can't be transferred to a bot or to a deleted user.
          * @param password The password of the current user.
          */
@@ -57048,7 +57048,7 @@ public class TdApi {
     /**
      * Creates a new supergroup from an existing basic group and sends a corresponding messageChatUpgradeTo and messageChatUpgradeFrom; requires creator privileges. Deactivates the original basic group.
      *
-     * <p> Returns {@link Chat Chat} </p>
+     * <p> Returns {@link Chat telegramResponse.Chat} </p>
      */
     public static class UpgradeBasicGroupChatToSupergroupChat extends Function {
         /**
@@ -57059,7 +57059,7 @@ public class TdApi {
         /**
          * Default constructor for a function, which creates a new supergroup from an existing basic group and sends a corresponding messageChatUpgradeTo and messageChatUpgradeFrom; requires creator privileges. Deactivates the original basic group.
          *
-         * <p> Returns {@link Chat Chat} </p>
+         * <p> Returns {@link Chat telegramResponse.Chat} </p>
          */
         public UpgradeBasicGroupChatToSupergroupChat() {
         }
@@ -57067,7 +57067,7 @@ public class TdApi {
         /**
          * Creates a function, which creates a new supergroup from an existing basic group and sends a corresponding messageChatUpgradeTo and messageChatUpgradeFrom; requires creator privileges. Deactivates the original basic group.
          *
-         * <p> Returns {@link Chat Chat} </p>
+         * <p> Returns {@link Chat telegramResponse.Chat} </p>
          *
          * @param chatId Identifier of the chat to upgrade.
          */
@@ -57202,11 +57202,11 @@ public class TdApi {
      */
     public static class ValidateOrderInfo extends Function {
         /**
-         * Chat identifier of the Invoice message.
+         * telegramResponse.Chat identifier of the Invoice message.
          */
         public long chatId;
         /**
-         * Message identifier.
+         * telegramResponse.Message identifier.
          */
         public long messageId;
         /**
@@ -57231,8 +57231,8 @@ public class TdApi {
          *
          * <p> Returns {@link ValidatedOrderInfo ValidatedOrderInfo} </p>
          *
-         * @param chatId Chat identifier of the Invoice message.
-         * @param messageId Message identifier.
+         * @param chatId telegramResponse.Chat identifier of the Invoice message.
+         * @param messageId telegramResponse.Message identifier.
          * @param orderInfo The order information, provided by the user.
          * @param allowSave True, if the order information can be saved.
          */
@@ -57264,7 +57264,7 @@ public class TdApi {
      */
     public static class ViewMessages extends Function {
         /**
-         * Chat identifier.
+         * telegramResponse.Chat identifier.
          */
         public long chatId;
         /**
@@ -57293,7 +57293,7 @@ public class TdApi {
          *
          * <p> Returns {@link Ok Ok} </p>
          *
-         * @param chatId Chat identifier.
+         * @param chatId telegramResponse.Chat identifier.
          * @param messageThreadId If not 0, a message thread identifier in which the messages are being viewed.
          * @param messageIds The identifiers of the messages being viewed.
          * @param forceRead True, if messages in closed chats should be marked as read by the request.

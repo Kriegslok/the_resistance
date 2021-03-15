@@ -1,17 +1,23 @@
+package telegramResponse;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import telegramResponse.Message;
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Update {
-    private String update_id;
+    private int update_id;
     private Message message;
 
-    public Update(String update_id, Message message) {
+    public Update() {
+//        String update_id, telegramResponse.Message message
         this.update_id = update_id;
         this.message = message;
     }
 
-    public String getUpdate_id() {
+    public int getUpdate_id() {
         return update_id;
     }
 
-    public void setUpdate_id(String update_id) {
+    public void setUpdate_id(int update_id) {
         this.update_id = update_id;
     }
 

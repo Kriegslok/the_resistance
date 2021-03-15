@@ -129,7 +129,7 @@ extends <a href="TdApi.Object.html" title="class in org.drinkless.tdlib">TdApi.O
 </td>
 </tr>
 <tr class="row-color">
-<td class="col-first"><code><a href="TdApi.Message.html" title="class in org.drinkless.tdlib">TdApi.Message</a>[]</code></td>
+<td class="col-first"><code><a href="TdApi.telegramUpdate.Message.html" title="class in org.drinkless.tdlib">TdApi.telegramUpdate.Message</a>[]</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#messages">messages</a></span></code></th>
 <td class="col-last">
 <div class="block">The messages from which the thread starts.</div>
@@ -139,7 +139,7 @@ extends <a href="TdApi.Object.html" title="class in org.drinkless.tdlib">TdApi.O
 <td class="col-first"><code>long</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#messageThreadId">messageThreadId</a></span></code></th>
 <td class="col-last">
-<div class="block">Message thread identifier, unique within the chat.</div>
+<div class="block">telegramUpdate.Message thread identifier, unique within the chat.</div>
 </td>
 </tr>
 <tr class="row-color">
@@ -175,10 +175,10 @@ extends <a href="TdApi.Object.html" title="class in org.drinkless.tdlib">TdApi.O
 </td>
 </tr>
 <tr class="row-color">
-<th class="col-constructor-name" scope="row"><code><span class="member-name-link"><a href="#%3Cinit%3E(long,long,org.drinkless.tdlib.TdApi.MessageReplyInfo,org.drinkless.tdlib.TdApi.Message%5B%5D,org.drinkless.tdlib.TdApi.DraftMessage)">MessageThreadInfo</a></span>&#8203;(long&nbsp;chatId,
+<th class="col-constructor-name" scope="row"><code><span class="member-name-link"><a href="#%3Cinit%3E(long,long,org.drinkless.tdlib.TdApi.MessageReplyInfo,org.drinkless.tdlib.TdApi.telegramUpdate.Message%5B%5D,org.drinkless.tdlib.TdApi.DraftMessage)">MessageThreadInfo</a></span>&#8203;(long&nbsp;chatId,
 long&nbsp;messageThreadId,
 <a href="TdApi.MessageReplyInfo.html" title="class in org.drinkless.tdlib">TdApi.MessageReplyInfo</a>&nbsp;replyInfo,
-<a href="TdApi.Message.html" title="class in org.drinkless.tdlib">TdApi.Message</a>[]&nbsp;messages,
+<a href="TdApi.telegramUpdate.Message.html" title="class in org.drinkless.tdlib">TdApi.telegramUpdate.Message</a>[]&nbsp;messages,
 <a href="TdApi.DraftMessage.html" title="class in org.drinkless.tdlib">TdApi.DraftMessage</a>&nbsp;draftMessage)</code></th>
 <td class="col-last">
 <div class="block">Contains information about a message thread.</div>
@@ -242,7 +242,7 @@ long&nbsp;messageThreadId,
 <section class="detail" id="messageThreadId">
 <h3>messageThreadId</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="member-name">messageThreadId</span></div>
-<div class="block">Message thread identifier, unique within the chat.</div>
+<div class="block">telegramUpdate.Message thread identifier, unique within the chat.</div>
 </section>
 </li>
 <li>
@@ -255,7 +255,7 @@ long&nbsp;messageThreadId,
 <li>
 <section class="detail" id="messages">
 <h3>messages</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="TdApi.Message.html" title="class in org.drinkless.tdlib">TdApi.Message</a>[]</span>&nbsp;<span class="member-name">messages</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="TdApi.telegramUpdate.Message.html" title="class in org.drinkless.tdlib">TdApi.telegramUpdate.Message</a>[]</span>&nbsp;<span class="member-name">messages</span></div>
 <div class="block">The messages from which the thread starts. The messages are returned in a reverse chronological order (i.e., in order of decreasing messageId).</div>
 </section>
 </li>
@@ -293,18 +293,18 @@ long&nbsp;messageThreadId,
 </section>
 </li>
 <li>
-<section class="detail" id="&lt;init&gt;(long,long,org.drinkless.tdlib.TdApi.MessageReplyInfo,org.drinkless.tdlib.TdApi.Message[],org.drinkless.tdlib.TdApi.DraftMessage)">
+<section class="detail" id="&lt;init&gt;(long,long,org.drinkless.tdlib.TdApi.MessageReplyInfo,org.drinkless.tdlib.TdApi.telegramUpdate.Message[],org.drinkless.tdlib.TdApi.DraftMessage)">
 <h3>MessageThreadInfo</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="member-name">MessageThreadInfo</span>&#8203;(<span class="parameters">long&nbsp;chatId,
 long&nbsp;messageThreadId,
 <a href="TdApi.MessageReplyInfo.html" title="class in org.drinkless.tdlib">TdApi.MessageReplyInfo</a>&nbsp;replyInfo,
-<a href="TdApi.Message.html" title="class in org.drinkless.tdlib">TdApi.Message</a>[]&nbsp;messages,
+<a href="TdApi.telegramUpdate.Message.html" title="class in org.drinkless.tdlib">TdApi.telegramUpdate.Message</a>[]&nbsp;messages,
 <a href="TdApi.DraftMessage.html" title="class in org.drinkless.tdlib">TdApi.DraftMessage</a>&nbsp;draftMessage)</span></div>
 <div class="block">Contains information about a message thread.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>chatId</code> - Identifier of the chat to which the message thread belongs.</dd>
-<dd><code>messageThreadId</code> - Message thread identifier, unique within the chat.</dd>
+<dd><code>messageThreadId</code> - telegramUpdate.Message thread identifier, unique within the chat.</dd>
 <dd><code>replyInfo</code> - Contains information about the message thread.</dd>
 <dd><code>messages</code> - The messages from which the thread starts. The messages are returned in a reverse chronological order (i.e., in order of decreasing messageId).</dd>
 <dd><code>draftMessage</code> - A draft of a message in the message thread; may be null.</dd>
