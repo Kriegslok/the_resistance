@@ -77,7 +77,7 @@ loadScripts(document, 'script');</script>
 </div>
 <div class="inheritance" title="Inheritance Tree">java.lang.Object
 <div class="inheritance"><a href="TdApi.Object.html" title="class in org.drinkless.tdlib">org.drinkless.tdlib.TdApi.Object</a>
-<div class="inheritance"><a href="TdApi.Update.html" title="class in org.drinkless.tdlib">org.drinkless.tdlib.TdApi.Update</a>
+<div class="inheritance"><a href="TdApi.telegramUpdate.Update.html" title="class in org.drinkless.tdlib">org.drinkless.tdlib.TdApi.telegramUpdate.Update</a>
 <div class="inheritance">org.drinkless.tdlib.TdApi.UpdateChatLastMessage</div>
 </div>
 </div>
@@ -89,7 +89,7 @@ loadScripts(document, 'script');</script>
 </dl>
 <hr>
 <pre>public static class <span class="type-name-label">TdApi.UpdateChatLastMessage</span>
-extends <a href="TdApi.Update.html" title="class in org.drinkless.tdlib">TdApi.Update</a></pre>
+extends <a href="TdApi.telegramUpdate.Update.html" title="class in org.drinkless.tdlib">TdApi.telegramUpdate.Update</a></pre>
 <div class="block">The last message of a chat was changed. If lastMessage is null, then the last message in the chat became unknown. Some new unknown messages might be added to the chat in this case.</div>
 </section>
 <section class="summary">
@@ -113,7 +113,7 @@ extends <a href="TdApi.Update.html" title="class in org.drinkless.tdlib">TdApi.U
 <td class="col-first"><code>long</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#chatId">chatId</a></span></code></th>
 <td class="col-last">
-<div class="block">Chat identifier.</div>
+<div class="block">telegramUpdate.Chat identifier.</div>
 </td>
 </tr>
 <tr class="row-color">
@@ -124,7 +124,7 @@ extends <a href="TdApi.Update.html" title="class in org.drinkless.tdlib">TdApi.U
 </td>
 </tr>
 <tr class="alt-color">
-<td class="col-first"><code><a href="TdApi.Message.html" title="class in org.drinkless.tdlib">TdApi.Message</a></code></td>
+<td class="col-first"><code><a href="TdApi.telegramUpdate.Message.html" title="class in org.drinkless.tdlib">TdApi.telegramUpdate.Message</a></code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#lastMessage">lastMessage</a></span></code></th>
 <td class="col-last">
 <div class="block">The new last message in the chat; may be null.</div>
@@ -163,8 +163,8 @@ extends <a href="TdApi.Update.html" title="class in org.drinkless.tdlib">TdApi.U
 </td>
 </tr>
 <tr class="row-color">
-<th class="col-constructor-name" scope="row"><code><span class="member-name-link"><a href="#%3Cinit%3E(long,org.drinkless.tdlib.TdApi.Message,org.drinkless.tdlib.TdApi.ChatPosition%5B%5D)">UpdateChatLastMessage</a></span>&#8203;(long&nbsp;chatId,
-<a href="TdApi.Message.html" title="class in org.drinkless.tdlib">TdApi.Message</a>&nbsp;lastMessage,
+<th class="col-constructor-name" scope="row"><code><span class="member-name-link"><a href="#%3Cinit%3E(long,org.drinkless.tdlib.TdApi.telegramUpdate.Message,org.drinkless.tdlib.TdApi.ChatPosition%5B%5D)">UpdateChatLastMessage</a></span>&#8203;(long&nbsp;chatId,
+<a href="TdApi.telegramUpdate.Message.html" title="class in org.drinkless.tdlib">TdApi.telegramUpdate.Message</a>&nbsp;lastMessage,
 <a href="TdApi.ChatPosition.html" title="class in org.drinkless.tdlib">TdApi.ChatPosition</a>[]&nbsp;positions)</code></th>
 <td class="col-last">
 <div class="block">The last message of a chat was changed.</div>
@@ -221,13 +221,13 @@ extends <a href="TdApi.Update.html" title="class in org.drinkless.tdlib">TdApi.U
 <section class="detail" id="chatId">
 <h3>chatId</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="member-name">chatId</span></div>
-<div class="block">Chat identifier.</div>
+<div class="block">telegramUpdate.Chat identifier.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="lastMessage">
 <h3>lastMessage</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="TdApi.Message.html" title="class in org.drinkless.tdlib">TdApi.Message</a></span>&nbsp;<span class="member-name">lastMessage</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="TdApi.telegramUpdate.Message.html" title="class in org.drinkless.tdlib">TdApi.telegramUpdate.Message</a></span>&nbsp;<span class="member-name">lastMessage</span></div>
 <div class="block">The new last message in the chat; may be null.</div>
 </section>
 </li>
@@ -265,15 +265,15 @@ extends <a href="TdApi.Update.html" title="class in org.drinkless.tdlib">TdApi.U
 </section>
 </li>
 <li>
-<section class="detail" id="&lt;init&gt;(long,org.drinkless.tdlib.TdApi.Message,org.drinkless.tdlib.TdApi.ChatPosition[])">
+<section class="detail" id="&lt;init&gt;(long,org.drinkless.tdlib.TdApi.telegramUpdate.Message,org.drinkless.tdlib.TdApi.ChatPosition[])">
 <h3>UpdateChatLastMessage</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="member-name">UpdateChatLastMessage</span>&#8203;(<span class="parameters">long&nbsp;chatId,
-<a href="TdApi.Message.html" title="class in org.drinkless.tdlib">TdApi.Message</a>&nbsp;lastMessage,
+<a href="TdApi.telegramUpdate.Message.html" title="class in org.drinkless.tdlib">TdApi.telegramUpdate.Message</a>&nbsp;lastMessage,
 <a href="TdApi.ChatPosition.html" title="class in org.drinkless.tdlib">TdApi.ChatPosition</a>[]&nbsp;positions)</span></div>
 <div class="block">The last message of a chat was changed. If lastMessage is null, then the last message in the chat became unknown. Some new unknown messages might be added to the chat in this case.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>chatId</code> - Chat identifier.</dd>
+<dd><code>chatId</code> - telegramUpdate.Chat identifier.</dd>
 <dd><code>lastMessage</code> - The new last message in the chat; may be null.</dd>
 <dd><code>positions</code> - The new chat positions in the chat lists.</dd>
 </dl>

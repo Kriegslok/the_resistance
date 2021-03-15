@@ -77,7 +77,7 @@ loadScripts(document, 'script');</script>
 </div>
 <div class="inheritance" title="Inheritance Tree">java.lang.Object
 <div class="inheritance"><a href="TdApi.Object.html" title="class in org.drinkless.tdlib">org.drinkless.tdlib.TdApi.Object</a>
-<div class="inheritance"><a href="TdApi.Update.html" title="class in org.drinkless.tdlib">org.drinkless.tdlib.TdApi.Update</a>
+<div class="inheritance"><a href="TdApi.telegramUpdate.Update.html" title="class in org.drinkless.tdlib">org.drinkless.tdlib.TdApi.telegramUpdate.Update</a>
 <div class="inheritance">org.drinkless.tdlib.TdApi.UpdateNotificationGroup</div>
 </div>
 </div>
@@ -89,7 +89,7 @@ loadScripts(document, 'script');</script>
 </dl>
 <hr>
 <pre>public static class <span class="type-name-label">TdApi.UpdateNotificationGroup</span>
-extends <a href="TdApi.Update.html" title="class in org.drinkless.tdlib">TdApi.Update</a></pre>
+extends <a href="TdApi.telegramUpdate.Update.html" title="class in org.drinkless.tdlib">TdApi.telegramUpdate.Update</a></pre>
 <div class="block">A list of active notifications in a notification group has changed.</div>
 </section>
 <section class="summary">
@@ -148,7 +148,7 @@ extends <a href="TdApi.Update.html" title="class in org.drinkless.tdlib">TdApi.U
 <td class="col-first"><code>long</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#notificationSettingsChatId">notificationSettingsChatId</a></span></code></th>
 <td class="col-last">
-<div class="block">Chat identifier, which notification settings must be applied to the added notifications.</div>
+<div class="block">telegramUpdate.Chat identifier, which notification settings must be applied to the added notifications.</div>
 </td>
 </tr>
 <tr class="alt-color">
@@ -282,7 +282,7 @@ int[]&nbsp;removedNotificationIds)</code></th>
 <section class="detail" id="notificationSettingsChatId">
 <h3>notificationSettingsChatId</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="member-name">notificationSettingsChatId</span></div>
-<div class="block">Chat identifier, which notification settings must be applied to the added notifications.</div>
+<div class="block">telegramUpdate.Chat identifier, which notification settings must be applied to the added notifications.</div>
 </section>
 </li>
 <li>
@@ -356,7 +356,7 @@ int[]&nbsp;removedNotificationIds)</span></div>
 <dd><code>notificationGroupId</code> - Unique notification group identifier.</dd>
 <dd><code>type</code> - New type of the notification group.</dd>
 <dd><code>chatId</code> - Identifier of a chat to which all notifications in the group belong.</dd>
-<dd><code>notificationSettingsChatId</code> - Chat identifier, which notification settings must be applied to the added notifications.</dd>
+<dd><code>notificationSettingsChatId</code> - telegramUpdate.Chat identifier, which notification settings must be applied to the added notifications.</dd>
 <dd><code>isSilent</code> - True, if the notifications should be shown without sound.</dd>
 <dd><code>totalCount</code> - Total number of unread notifications in the group, can be bigger than number of active notifications.</dd>
 <dd><code>addedNotifications</code> - List of added group notifications, sorted by notification ID.</dd>

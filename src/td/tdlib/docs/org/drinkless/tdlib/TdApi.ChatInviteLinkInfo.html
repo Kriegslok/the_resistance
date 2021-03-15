@@ -118,7 +118,7 @@ extends <a href="TdApi.Object.html" title="class in org.drinkless.tdlib">TdApi.O
 <td class="col-first"><code>long</code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#chatId">chatId</a></span></code></th>
 <td class="col-last">
-<div class="block">Chat identifier of the invite link; 0 if the user has no access to the chat before joining.</div>
+<div class="block">telegramUpdate.Chat identifier of the invite link; 0 if the user has no access to the chat before joining.</div>
 </td>
 </tr>
 <tr class="alt-color">
@@ -153,7 +153,7 @@ extends <a href="TdApi.Object.html" title="class in org.drinkless.tdlib">TdApi.O
 <td class="col-first"><code><a href="TdApi.ChatPhotoInfo.html" title="class in org.drinkless.tdlib">TdApi.ChatPhotoInfo</a></code></td>
 <th class="col-second" scope="row"><code><span class="member-name-link"><a href="#photo">photo</a></span></code></th>
 <td class="col-last">
-<div class="block">Chat photo; may be null.</div>
+<div class="block">telegramUpdate.Chat photo; may be null.</div>
 </td>
 </tr>
 <tr class="row-color">
@@ -259,7 +259,7 @@ boolean&nbsp;isPublic)</code></th>
 <section class="detail" id="chatId">
 <h3>chatId</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="member-name">chatId</span></div>
-<div class="block">Chat identifier of the invite link; 0 if the user has no access to the chat before joining.</div>
+<div class="block">telegramUpdate.Chat identifier of the invite link; 0 if the user has no access to the chat before joining.</div>
 </section>
 </li>
 <li>
@@ -287,7 +287,7 @@ boolean&nbsp;isPublic)</code></th>
 <section class="detail" id="photo">
 <h3>photo</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="TdApi.ChatPhotoInfo.html" title="class in org.drinkless.tdlib">TdApi.ChatPhotoInfo</a></span>&nbsp;<span class="member-name">photo</span></div>
-<div class="block">Chat photo; may be null.</div>
+<div class="block">telegramUpdate.Chat photo; may be null.</div>
 </section>
 </li>
 <li>
@@ -351,11 +351,11 @@ boolean&nbsp;isPublic)</span></div>
 <div class="block">Contains information about a chat invite link.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>chatId</code> - Chat identifier of the invite link; 0 if the user has no access to the chat before joining.</dd>
+<dd><code>chatId</code> - telegramUpdate.Chat identifier of the invite link; 0 if the user has no access to the chat before joining.</dd>
 <dd><code>accessibleFor</code> - If non-zero, the amount of time for which read access to the chat will remain available, in seconds.</dd>
 <dd><code>type</code> - Contains information about the type of the chat.</dd>
 <dd><code>title</code> - Title of the chat.</dd>
-<dd><code>photo</code> - Chat photo; may be null.</dd>
+<dd><code>photo</code> - telegramUpdate.Chat photo; may be null.</dd>
 <dd><code>memberCount</code> - Number of members in the chat.</dd>
 <dd><code>memberUserIds</code> - User identifiers of some chat members that may be known to the current user.</dd>
 <dd><code>isPublic</code> - True, if the chat is a public supergroup or channel, i.e. it has a username or it is a location-based supergroup.</dd>

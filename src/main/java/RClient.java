@@ -1,20 +1,14 @@
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import org.asynchttpclient.*;
 import org.asynchttpclient.Response;
-import org.drinkless.tdlib.TdApi;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import telegramResponse.Message;
+import telegramResponse.TelegramResponse;
+import telegramResponse.TelegramUpdate;
+import telegramResponse.Update;
 
-import java.io.DataInput;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -22,22 +16,24 @@ import java.util.concurrent.ExecutionException;
 public class RClient {
 
     private final String methodGetUpdates = "getUpdates";
-    private final String methodSendMessage = "sendMessage";
-    private final String methodEditMessageText = "editMessageText";
-    private final String chatId = "chat_id=917985571";
+    private final String methodSendMessage = "sendMessage?";
+    private final String methodEditMessageText = "editMessageText?";
+    //private final String chatId = "chat_id=917985571";
     private String text = new String();
-    private String responseStr;
+    //private String responseStr;
     private int lastUpdate_id = 0;
     ArrayList<Message> messagesList;
     AsyncHttpClient asyncHttpClient;
     RClientConfig config;
 
-    public RClient(AsyncHttpClient asyncHttpClient, RClientConfig config) {
+    public RClient(AsyncHttpClient asyncHttpClient, RClientConfig config, int lastUpdate_id) {
         this.asyncHttpClient = asyncHttpClient;
         this.config = config;
+        this.lastUpdate_id = lastUpdate_id;
     }
 
-    public void getUpdates() throws JsonProcessingException {
+    public List<Update> getUpdates() throws JsonProcessingException {
+            List<Update> listOfUpdates;
             StringBuilder requestBuilder = new StringBuilder();
             requestBuilder.append(config.getTelegramBotUrl());
             requestBuilder.append(config.getToken());
@@ -47,7 +43,7 @@ public class RClient {
                 requestBuilder.append(lastUpdate_id);
             }
             String request = requestBuilder.toString();
-            System.out.println(request);
+            //System.out.println(request);
             ListenableFuture<Response> futureResponse = asyncHttpClient.prepareGet(request).execute();
             Response response = null;
             try {
@@ -56,59 +52,94 @@ public class RClient {
                 e.printStackTrace();
             }
             assert response != null;
-            responseStr = response.getResponseBody();
-            //updateJsonParser(responseStr);
-            updateJsonParserNew(responseStr);
-
+            String responseStr = response.getResponseBody();
+            listOfUpdates = updateJsonParser(responseStr);
+            return listOfUpdates;
         }
 
-        public void updateJsonParserNew(String responseStr) throws JsonProcessingException {
-
-           //ObjectMapper objectMapper = new ObjectMapper();
-           //JsonNode jsonNode = objectMapper.readTree(responseStr);
-           //String updateId = jsonNode.get("result").asText();
-
+        public List<Update> updateJsonParser(String responseStr) throws JsonProcessingException {
             ObjectMapper mapper = new ObjectMapper();
-            JsonNode jsonNode = mapper.readValue(responseStr, JsonNode.class);
-            TelegramResponse response = mapper.readValue(responseStr, TelegramResponse.class);
-            System.out.println(response.getResult().getUpdates());
-            //System.out.println(updateId);
-            System.out.println(jsonNode.toString());
-            //System.out.println(updateId);
-//            List<String> result = jsonNode.get("result").asText();
-//            System.out.println(update);
+            TelegramUpdate telegramUpdate = mapper.readValue(responseStr, TelegramUpdate.class);
+            List<Update> listOfUpdates = telegramUpdate.getResult();
+            for (Update update : listOfUpdates) {
+                lastUpdate_id = update.getUpdate_id();
+                //System.out.println(update.getMessage().toString());
+            }
+            return listOfUpdates;
         }
 
-        public void updateJsonParser(String responseStr) {
-        ArrayList<Message> messagesList = new ArrayList<>();
-            JSONParser jsonParser = new JSONParser();
-            JSONObject jsonObject = null;
-            try {
-                jsonObject = (JSONObject) jsonParser.parse(responseStr);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            assert jsonObject != null;
-            JSONArray results = (JSONArray) jsonObject.get("result");
-            Iterator i = results.iterator();
-            while (i.hasNext()) {
-                JSONObject message = (JSONObject) i.next();
-                lastUpdate_id = Integer.parseInt(message.get("update_id").toString());
-                JSONObject messageContents = (JSONObject) message.get("message");
-                JSONObject chat = (JSONObject) messageContents.get("chat");
-                int chat_id = Integer.parseInt(chat.get("id").toString());
-                int message_id = Integer.parseInt(messageContents.get("message_id").toString());
-                String text = messageContents.get("text").toString();
-                //Message receivedMessage = new Message(chat_id, message_id, text);
-                //messagesList.add(receivedMessage);
-            }
-            this.messagesList = messagesList;
+        public Message responseJsonParser(String responseStr) throws JsonProcessingException {
+            ObjectMapper mapper = new ObjectMapper();
+            TelegramResponse telegramResponse = mapper.readValue(responseStr, TelegramResponse.class);
+            Message responseMessage = telegramResponse.getResult();
+            return responseMessage;
         }
+
+        public Message respondOnUpdate(Update update, String text) throws JsonProcessingException {
+                Message responseMessage;
+                int chatId = update.getMessage().getChat().getId();
+                StringBuilder requestBuilder = new StringBuilder();
+                requestBuilder.append(config.getTelegramBotUrl());
+                requestBuilder.append(config.getToken());
+                requestBuilder.append(methodSendMessage);
+                requestBuilder.append("chat_id=");
+                requestBuilder.append(chatId);
+                requestBuilder.append("&text=");
+                requestBuilder.append(text);
+                String request = requestBuilder.toString();
+                System.out.println(request);
+                ListenableFuture<Response> futureResponse = asyncHttpClient.prepareGet(request).execute();
+                Response response = null;
+                try {
+                    response = futureResponse.get();
+                } catch (InterruptedException | ExecutionException e) {
+                    e.printStackTrace();
+                }
+                assert response != null;
+                String responseStr = response.getResponseBody();
+                responseMessage = responseJsonParser(responseStr);
+
+                return responseMessage;
+            }
+
+
+        public void sendMessage(int chatId, String text){
+            StringBuilder requestBuilder = new StringBuilder();
+            requestBuilder.append(config.getTelegramBotUrl());
+            requestBuilder.append(config.getToken());
+            requestBuilder.append(methodSendMessage);
+            requestBuilder.append("chat_id=");
+            requestBuilder.append(chatId);
+            requestBuilder.append("&text=");
+            requestBuilder.append(text);
+            String request = requestBuilder.toString();
+            System.out.println(request);
+            asyncHttpClient.prepareGet(request).execute();
+        }
+
+
+
+        public void editTextMessage(int chatId, int messageId, String text) {
+            StringBuilder requestBuilder = new StringBuilder();
+            requestBuilder.append(config.getTelegramBotUrl());
+            requestBuilder.append(config.getToken());
+            requestBuilder.append(methodEditMessageText);
+            requestBuilder.append("chat_id=");
+            requestBuilder.append(chatId);
+            requestBuilder.append("&message_id=");
+            requestBuilder.append(messageId);
+            requestBuilder.append("&text=");
+            requestBuilder.append(text);
+            String request = requestBuilder.toString();
+            System.out.println(request);
+            asyncHttpClient.prepareGet(request).execute();
+        }
+
 
         public void printMessages(){
-        for (Message message: messagesList) {
-            System.out.println(message.toString());
-        }
+            for (Message message: messagesList) {
+               System.out.println(message.toString());
+            }
         }
 
 }

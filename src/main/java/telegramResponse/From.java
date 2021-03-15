@@ -1,29 +1,37 @@
+package telegramResponse;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class From {
-    private String id;
-    private String is_bot;
+    private int id;
+    private boolean is_bot;
     private String first_name;
     private String language_code;
+    private String username;
 
-    public From(String id, String is_bot, String first_name, String language_code) {
+    public From() {
+//        String id, String is_bot, String first_name, String language_code
         this.id = id;
         this.is_bot = is_bot;
         this.first_name = first_name;
         this.language_code = language_code;
+        this.username = username;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String isIs_bot() {
+    public boolean isIs_bot() {
         return is_bot;
     }
 
-    public void setIs_bot(String is_bot) {
+    public void setIs_bot(boolean is_bot) {
         this.is_bot = is_bot;
     }
 
@@ -41,5 +49,13 @@ public class From {
 
     public void setLanguage_code(String language_code) {
         this.language_code = language_code;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }
