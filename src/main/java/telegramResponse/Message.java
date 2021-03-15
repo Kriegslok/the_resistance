@@ -14,12 +14,11 @@ public class Message {
     private String text;
 
     public Message() {
-        this.message_id = message_id;
-        this.from = from;
-        this.chat = chat;
-        this.date = date;
-        this.text = text;
-//        String message_id, telegramResponse.From from, telegramResponse.Chat chat, String date, String text
+        this.message_id = 0;
+        this.from = null;
+        this.chat = null;
+        this.date = 0;
+        this.text = null;
     }
 
     public int getMessage_id() {

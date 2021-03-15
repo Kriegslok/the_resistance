@@ -6,14 +6,12 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TelegramResponse {
     private boolean ok;
-    //    private Result result;
     private Message result;
 
     public TelegramResponse() {
         this.ok = false;
         this.result = null;
     }
-    //String ok, Result result
     public boolean isOk() {
         return ok;
     }

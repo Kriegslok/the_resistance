@@ -13,7 +13,6 @@ public class TelegramUpdate {
         this.ok = false;
         this.result = null;
     }
-    //String ok, Result result
     public boolean isOk() {
         return ok;
     }
