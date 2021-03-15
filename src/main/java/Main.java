@@ -15,8 +15,8 @@ import java.util.List;
 public class Main {
 
     static Logger logger = LoggerFactory.getLogger(Main.class.getName());
-    static String telegramBotUrl = "https://api.telegram.org/";
-    static String token = "bot1535167887:AAHspHwJURI66rdMqxim_xYxjMGrKQWngKk/";
+    static final String telegramBotUrl = "https://api.telegram.org/";
+    static final String token = "bot1535167887:AAHspHwJURI66rdMqxim_xYxjMGrKQWngKk/";
 
 
     public static void main(String[] args) throws JsonProcessingException, InterruptedException {

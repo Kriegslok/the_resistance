@@ -76,12 +76,9 @@ public class RClient {
     public Message respondOnUpdate(Update update, String text) throws JsonProcessingException {
             Message responseMessage;
             int chatId = update.getMessage().getChat().getId();
-        String request = buildRequest(text, chatId);
-        String responseStr = executeRequest(request);
-        responseMessage = responseJsonParser(responseStr);
-
+            responseMessage = sendMessage(chatId, text);
             return responseMessage;
-        }
+    }
 
     private String buildRequest(String text, int chatId) {
         String request = config.getTelegramBotUrl() +
@@ -96,9 +93,12 @@ public class RClient {
     }
 
 
-    public void sendMessage(int chatId, String text){
+    public Message sendMessage(int chatId, String text) throws JsonProcessingException {
+        Message responseMessage;
         String request = buildRequest(text, chatId);
-        asyncHttpClient.prepareGet(request).execute();
+        String responseStr = executeRequest(request);
+        responseMessage = responseJsonParser(responseStr);
+        return responseMessage;
     }
 
 
