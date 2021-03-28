@@ -18,6 +18,14 @@ public class From {
         this.username = null;
     }
 
+    public From(int id, boolean is_bot, String first_name, String language_code, String username) {
+        this.id = id;
+        this.is_bot = is_bot;
+        this.first_name = first_name;
+        this.language_code = language_code;
+        this.username = username;
+    }
+
     public int getId() {
         return id;
     }
