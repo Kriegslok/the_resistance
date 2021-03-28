@@ -16,25 +16,25 @@ public class RClient {
     private final String methodGetUpdates = "getUpdates";
     private final String methodSendMessage = "sendMessage?";
     private final String methodEditMessageText = "editMessageText?";
-    private int lastUpdate_id;
+    //private int lastUpdate_id;
     final AsyncHttpClient asyncHttpClient;
     final RClientConfig config;
 
-    public RClient(AsyncHttpClient asyncHttpClient, RClientConfig config, int lastUpdate_id) {
+    public RClient(AsyncHttpClient asyncHttpClient, RClientConfig config){//, int lastUpdate_id) {
         this.asyncHttpClient = asyncHttpClient;
         this.config = config;
-        this.lastUpdate_id = lastUpdate_id;
+        //this.lastUpdate_id = lastUpdate_id;
     }
 
-    public List<Update> getUpdates() throws JsonProcessingException {
+    public List<Update> getUpdates(int lastUpdateId) throws JsonProcessingException, ExecutionException, InterruptedException {
         List<Update> listOfUpdates;
         StringBuilder requestBuilder = new StringBuilder();
         requestBuilder.append(config.getTelegramBotUrl());
         requestBuilder.append(config.getToken());
         requestBuilder.append(methodGetUpdates);
-        if(lastUpdate_id != 0){
+        if(lastUpdateId != 0){
             requestBuilder.append("?offset=");
-            requestBuilder.append(lastUpdate_id);
+            requestBuilder.append(lastUpdateId);
         }
         String request = requestBuilder.toString();
         //System.out.println(request);
@@ -44,14 +44,12 @@ public class RClient {
         return listOfUpdates;
     }
 
-    private String executeRequest(String request) {
+    private String executeRequest(String request) throws ExecutionException, InterruptedException {
         ListenableFuture<Response> futureResponse = asyncHttpClient.prepareGet(request).execute();
         Response response = null;
-        try {
+
             response = futureResponse.get();
-        } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
-        }
+
         assert response != null;
         return response.getResponseBody();
     }
@@ -60,11 +58,20 @@ public class RClient {
         ObjectMapper mapper = new ObjectMapper();
         TelegramUpdate telegramUpdate = mapper.readValue(responseStr, TelegramUpdate.class);
         List<Update> listOfUpdates = telegramUpdate.getResult();
-        for (Update update : listOfUpdates) {
-            lastUpdate_id = update.getUpdate_id();
-            //System.out.println(update.getMessage().toString());
-        }
+//        for (Update update : listOfUpdates) {
+//            lastUpdateId = update.getUpdate_id();
+//            //System.out.println(update.getMessage().toString());
+//        }
         return listOfUpdates;
+    }
+
+    public void updateToJson(Update update) throws JsonProcessingException {
+        ObjectMapper stringMapper = new ObjectMapper();
+        String jsonString = null;
+
+            jsonString = stringMapper.writeValueAsString(update);
+
+        System.out.println(jsonString);
     }
 
     public Message responseJsonParser(String responseStr) throws JsonProcessingException {
@@ -73,7 +80,7 @@ public class RClient {
         return telegramResponse.getResult();
     }
 
-    public Message respondOnUpdate(Update update, String text) throws JsonProcessingException {
+    public Message respondOnUpdate(Update update, String text) throws JsonProcessingException, ExecutionException, InterruptedException {
             Message responseMessage;
             int chatId = update.getMessage().getChat().getId();
             responseMessage = sendMessage(chatId, text);
@@ -93,7 +100,7 @@ public class RClient {
     }
 
 
-    public Message sendMessage(int chatId, String text) throws JsonProcessingException {
+    public Message sendMessage(int chatId, String text) throws JsonProcessingException, ExecutionException, InterruptedException {
         Message responseMessage;
         String request = buildRequest(text, chatId);
         String responseStr = executeRequest(request);
