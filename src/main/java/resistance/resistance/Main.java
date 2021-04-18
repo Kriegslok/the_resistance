@@ -1,30 +1,38 @@
 package resistance.resistance;
-import org.springframework.beans.factory.annotation.Autowired;
+
+
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.stereotype.Component;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import resistance.SpringConfig;
 
-@Component
+import java.util.concurrent.Executors;
+
 
 public class Main {
 
-    @Autowired
+    //static Logger logger = LoggerFactory.getLogger(resistance.resistance.Main.class.getName());
+//    static final String telegramBotUrl = "https://api.telegram.org/";
+//    static final String token = "bot1535167887:AAHspHwJURI66rdMqxim_xYxjMGrKQWngKk/";
 
-    private static TelegramEventLoop telegramEventLoop;
 
     public static void main(String[] args) {
-       AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
-       TelegramEventLoop telegramEventLoop = context.getBean("telegramEventLoop", TelegramEventLoop.class);
 
-        telegramEventLoop.getExecutorService().submit(telegramEventLoop);
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConfig.class);
+        TelegramEventLoop eventLoop = context.getBean("eventLoop", TelegramEventLoop.class);
+        eventLoop.setExecutorService(Executors.newSingleThreadExecutor());
 
-
+        Thread ev = new Thread(eventLoop);
+        ev.start();
+        final Thread mainThread = Thread.currentThread();
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             try {
-                telegramEventLoop.stop();
+                eventLoop.stop();
+                mainThread.join();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }));
+
+        context.close();
     }
 }

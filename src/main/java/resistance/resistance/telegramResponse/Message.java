@@ -1,8 +1,7 @@
-package telegramResponse;
+package resistance.resistance.telegramResponse;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import telegramResponse.Chat;
-import telegramResponse.From;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Message {
 
