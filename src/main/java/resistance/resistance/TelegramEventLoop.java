@@ -1,21 +1,53 @@
-
+package resistance.resistance;
 
 import org.asynchttpclient.AsyncHttpClient;
 import org.asynchttpclient.DefaultAsyncHttpClient;
-import telegramResponse.Message;
-import telegramResponse.Update;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+import resistance.resistance.telegramResponse.Message;
+import resistance.resistance.telegramResponse.Update;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.TimeUnit;
 
+@Component
 public class TelegramEventLoop implements Runnable{
-    final String telegramBotUrl;
-    final String token;
-    private final ExecutorService executorService;
+    @Value("${telegramEventLoop.telegramBotUrl}")
+    private String telegramBotUrl;
 
-    public TelegramEventLoop(String telegramBotUrl, String token, ExecutorService executorService) {
-        this.telegramBotUrl = telegramBotUrl;
-        this.token = token;
+    @Value("${telegramEventLoop.token}")
+    private String token;
+    private ExecutorService executorService;
+    private RClientConfig config;
+    private RClient client;
+//    private AsyncHttpClient asyncHttpClient;
+
+    @Autowired
+    public void setClient(RClient client) {
+        this.client = client;
+    }
+
+//    @Autowired
+//    public AsyncHttpClient getAsyncHttpClient() {
+//        return asyncHttpClient;
+//    }
+    //    public TelegramEventLoop(String telegramBotUrl, String token, ExecutorService executorService) {
+//        this.telegramBotUrl = telegramBotUrl;
+//        this.token = token;
+//        this.executorService = executorService;
+//    }
+
+    @Autowired
+    public TelegramEventLoop(RClientConfig config) {
+        this.config = config;
+
+    }
+
+
+    public void setExecutorService(ExecutorService executorService) {
         this.executorService = executorService;
     }
 
@@ -27,11 +59,14 @@ public class TelegramEventLoop implements Runnable{
         executorService.execute(this::job);
     }
 
-    public void stop(){
+    public void stop() throws InterruptedException {
         this.running = false;
         this.executorService.shutdown();
+        executorService.awaitTermination(2000, TimeUnit.MILLISECONDS);
         System.out.println("shutdown");
     }
+
+
 
     private void job() {
         try {
@@ -39,9 +74,9 @@ public class TelegramEventLoop implements Runnable{
             List<Update> listOfUpdates;
             Message responseMessage;
             int lastUpdateId = 3;
-            RClientConfig config = new RClientConfig(telegramBotUrl, token);
-            AsyncHttpClient asyncHttpClient = new DefaultAsyncHttpClient();
-            RClient client = new RClient(asyncHttpClient, config);//, lastUpdateId);
+            //RClientConfig config = new RClientConfig(telegramBotUrl, token);
+
+//            RClient client = new RClient(asyncHttpClient, config);//, lastUpdateId);
             listOfUpdates = client.getUpdates(lastUpdateId);
             lastUpdateId = listOfUpdates.get(listOfUpdates.size() - 1).getUpdate_id();
 

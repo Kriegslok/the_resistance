@@ -1,7 +1,7 @@
-package telegramResponse;
+package resistance.resistance.telegramResponse;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import telegramResponse.Message;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Update {
     private int update_id;

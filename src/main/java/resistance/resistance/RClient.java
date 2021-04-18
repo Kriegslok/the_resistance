@@ -1,29 +1,32 @@
+package resistance.resistance;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.asynchttpclient.*;
-import telegramResponse.Message;
-import telegramResponse.TelegramResponse;
-import telegramResponse.TelegramUpdate;
-import telegramResponse.Update;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import resistance.resistance.telegramResponse.Message;
+import resistance.resistance.telegramResponse.TelegramResponse;
+import resistance.resistance.telegramResponse.TelegramUpdate;
+import resistance.resistance.telegramResponse.Update;
 
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-
+@Component
 public class RClient {
 
     private final String methodGetUpdates = "getUpdates";
     private final String methodSendMessage = "sendMessage?";
     private final String methodEditMessageText = "editMessageText?";
     //private int lastUpdate_id;
-    final AsyncHttpClient asyncHttpClient;
-    final RClientConfig config;
+    private AsyncHttpClient asyncHttpClient;
+    private RClientConfig config;
 
-    public RClient(AsyncHttpClient asyncHttpClient, RClientConfig config){//, int lastUpdate_id) {
-        this.asyncHttpClient = asyncHttpClient;
+    @Autowired
+    public RClient(RClientConfig config){
         this.config = config;
-        //this.lastUpdate_id = lastUpdate_id;
+        asyncHttpClient = config.getAsyncHttpClient();
     }
 
     public List<Update> getUpdates(int lastUpdateId) throws JsonProcessingException, ExecutionException, InterruptedException {
@@ -37,7 +40,6 @@ public class RClient {
             requestBuilder.append(lastUpdateId);
         }
         String request = requestBuilder.toString();
-        //System.out.println(request);
 
         String responseStr = executeRequest(request);
         listOfUpdates = updateJsonParser(responseStr);
@@ -49,8 +51,6 @@ public class RClient {
         Response response = null;
 
             response = futureResponse.get();
-
-        assert response != null;
         return response.getResponseBody();
     }
 
@@ -58,10 +58,6 @@ public class RClient {
         ObjectMapper mapper = new ObjectMapper();
         TelegramUpdate telegramUpdate = mapper.readValue(responseStr, TelegramUpdate.class);
         List<Update> listOfUpdates = telegramUpdate.getResult();
-//        for (Update update : listOfUpdates) {
-//            lastUpdateId = update.getUpdate_id();
-//            //System.out.println(update.getMessage().toString());
-//        }
         return listOfUpdates;
     }
 
