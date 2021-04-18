@@ -5,12 +5,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.asynchttpclient.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import resistance.resistance.entities.telegramResponse.Message;
-import resistance.resistance.entities.telegramResponse.TelegramResponse;
-import resistance.resistance.entities.telegramResponse.TelegramUpdate;
-import resistance.resistance.entities.telegramResponse.Update;
+import resistance.resistance.telegramResponse.Message;
+import resistance.resistance.telegramResponse.TelegramResponse;
+import resistance.resistance.telegramResponse.TelegramUpdate;
+import resistance.resistance.telegramResponse.Update;
 
-import java.rmi.UnexpectedException;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -22,22 +21,19 @@ public class RClient {
     private final String methodEditMessageText = "editMessageText?";
     //private int lastUpdate_id;
     private AsyncHttpClient asyncHttpClient;
-    private RClientConfig rConfig;
-
-
+    private RClientConfig config;
 
     @Autowired
-    public RClient(RClientConfig rConfig, AsyncHttpClient httpClient){
-        this.rConfig = rConfig;
-        this.asyncHttpClient = httpClient;
+    public RClient(RClientConfig config){
+        this.config = config;
+        asyncHttpClient = config.getAsyncHttpClient();
     }
-
 
     public List<Update> getUpdates(int lastUpdateId) throws JsonProcessingException, ExecutionException, InterruptedException {
         List<Update> listOfUpdates;
         StringBuilder requestBuilder = new StringBuilder();
-        requestBuilder.append(rConfig.getTelegramBotUrl());
-        requestBuilder.append(rConfig.getToken());
+        requestBuilder.append(config.getTelegramBotUrl());
+        requestBuilder.append(config.getToken());
         requestBuilder.append(methodGetUpdates);
         if(lastUpdateId != 0){
             requestBuilder.append("?offset=");
@@ -51,29 +47,12 @@ public class RClient {
     }
 
     private String executeRequest(String request) throws ExecutionException, InterruptedException {
-        ListenableFuture<Response> futureResponse = this.asyncHttpClient.prepareGet(request).execute();
-        //asyncHttpClient.prepareGet(request).addBodyPart(new Par);
+        ListenableFuture<Response> futureResponse = asyncHttpClient.prepareGet(request).execute();
         Response response = null;
 
             response = futureResponse.get();
-
-//        System.out.println(response.getHeaders());
-//        System.out.println(response.getResponseBody());
         return response.getResponseBody();
     }
-
-
-    private String executeRequest(String request, String json) throws ExecutionException, InterruptedException {
-        ListenableFuture<Response> futureResponse = asyncHttpClient.prepareGet(request)
-                .addHeader("Content-Type", "application/json").setBody(json).execute();
-        Response response = null;
-
-        response = futureResponse.get();
-        System.out.println(response.getHeaders());
-        System.out.println(response.getResponseBody());
-        return response.getResponseBody();
-    }
-
 
     public List<Update> updateJsonParser(String responseStr) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
@@ -97,41 +76,16 @@ public class RClient {
         return telegramResponse.getResult();
     }
 
-    public Message respondOnUpdate(Update update, String text) throws JsonProcessingException, ExecutionException, InterruptedException, UnexpectedException {
+    public Message respondOnUpdate(Update update, String text) throws JsonProcessingException, ExecutionException, InterruptedException {
             Message responseMessage;
-        int chatId = 0;
-        if(update.getMessage() != null) {
-            chatId = update.getMessage().getChat().getId();
-        }
-        else if(update.getCallback_query() != null && update.getCallback_query().getMessage() != null){
-            chatId = update.getCallback_query().getMessage().getChat().getId();
-        }
-        else{
-            throw  new UnexpectedException("Unexpected response");
-        }
+            int chatId = update.getMessage().getChat().getId();
             responseMessage = sendMessage(chatId, text);
             return responseMessage;
     }
 
-    public Message respondOnUpdate(Update update, String text, String json) throws JsonProcessingException, ExecutionException, InterruptedException, UnexpectedException {
-        Message responseMessage;
-        int chatId = 0;
-        if(update.getMessage() != null) {
-            chatId = update.getMessage().getChat().getId();
-        }
-        else if(update.getCallback_query() != null && update.getCallback_query().getMessage() != null){
-            chatId = update.getCallback_query().getMessage().getChat().getId();
-        }
-        else{
-            throw  new UnexpectedException("Unexpected response");
-        }
-        responseMessage = sendMessage(chatId, text, json);
-        return responseMessage;
-    }
-
     private String buildRequest(String text, int chatId) {
-        String request = rConfig.getTelegramBotUrl() +
-                rConfig.getToken() +
+        String request = config.getTelegramBotUrl() +
+                config.getToken() +
                 methodSendMessage +
                 "chat_id=" +
                 chatId +
@@ -141,6 +95,7 @@ public class RClient {
         return request;
     }
 
+
     public Message sendMessage(int chatId, String text) throws JsonProcessingException, ExecutionException, InterruptedException {
         Message responseMessage;
         String request = buildRequest(text, chatId);
@@ -149,19 +104,11 @@ public class RClient {
         return responseMessage;
     }
 
-    public Message sendMessage(int chatId, String text, String json) throws JsonProcessingException, ExecutionException, InterruptedException {
-        Message responseMessage;
-        String request = buildRequest(text, chatId);
-        String responseStr = executeRequest(request, json);
-        responseMessage = responseJsonParser(responseStr);
-        return responseMessage;
-    }
-
 
 
     public void editTextMessage(int chatId, int messageId, String text) {
-        String request = rConfig.getTelegramBotUrl() +
-                rConfig.getToken() +
+        String request = config.getTelegramBotUrl() +
+                config.getToken() +
                 methodEditMessageText +
                 "chat_id=" +
                 chatId +

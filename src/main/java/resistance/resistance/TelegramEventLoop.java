@@ -1,46 +1,62 @@
 package resistance.resistance;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import org.asynchttpclient.AsyncHttpClient;
+import org.asynchttpclient.DefaultAsyncHttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-import resistance.resistance.logic.EventRouter;
-import resistance.resistance.entities.telegramResponse.Message;
-import resistance.resistance.entities.telegramResponse.Update;
+import resistance.resistance.telegramResponse.Message;
+import resistance.resistance.telegramResponse.Update;
 
-import java.rmi.UnexpectedException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 
 @Component
 public class TelegramEventLoop implements Runnable{
-    private ExecutorService executorService;
-    private RClient client;
-    private EventRouter eventRouter;
-    @Value("${telegramEventLoop.initialOffset}")
-    private int initialOffset;
+    @Value("${telegramEventLoop.telegramBotUrl}")
+    private String telegramBotUrl;
 
+    @Value("${telegramEventLoop.token}")
+    private String token;
+    private ExecutorService executorService;
+    private RClientConfig config;
+    private RClient client;
+//    private AsyncHttpClient asyncHttpClient;
 
     @Autowired
-    public TelegramEventLoop(RClient client, ExecutorService executorService, EventRouter eventRouter) {
+    public void setClient(RClient client) {
         this.client = client;
-        this.executorService = executorService;
-        this.eventRouter = eventRouter;
     }
 
 //    @Autowired
-//    public void setExecutorService(ExecutorService executorService) {
+//    public AsyncHttpClient getAsyncHttpClient() {
+//        return asyncHttpClient;
+//    }
+    //    public TelegramEventLoop(String telegramBotUrl, String token, ExecutorService executorService) {
+//        this.telegramBotUrl = telegramBotUrl;
+//        this.token = token;
 //        this.executorService = executorService;
 //    }
 
+    @Autowired
+    public TelegramEventLoop(RClientConfig config) {
+        this.config = config;
+
+    }
+
+
+    public void setExecutorService(ExecutorService executorService) {
+        this.executorService = executorService;
+    }
+
+    //private void task = null;
     private volatile boolean running = false;
 
     public void run(){
         this.running = true;
-        job();
+        executorService.execute(this::job);
     }
 
     public void stop() throws InterruptedException {
@@ -50,9 +66,7 @@ public class TelegramEventLoop implements Runnable{
         System.out.println("shutdown");
     }
 
-    public ExecutorService getExecutorService() {
-        return executorService;
-    }
+
 
     private void job() {
         try {
@@ -60,8 +74,11 @@ public class TelegramEventLoop implements Runnable{
             List<Update> listOfUpdates;
             Message responseMessage;
             int lastUpdateId = 3;
+            //RClientConfig config = new RClientConfig(telegramBotUrl, token);
+
+//            RClient client = new RClient(asyncHttpClient, config);//, lastUpdateId);
             listOfUpdates = client.getUpdates(lastUpdateId);
-            lastUpdateId = listOfUpdates.get(listOfUpdates.size() - initialOffset).getUpdate_id();
+            lastUpdateId = listOfUpdates.get(listOfUpdates.size() - 1).getUpdate_id();
 
 
             while (running) {
@@ -70,44 +87,27 @@ public class TelegramEventLoop implements Runnable{
                 int newUpdateId = lastUpdate.getUpdate_id();
                 if (newUpdateId != lastUpdateId) {
                     System.out.println(lastUpdate.getUpdate_id());
+                    //client.updateToJson(lastUpdate);
                     lastUpdateId = newUpdateId;
-                    if(listOfUpdates.size() > 1){
-                        listOfUpdates.remove(0);
-                    }
+                    responseMessage = client.respondOnUpdate((listOfUpdates.get(listOfUpdates.size() - 1)), "Roger: " + listOfUpdates.get(listOfUpdates.size() - 1).getMessage().getText());
                     for (Update update : listOfUpdates) {
-                        List<String> replyList = new ArrayList<>();
-                        if(update.getMessage() != null){
-                            System.out.println(update.getMessage().getText());
-                        }
-                        else if(update.getCallback_query() != null && update.getCallback_query().getData() != null){
-                            System.out.println(update.getCallback_query().getData());
-                        }
-
-                        replyList = eventRouter.scenerySelector(update);
-                        if(replyList.size() > 1){
-                            responseMessage = client.respondOnUpdate(update, replyList.get(0), replyList.get(1));
-                        }
-                        else if(replyList.size() == 1){
-                                responseMessage = client.respondOnUpdate(update, replyList.get(0));
-                        }
-//                        else {
-//                            responseMessage = client.respondOnUpdate(update, "Roger: " + update.getMessage().getText());
-//                            System.out.println(responseMessage.getText());
-//
-//                            Thread.sleep(5000);
-//                            client.editTextMessage(responseMessage.getChat().getId(), responseMessage.getMessage_id(), "Roger: qwerty");
-//                        }
+                        System.out.println(update.getMessage().getText());
                     }
-                    listOfUpdates.clear();
+                    System.out.println(responseMessage.getText());
+                    Thread.sleep(5000);
+                    client.editTextMessage(responseMessage.getChat().getId(), responseMessage.getMessage_id(), "Roger: qwerty");
                 }
+                //client.printMessages();
+                // client.getUpdates();
+                //client.printMessages();
+
+
             }
         }
-        catch (IndexOutOfBoundsException | JsonProcessingException | ExecutionException | InterruptedException | UnexpectedException e){
-            if (e instanceof IndexOutOfBoundsException){
-                initialOffset ++;
-                run();
-            }
+        catch (Exception e){
             e.printStackTrace();
         }
+
     }
+
 }

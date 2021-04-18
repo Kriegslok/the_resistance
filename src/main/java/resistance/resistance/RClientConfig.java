@@ -12,11 +12,18 @@ public class RClientConfig {
     private  String telegramBotUrl;
     @Value("${telegramEventLoop.token}")
     private String token;
+    private AsyncHttpClient asyncHttpClient;
 
+//    @Autowired
+//    public RClientConfig(String telegramBotUrl, String token) {
+//        this.telegramBotUrl = telegramBotUrl;
+//        this.token = token;
+//        asyncHttpClient = new DefaultAsyncHttpClient();
+//    }
 
     @Autowired
     public RClientConfig() {
-
+        asyncHttpClient = new DefaultAsyncHttpClient();
     }
 
     public String getTelegramBotUrl() {
@@ -27,4 +34,7 @@ public class RClientConfig {
         return token;
     }
 
+    public AsyncHttpClient getAsyncHttpClient() {
+        return asyncHttpClient;
+    }
 }
