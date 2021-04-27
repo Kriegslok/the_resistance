@@ -15,48 +15,26 @@ import java.util.concurrent.TimeUnit;
 
 @Component
 public class TelegramEventLoop implements Runnable{
-    @Value("${telegramEventLoop.telegramBotUrl}")
-    private String telegramBotUrl;
-
-    @Value("${telegramEventLoop.token}")
-    private String token;
     private ExecutorService executorService;
-    private RClientConfig config;
     private RClient client;
-//    private AsyncHttpClient asyncHttpClient;
+
 
     @Autowired
-    public void setClient(RClient client) {
+    public TelegramEventLoop(RClient client, ExecutorService executorService) {
         this.client = client;
+        this.executorService = executorService;
     }
-
-//    @Autowired
-//    public AsyncHttpClient getAsyncHttpClient() {
-//        return asyncHttpClient;
-//    }
-    //    public TelegramEventLoop(String telegramBotUrl, String token, ExecutorService executorService) {
-//        this.telegramBotUrl = telegramBotUrl;
-//        this.token = token;
-//        this.executorService = executorService;
-//    }
 
     @Autowired
-    public TelegramEventLoop(RClientConfig config) {
-        this.config = config;
-
-    }
-
-
     public void setExecutorService(ExecutorService executorService) {
         this.executorService = executorService;
     }
 
-    //private void task = null;
     private volatile boolean running = false;
 
     public void run(){
         this.running = true;
-        executorService.execute(this::job);
+        job();
     }
 
     public void stop() throws InterruptedException {
@@ -74,9 +52,6 @@ public class TelegramEventLoop implements Runnable{
             List<Update> listOfUpdates;
             Message responseMessage;
             int lastUpdateId = 3;
-            //RClientConfig config = new RClientConfig(telegramBotUrl, token);
-
-//            RClient client = new RClient(asyncHttpClient, config);//, lastUpdateId);
             listOfUpdates = client.getUpdates(lastUpdateId);
             lastUpdateId = listOfUpdates.get(listOfUpdates.size() - 1).getUpdate_id();
 
@@ -87,27 +62,23 @@ public class TelegramEventLoop implements Runnable{
                 int newUpdateId = lastUpdate.getUpdate_id();
                 if (newUpdateId != lastUpdateId) {
                     System.out.println(lastUpdate.getUpdate_id());
-                    //client.updateToJson(lastUpdate);
                     lastUpdateId = newUpdateId;
-                    responseMessage = client.respondOnUpdate((listOfUpdates.get(listOfUpdates.size() - 1)), "Roger: " + listOfUpdates.get(listOfUpdates.size() - 1).getMessage().getText());
+                    if(listOfUpdates.size() > 1){
+                        listOfUpdates.remove(0);
+                    }
                     for (Update update : listOfUpdates) {
                         System.out.println(update.getMessage().getText());
+                        responseMessage = client.respondOnUpdate(update, "Roger: " + update.getMessage().getText());
+                        System.out.println(responseMessage.getText());
+                        Thread.sleep(5000);
+                        client.editTextMessage(responseMessage.getChat().getId(), responseMessage.getMessage_id(), "Roger: qwerty");
                     }
-                    System.out.println(responseMessage.getText());
-                    Thread.sleep(5000);
-                    client.editTextMessage(responseMessage.getChat().getId(), responseMessage.getMessage_id(), "Roger: qwerty");
+                    listOfUpdates.clear();
                 }
-                //client.printMessages();
-                // client.getUpdates();
-                //client.printMessages();
-
-
             }
         }
         catch (Exception e){
             e.printStackTrace();
         }
-
     }
-
 }
