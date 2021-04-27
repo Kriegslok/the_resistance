@@ -21,19 +21,22 @@ public class RClient {
     private final String methodEditMessageText = "editMessageText?";
     //private int lastUpdate_id;
     private AsyncHttpClient asyncHttpClient;
-    private RClientConfig config;
+    private RClientConfig rConfig;
+
+
 
     @Autowired
-    public RClient(RClientConfig config){
-        this.config = config;
-        asyncHttpClient = config.getAsyncHttpClient();
+    public RClient(RClientConfig rConfig, AsyncHttpClient httpClient){
+        this.rConfig = rConfig;
+        this.asyncHttpClient = httpClient;
     }
+
 
     public List<Update> getUpdates(int lastUpdateId) throws JsonProcessingException, ExecutionException, InterruptedException {
         List<Update> listOfUpdates;
         StringBuilder requestBuilder = new StringBuilder();
-        requestBuilder.append(config.getTelegramBotUrl());
-        requestBuilder.append(config.getToken());
+        requestBuilder.append(rConfig.getTelegramBotUrl());
+        requestBuilder.append(rConfig.getToken());
         requestBuilder.append(methodGetUpdates);
         if(lastUpdateId != 0){
             requestBuilder.append("?offset=");
@@ -47,7 +50,7 @@ public class RClient {
     }
 
     private String executeRequest(String request) throws ExecutionException, InterruptedException {
-        ListenableFuture<Response> futureResponse = asyncHttpClient.prepareGet(request).execute();
+        ListenableFuture<Response> futureResponse = this.asyncHttpClient.prepareGet(request).execute();
         Response response = null;
 
             response = futureResponse.get();
@@ -84,8 +87,8 @@ public class RClient {
     }
 
     private String buildRequest(String text, int chatId) {
-        String request = config.getTelegramBotUrl() +
-                config.getToken() +
+        String request = rConfig.getTelegramBotUrl() +
+                rConfig.getToken() +
                 methodSendMessage +
                 "chat_id=" +
                 chatId +
@@ -107,8 +110,8 @@ public class RClient {
 
 
     public void editTextMessage(int chatId, int messageId, String text) {
-        String request = config.getTelegramBotUrl() +
-                config.getToken() +
+        String request = rConfig.getTelegramBotUrl() +
+                rConfig.getToken() +
                 methodEditMessageText +
                 "chat_id=" +
                 chatId +
