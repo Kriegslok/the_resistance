@@ -36,7 +36,4 @@ dependencies {
     // https://mvnrepository.com/artifact/org.springframework/spring-beans
     implementation group: 'org.springframework', name: 'spring-beans', version: '5.3.5'
 
-
-
-
 }

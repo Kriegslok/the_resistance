@@ -10,19 +10,29 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import resistance.resistance.Main;
 import resistance.resistance.RClient;
 import resistance.resistance.RClientConfig;
 import resistance.resistance.TelegramEventLoop;
+import resistance.resistance.logic.EventRouter;
+import resistance.resistance.logic.OnlineService;
+import resistance.resistance.logic.Room;
+import resistance.resistance.logic.RoomManager;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 @Configuration
 @ComponentScan("resistance")
-@PropertySource("classpath:TelegramEventLoop.properties")
+@PropertySource("classpath:Resistance.properties")
 
 
 public class SpringConfig {
+    @Bean
+    public Main main(){
+        return new Main();
+    }
+
     @Bean
     public AsyncHttpClient httpClient(){
         return new DefaultAsyncHttpClient();
@@ -34,8 +44,8 @@ public class SpringConfig {
     }
 
     @Bean
-    public TelegramEventLoop telegramEventLoop ( RClient client, ExecutorService executorService){
-        return new TelegramEventLoop(client, executorService);
+    public TelegramEventLoop telegramEventLoop ( RClient client, ExecutorService executorService, EventRouter eventRouter){
+        return new TelegramEventLoop(client, executorService, eventRouter);
     }
 
     @Bean
@@ -43,6 +53,30 @@ public class SpringConfig {
         ExecutorService exec = Executors.newSingleThreadExecutor();
         return exec;
     }
+
+    @Bean
+    public EventRouter eventRouter(RoomManager roomManager, OnlineService onlineService){
+        return new EventRouter(roomManager, onlineService);
+    }
+
+    @Bean
+    public RoomManager roomManager(Room room) {
+        return new RoomManager(room);
+    }
+
+    @Bean
+    public OnlineService onlineService(){
+        return new OnlineService();
+    }
+
+    @Bean
+    public Room room(){
+        return new Room();
+    }
+
+
+
+
 
 
 
