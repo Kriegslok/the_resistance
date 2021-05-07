@@ -6,7 +6,6 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TelegramUpdate {
     private boolean ok;
-//    private Result result;
     private List<Update> result;
 
     public TelegramUpdate() {
