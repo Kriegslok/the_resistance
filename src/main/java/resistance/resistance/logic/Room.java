@@ -4,10 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import java.util.*;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
-
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 @Component
 public class Room {
     @Value("${Room.roomId}")
@@ -49,15 +48,6 @@ public class Room {
         date.setTime(date.getTime() - 5000);
         return (int) roomVisitorsMap.entrySet().stream().filter(entry -> entry.getValue().after(date)).count();
     }
-
-    public Set<Peer> getActiveVisitors(){
-        Date date = new Date();
-        date.setTime(date.getTime() - 5000);
-        Set<Peer> activePeersSet = new HashSet<>();
-         (roomVisitorsMap.entrySet().stream().filter(entry -> entry.getValue().after(date)).collect(Collectors.toSet())).forEach(entry ->{ activePeersSet.add(entry.getKey());});
-        return activePeersSet;
-    }
-
 }
 
 

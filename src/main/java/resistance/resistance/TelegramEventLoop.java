@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import resistance.resistance.logic.EventRouter;
 import resistance.resistance.telegramResponse.Message;
 import resistance.resistance.telegramResponse.Update;
 
@@ -17,18 +18,20 @@ import java.util.concurrent.TimeUnit;
 public class TelegramEventLoop implements Runnable{
     private ExecutorService executorService;
     private RClient client;
+    private EventRouter eventRouter;
 
 
     @Autowired
-    public TelegramEventLoop(RClient client, ExecutorService executorService) {
+    public TelegramEventLoop(RClient client, ExecutorService executorService, EventRouter eventRouter) {
         this.client = client;
         this.executorService = executorService;
+        this.eventRouter = eventRouter;
     }
 
-    @Autowired
-    public void setExecutorService(ExecutorService executorService) {
-        this.executorService = executorService;
-    }
+//    @Autowired
+//    public void setExecutorService(ExecutorService executorService) {
+//        this.executorService = executorService;
+//    }
 
     private volatile boolean running = false;
 
@@ -44,7 +47,9 @@ public class TelegramEventLoop implements Runnable{
         System.out.println("shutdown");
     }
 
-
+    public ExecutorService getExecutorService() {
+        return executorService;
+    }
 
     private void job() {
         try {
@@ -70,6 +75,7 @@ public class TelegramEventLoop implements Runnable{
                         System.out.println(update.getMessage().getText());
                         responseMessage = client.respondOnUpdate(update, "Roger: " + update.getMessage().getText());
                         System.out.println(responseMessage.getText());
+                        eventRouter.scenerySelector(update);
                         Thread.sleep(5000);
                         client.editTextMessage(responseMessage.getChat().getId(), responseMessage.getMessage_id(), "Roger: qwerty");
                     }
