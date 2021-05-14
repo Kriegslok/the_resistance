@@ -14,6 +14,7 @@ public class RoomManager {
     }
 
     public void connectToRoom(Peer peer){
+        peer.setRoomId(this.room.getRoomId());
         room.getRoomVisitorsMap().put(peer, new Date());
     }
 
