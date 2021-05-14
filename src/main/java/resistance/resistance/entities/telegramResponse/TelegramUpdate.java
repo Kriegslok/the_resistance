@@ -1,4 +1,4 @@
-package resistance.resistance.telegramResponse;
+package resistance.resistance.entities.telegramResponse;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

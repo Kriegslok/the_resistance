@@ -1,6 +1,7 @@
-package resistance.resistance.telegramResponse;
+package resistance.resistance.entities.telegramResponse;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import resistance.resistance.entities.ReplyMarkup;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Message {
@@ -11,6 +12,7 @@ public class Message {
     private Chat chat;
     private int date;
     private String text;
+    private ReplyMarkup reply_markup;
 
     public Message() {
         this.message_id = 0;
@@ -18,6 +20,7 @@ public class Message {
         this.chat = null;
         this.date = 0;
         this.text = null;
+        this.reply_markup = null;
     }
 
     public int getMessage_id() {
@@ -59,6 +62,8 @@ public class Message {
     public void setText(String text) {
         this.text = text;
     }
+
+
 
     @Override
     public String toString() {

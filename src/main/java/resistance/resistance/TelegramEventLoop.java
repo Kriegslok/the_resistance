@@ -1,15 +1,12 @@
 package resistance.resistance;
 
-import org.asynchttpclient.AsyncHttpClient;
-import org.asynchttpclient.DefaultAsyncHttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import resistance.resistance.logic.EventRouter;
-import resistance.resistance.telegramResponse.Message;
-import resistance.resistance.telegramResponse.Update;
+import resistance.resistance.entities.telegramResponse.Message;
+import resistance.resistance.entities.telegramResponse.Update;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -72,12 +69,28 @@ public class TelegramEventLoop implements Runnable{
                         listOfUpdates.remove(0);
                     }
                     for (Update update : listOfUpdates) {
-                        System.out.println(update.getMessage().getText());
-                        responseMessage = client.respondOnUpdate(update, "Roger: " + update.getMessage().getText());
-                        System.out.println(responseMessage.getText());
-                        eventRouter.scenerySelector(update);
-                        Thread.sleep(5000);
-                        client.editTextMessage(responseMessage.getChat().getId(), responseMessage.getMessage_id(), "Roger: qwerty");
+                        List<String> replyList = new ArrayList<>();
+                        if(update.getMessage() != null){
+                            System.out.println(update.getMessage().getText());
+                        }
+                        else if(update.getCallback_query() != null && update.getCallback_query().getData() != null){
+                            System.out.println(update.getCallback_query().getData());
+                        }
+
+                        replyList = eventRouter.scenerySelector(update);
+                        if(replyList.size() > 1){
+                            responseMessage = client.respondOnUpdate(update, replyList.get(0), replyList.get(1));
+                        }
+                        else if(replyList.size() == 1){
+                                responseMessage = client.respondOnUpdate(update, replyList.get(0));
+                        }
+//                        else {
+//                            responseMessage = client.respondOnUpdate(update, "Roger: " + update.getMessage().getText());
+//                            System.out.println(responseMessage.getText());
+//
+//                            Thread.sleep(5000);
+//                            client.editTextMessage(responseMessage.getChat().getId(), responseMessage.getMessage_id(), "Roger: qwerty");
+//                        }
                     }
                     listOfUpdates.clear();
                 }
