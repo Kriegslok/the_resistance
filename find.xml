@@ -1,7 +1,9 @@
 <application>
   <component name="FindSettings">
+
     <option name="customScope" value="File '...\src\main\java\resistance.resistance.Main.java [the_resistance.main]'" />
     <option name="defaultScopeName" value="File '...\src\main\java\resistance.resistance.Main.java [the_resistance.main]'" />
     <option name="SEARCH_SCOPE" value="File '...\src\main\java\resistance.resistance.Main.java [the_resistance.main]'" />
+
   </component>
 </application>
