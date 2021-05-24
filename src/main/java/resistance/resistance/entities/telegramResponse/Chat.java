@@ -1,4 +1,4 @@
-package telegramResponse;
+package resistance.resistance.entities.telegramResponse;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -46,5 +46,15 @@ public class Chat {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    @Override
+    public String toString() {
+        return "Chat{" +
+                "id=" + id +
+                ", first_name='" + first_name + '\'' +
+                ", type='" + type + '\'' +
+                ", username='" + username + '\'' +
+                '}';
     }
 }

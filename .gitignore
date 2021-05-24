@@ -1,7 +1,8 @@
-**/*build/
+/build/
 bin/
 docs/
 org/drinkless/tdlib/TdApi.java
 td/
 _gradle/
+
 

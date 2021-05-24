@@ -1,15 +1,13 @@
-package telegramResponse;
+package resistance.resistance.entities.telegramResponse;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class TelegramUpdate {
+public class TelegramResponse {
     private boolean ok;
-//    private Result result;
-    private List<Update> result;
+    private Message result;
 
-    public TelegramUpdate() {
+    public TelegramResponse() {
         this.ok = false;
         this.result = null;
     }
@@ -21,11 +19,11 @@ public class TelegramUpdate {
         this.ok = ok;
     }
 
-    public List<Update> getResult() {
+    public Message getResult() {
         return result;
     }
 
-    public void setResult(List<Update> result) {
+    public void setResult(Message result) {
         this.result = result;
     }
 }
