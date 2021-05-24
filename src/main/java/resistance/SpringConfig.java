@@ -55,8 +55,8 @@ public class SpringConfig {
     }
 
     @Bean
-    public EventRouter eventRouter(RoomManager roomManager, OnlineService onlineService){
-        return new EventRouter(roomManager, onlineService);
+    public EventRouter eventRouter(RoomManager roomManager, OnlineService onlineService, RClient client){
+        return new EventRouter(roomManager, onlineService, client);
     }
 
     @Bean
