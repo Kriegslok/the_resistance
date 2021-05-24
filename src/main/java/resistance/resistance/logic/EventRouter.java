@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import resistance.resistance.RClient;
 import resistance.resistance.entities.ReplyMarkup;
 import resistance.resistance.entities.TelegramInlineButton;
 import resistance.resistance.entities.telegramResponse.Update;
@@ -12,6 +13,7 @@ import resistance.resistance.entities.telegramResponse.Update;
 import java.rmi.UnexpectedException;
 import java.text.DecimalFormat;
 import java.util.*;
+import java.util.concurrent.ExecutionException;
 
 @Component
 public class EventRouter {
@@ -25,11 +27,13 @@ public class EventRouter {
     @Value("${EventRouter.enterRoomButtonText}")
     private String enterRoomButtonText;
     private Map<String, String> buttonsMap;
+    private RClient client;
 
     @Autowired
-    public EventRouter(RoomManager roomManager, OnlineService onlineService) {
+    public EventRouter(RoomManager roomManager, OnlineService onlineService, RClient client) {
         this.roomManager = roomManager;
         this.onlineService = onlineService;
+        this.client = client;
     }
 
     private void init(){
@@ -125,6 +129,14 @@ public class EventRouter {
     private  List<String> sceneryThree(Peer peer){
         //sceneryThree
         roomManager.connectToRoom(peer);
+        roomManager.getRoom().getActiveVisitors().forEach(visitor -> {
+            try {
+                client.sendMessage(visitor.getChatId(), peer.getName() + " has joined the room!");
+            } catch (JsonProcessingException | ExecutionException | InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+
         List<String> replyList = new ArrayList<>();
         String messageText = "You and " + (roomManager.getRoom().getActiveCount() - 1) + " players more will stay here for " + (laterThen/60000d) + " minutes";
         replyList.add(messageText);

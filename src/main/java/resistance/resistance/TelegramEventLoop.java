@@ -1,13 +1,17 @@
 package resistance.resistance;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import resistance.resistance.logic.EventRouter;
 import resistance.resistance.entities.telegramResponse.Message;
 import resistance.resistance.entities.telegramResponse.Update;
 
+import java.rmi.UnexpectedException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
 
@@ -16,6 +20,8 @@ public class TelegramEventLoop implements Runnable{
     private ExecutorService executorService;
     private RClient client;
     private EventRouter eventRouter;
+    @Value("${telegramEventLoop.initialOffset}")
+    private int initialOffset;
 
 
     @Autowired
@@ -55,7 +61,7 @@ public class TelegramEventLoop implements Runnable{
             Message responseMessage;
             int lastUpdateId = 3;
             listOfUpdates = client.getUpdates(lastUpdateId);
-            lastUpdateId = listOfUpdates.get(listOfUpdates.size() - 1).getUpdate_id();
+            lastUpdateId = listOfUpdates.get(listOfUpdates.size() - initialOffset).getUpdate_id();
 
 
             while (running) {
@@ -96,7 +102,11 @@ public class TelegramEventLoop implements Runnable{
                 }
             }
         }
-        catch (Exception e){
+        catch (IndexOutOfBoundsException | JsonProcessingException | ExecutionException | InterruptedException | UnexpectedException e){
+            if (e instanceof IndexOutOfBoundsException){
+                initialOffset ++;
+                run();
+            }
             e.printStackTrace();
         }
     }
